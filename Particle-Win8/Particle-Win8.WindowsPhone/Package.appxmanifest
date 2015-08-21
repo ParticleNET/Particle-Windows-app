@@ -1,41 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-
-  <Identity Name="ace2d24d-6e64-4cac-a3ec-1ed47f671971"
-            Publisher="CN=holts"
-            Version="1.0.0.0" />
-
-  <mp:PhoneIdentity PhoneProductId="ace2d24d-6e64-4cac-a3ec-1ed47f671971" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
-
+  <Identity Name="SannelSoftwareLLC.ParticleTinkerbySannel" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="f8c6d320-e3ce-49e6-9441-e1de93e3f4d3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Particle-Win8.WindowsPhone</DisplayName>
-    <PublisherDisplayName>holts</PublisherDisplayName>
+    <DisplayName>Particle Tinker by Sannel</DisplayName>
+    <PublisherDisplayName>Sannel Software LLC</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
     <OSMaxVersionTested>6.3.1</OSMaxVersionTested>
   </Prerequisites>
-  
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="Particle_Win8.WindowsPhone.App">
-        <m3:VisualElements
-            DisplayName="Particle-Win8.WindowsPhone"
-            Square150x150Logo="Assets\Logo.png"
-            Square44x44Logo="Assets\SmallLogo.png"
-            Description="Particle-Win8.WindowsPhone"
-            ForegroundText="light"
-            BackgroundColor="transparent">
-            <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"/>
-            <m3:SplashScreen Image="Assets\SplashScreen.png"/>
-        </m3:VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Particle_Win8.WindowsPhone.App">
+      <m3:VisualElements DisplayName="Particle Tinker by Sannel" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Particle-Win8.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
+        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+        </m3:DefaultTile>
+        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+      </m3:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
