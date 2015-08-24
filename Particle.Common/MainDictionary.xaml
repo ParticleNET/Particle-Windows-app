@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:converts="using:Particle.Common.Converters"
+	xmlns:ViewModel="using:Particle.Common.ViewModel"
+	mc:Ignorable="d">
+	<ViewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+	<converts:VisibilityConverter x:Key="VisibilityConverter" />
+	<converts:VisibilityNotConverter x:Key="VisibilityNotConverter" />
+</ResourceDictionary>
