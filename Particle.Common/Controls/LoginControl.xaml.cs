@@ -42,7 +42,6 @@ namespace Particle.Common.Controls
 			this.InitializeComponent();
 			viewModel.PropertyChanged += viewModel_PropertyChanged;
 			viewModel.Load();
-			DataContext = viewModel;
 		}
 
 		private void viewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -67,11 +66,6 @@ namespace Particle.Common.Controls
 			{
 				return viewModel.IsProcessing;
 			}
-		}
-
-		private async void LoginAction_Tapped(object sender, TappedRoutedEventArgs e)
-		{
-			await viewModel.LoginAsync();
 		}
 	}
 }

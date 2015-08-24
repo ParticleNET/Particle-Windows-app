@@ -1,9 +1,11 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Particle.Common.Interfaces
 {
@@ -30,9 +32,8 @@ namespace Particle.Common.Interfaces
 		/// </summary>
 		void Load();
 		/// <summary>
-		/// Attempts to login into the partical cloud
+		/// Represents the ICommand for the login action
 		/// </summary>
-		/// <returns>true if the user logged into the cloud false if it did not</returns>
-		Task<bool> LoginAsync();
+		ICommand LoginCommand { get; }
 	}
 }

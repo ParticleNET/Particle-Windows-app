@@ -13,19 +13,19 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="MainDictionary.xaml" />
+                <ResourceDictionary Source="ms-appx:/Particle.Common/MainDictionary.xaml" />
 			</ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel>
             <TextBlock Text="Partical.io account login" Style="{StaticResource SubheaderTextBlockStyle}" />
             <TextBlock Text="Email Address" />
-            <TextBox Text="{Binding Username}" />
+            <TextBox Text="{Binding Username, Mode=TwoWay}" />
             <TextBlock Text="Password" />
-            <TextBox Text="{Binding Password}" />
-            <ToggleSwitch IsOn="{Binding RememberPassword}">
+            <TextBox Text="{Binding Password, Mode=TwoWay}" />
+            <ToggleSwitch IsOn="{Binding RememberPassword, Mode=TwoWay}">
                 <TextBlock Text="Remember Password" />
             </ToggleSwitch>
-            <Button x:Name="LoginAction" Tapped="LoginAction_Tapped">Login</Button>
+        <Button x:Name="LoginAction" Command="{Binding LoginCommand}">Login</Button>
         </StackPanel>
 </UserControl>

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace Particle.Common.Design
 {
@@ -17,6 +19,15 @@ namespace Particle.Common.Design
 				return false;
 			}
 			set { }
+		}
+
+		private RelayCommand loginCommand;
+		public ICommand LoginCommand
+		{
+			get
+			{
+				return loginCommand ?? (loginCommand = new RelayCommand(() => { }));
+			}
 		}
 
 		public string Password
@@ -44,11 +55,6 @@ namespace Particle.Common.Design
 
 		public void Load()
 		{
-		}
-
-		public Task<bool> LoginAsync()
-		{
-			return Task.Run(() => true);
 		}
 	}
 }

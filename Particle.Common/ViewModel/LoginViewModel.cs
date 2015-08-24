@@ -14,9 +14,12 @@
    limitations under the License.
 */
 
+using GalaSoft.MvvmLight.Command;
 using Particle.Common.Interfaces;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.UI.Popups;
 
 namespace Particle.Common.ViewModel
 {
@@ -62,6 +65,21 @@ namespace Particle.Common.ViewModel
 			set { Set(nameof(IsProcessing),ref isProcessing, value); }
 		}
 
+		private RelayCommand loginCommand;
+		public ICommand LoginCommand
+		{
+			get
+			{
+				return loginCommand ?? (loginCommand = new RelayCommand(async () =>
+				{
+					if(await loginAsync())
+					{
+
+					}
+				}));
+			}
+		}
+
 		/// <summary>
 		/// Loads values from the store
 		/// </summary>
@@ -80,8 +98,10 @@ namespace Particle.Common.ViewModel
 		/// Attempts to Login to the cloud
 		/// </summary>
 		/// <returns></returns>
-		public async Task<bool> LoginAsync()
+		private async Task<bool> loginAsync()
 		{
+			MessageDialog mess = new MessageDialog("login");
+			await mess.ShowAsync();
 			isProcessing = true;
 			var settings = AppSettings.Current;
 			settings.Username = username;

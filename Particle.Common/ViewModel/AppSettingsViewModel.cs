@@ -21,6 +21,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 using Windows.Storage;
@@ -42,9 +43,11 @@ namespace Particle.Common.ViewModel
 			String id;
 			using (var reader = DataReader.FromBuffer(hid))
 			{
-				id = reader.ReadString(hid.Length);
+				var b = new byte[hid.Length];
+				reader.ReadBytes(b);
+				id = Encoding.UTF8.GetString(b, 0, b.Length);
 			}
-			generateKey(id, "Some salt key", 1000);
+			generateKey(id, Package.Current.Id.PublisherId, 1000);
 		}
 
 		#region encryption/decryption
@@ -96,19 +99,24 @@ namespace Particle.Common.ViewModel
 
 		private String decrypt(String text)
 		{
-			// Setup an AES key, using AES in CBC mode and applying PKCS#7 padding on the input
-			SymmetricKeyAlgorithmProvider aesProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
-			CryptographicKey aesKey = aesProvider.CreateSymmetricKey(keyMaterial);
+			try
+			{
+				// Setup an AES key, using AES in CBC mode and applying PKCS#7 padding on the input
+				SymmetricKeyAlgorithmProvider aesProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
+				CryptographicKey aesKey = aesProvider.CreateSymmetricKey(keyMaterial);
 
-			// Convert the base64 input to an IBuffer for decryption
-			IBuffer ciphertextBuffer = CryptographicBuffer.DecodeFromBase64String(text);
+				// Convert the base64 input to an IBuffer for decryption
+				IBuffer ciphertextBuffer = CryptographicBuffer.DecodeFromBase64String(text);
 
-			// Decrypt the data and convert it back to a string
-			IBuffer decryptedBuffer = CryptographicEngine.Decrypt(aesKey, ciphertextBuffer, iv);
-			byte[] decryptedArray = decryptedBuffer.ToArray();
-			string clearText = Encoding.UTF8.GetString(decryptedArray, 0, decryptedArray.Length);
+				// Decrypt the data and convert it back to a string
+				IBuffer decryptedBuffer = CryptographicEngine.Decrypt(aesKey, ciphertextBuffer, iv);
+				byte[] decryptedArray = decryptedBuffer.ToArray();
+				string clearText = Encoding.UTF8.GetString(decryptedArray, 0, decryptedArray.Length);
 
-			return clearText;
+				return clearText;
+			}
+			catch { }
+			return String.Empty;
 		}
 		#endregion
 
