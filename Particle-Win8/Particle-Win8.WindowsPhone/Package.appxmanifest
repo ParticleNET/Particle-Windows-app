@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="SannelSoftwareLLC.ParticleTinkerbySannel" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="1.1.0.0" />
-  <mp:PhoneIdentity PhoneProductId="f8c6d320-e3ce-49e6-9441-e1de93e3f4d3" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="SannelSoftwareLLC.ParticleTinker" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="b2e91560-8848-4ac2-a800-7c38f5ed7d3e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Particle Tinker by Sannel</DisplayName>
+    <DisplayName>Particle Tinker</DisplayName>
     <PublisherDisplayName>Sannel Software LLC</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Particle_Win8.WindowsPhone.App">
-      <m3:VisualElements DisplayName="Particle Tinker by Sannel" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Particle-Win8.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
+      <m3:VisualElements DisplayName="Particle Tinker" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Particle-Win8.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
