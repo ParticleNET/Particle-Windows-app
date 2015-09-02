@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -17,14 +19,26 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Particle_Win8
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
-            this.InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+	public sealed partial class MainPage : Page
+	{
+		public MainPage()
+		{
+			this.InitializeComponent();
+		}
+
+		protected override async void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+			UInt32 vid = 0x2B04;
+			UInt32 pid = 0xC006;
+			var devices = await DeviceInformation.FindAllAsync(Windows.Devices.Usb.UsbDevice.GetDeviceSelector(vid, pid));
+			foreach(var d in devices)
+			{
+				Debug.WriteLine(d);
+			}
+		}
+	}
 }
