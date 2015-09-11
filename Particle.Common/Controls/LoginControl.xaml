@@ -2,6 +2,7 @@
 	x:Class="Particle.Common.Controls.LoginControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
 	xmlns:local="using:Particle.Common.Controls"
 	xmlns:converts="using:Particle.Common.Converters"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,22 +11,18 @@
 	DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
 	d:DesignHeight="300"
 	d:DesignWidth="400">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:/Particle.Common/MainDictionary.xaml" />
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="ms-appx:/Particle.Common/MainDictionary.xaml" />
+				<ResourceDictionary
+			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
+				<ResourceDictionary
+			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkTextBox/WatermarkTextBox.xaml" />
 			</ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
-    <StackPanel>
-            <TextBlock Text="Partical.io account login" Style="{StaticResource SubheaderTextBlockStyle}" />
-            <TextBlock Text="Email Address" />
-            <TextBox Text="{Binding Username, Mode=TwoWay}" />
-            <TextBlock Text="Password" />
-            <TextBox Text="{Binding Password, Mode=TwoWay}" />
-            <ToggleSwitch IsOn="{Binding RememberPassword, Mode=TwoWay}">
-                <TextBlock Text="Remember Password" />
-            </ToggleSwitch>
-        <Button x:Name="LoginAction" Command="{Binding LoginCommand}">Login</Button>
-        </StackPanel>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	<Frame x:Name="LoginFrame">
+		
+	</Frame>
 </UserControl>

@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="Particle.Common.Pages.RegisterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Particle.Common.Pages"
+	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
+	xmlns:converts="using:Particle.Common.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding RegisterViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:/Particle.Common/MainDictionary.xaml" />
+                <ResourceDictionary
+			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
+                <ResourceDictionary
+			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkTextBox/WatermarkTextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <TextBlock Text="Create Particle Account" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
+            <toolkit:WatermarkTextBox Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" Margin="0,12,0,6" />
+            <toolkit:WatermarkPasswordBox Password="{Binding Password, Mode=TwoWay}" Margin="0,6,0,6" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="password" >
+            </toolkit:WatermarkPasswordBox>
+            <toolkit:WatermarkPasswordBox Password="{Binding Password, Mode=TwoWay}" Margin="0,6,0,12" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="password" >
+            </toolkit:WatermarkPasswordBox>
+            <Button IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding Command}" HorizontalAlignment="Center">LOG IN</Button>
+            <HyperlinkButton HorizontalAlignment="Center" Tapped="HyperlinkButton_Tapped">I already have an account</HyperlinkButton>
+            <RichTextBlock HorizontalAlignment="Center" Style="{StaticResource BodyRichTextBlockStyle}">
+                <Paragraph TextAlignment="Center">
+                    By clicking SIGN UP you are indicating that you have read and agreed to the
+                        <Hyperlink NavigateUri="https://www.particle.io/tos">Terms of Service</Hyperlink>
+                        and
+                        <Hyperlink NavigateUri="https://www.particle.io/privacy">Privacy Policy.</Hyperlink>
+                </Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+    </Grid>
+</Page>

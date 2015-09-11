@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2015 Sannel Software, L.L.C.
+   Copyright 2015 ParticleNET
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,58 +14,17 @@
    limitations under the License.
 */
 
-using System.ComponentModel;
-using Particle.Common.ViewModel;
+using Particle.Common.Pages;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
-using Particle.Common.Interfaces;
-using GalaSoft.MvvmLight.Ioc;
-
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Particle.Common.Controls
 {
-	public sealed partial class LoginControl : UserControl, System.ComponentModel.INotifyPropertyChanged
+	public sealed partial class LoginControl : UserControl
 	{
-		private ILoginViewModel _viewModel;
-
-		private ILoginViewModel viewModel
-		{
-			get
-			{
-				return _viewModel ?? (_viewModel = (ILoginViewModel)DataContext);
-			}
-		}
-
 		public LoginControl()
 		{
 			this.InitializeComponent();
-			viewModel.PropertyChanged += viewModel_PropertyChanged;
-			viewModel.Load();
-		}
-
-		private void viewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-		{
-			if (string.Compare(e.PropertyName, nameof(IsProcessing)) == 0)
-			{
-				if (PropertyChanged != null)
-				{
-					lock (PropertyChanged)
-					{
-						PropertyChanged(this, new PropertyChangedEventArgs(nameof(IsProcessing)));
-					}
-				}
-			}
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		public bool IsProcessing
-		{
-			get
-			{
-				return viewModel.IsProcessing;
-			}
+			LoginFrame.Navigate(typeof(RegisterPage));
 		}
 	}
 }

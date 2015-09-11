@@ -1,11 +1,8 @@
-﻿using Particle.Common.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,37 +15,21 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Particle_Win8
+namespace Particle.Common.Pages
 {
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
-	public sealed partial class MainPage : Page
+	public sealed partial class RegisterPage : Page
 	{
-		public MainPage()
+		public RegisterPage()
 		{
 			this.InitializeComponent();
 		}
 
-		protected override void OnNavigatedTo(NavigationEventArgs e)
+		private void HyperlinkButton_Tapped(object sender, TappedRoutedEventArgs e)
 		{
-			base.OnNavigatedTo(e);
-			if (!ViewModelLocator.Cloud.IsAuthenticated)
-			{
-				LoginPopup.IsOpen = true;
-			}
-			else
-			{
-				LoginPopup.IsOpen = false;
-			}
-		}
-
-		private void LoginControl_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if(String.Compare(e.PropertyName, "IsAuthenticating") == 0)
-			{
-
-			}
+			this.Frame.Navigate(typeof(LoginPage));
 		}
 	}
 }

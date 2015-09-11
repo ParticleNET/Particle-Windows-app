@@ -55,22 +55,22 @@ namespace Particle.Common.ViewModel
 			set { Set(nameof(RememberPassword),ref rememberPassword, value); }
 		}
 
-		private bool isProcessing;
+		private bool isAuthenticating;
 		/// <summary>
 		/// True if were trying to loggin.
 		/// </summary>
-		public bool IsProcessing
+		public bool IsAuthenticating
 		{
-			get { return isProcessing; }
-			set { Set(nameof(IsProcessing),ref isProcessing, value); }
+			get { return isAuthenticating; }
+			set { Set(nameof(IsAuthenticating),ref isAuthenticating, value); }
 		}
 
-		private RelayCommand loginCommand;
-		public ICommand LoginCommand
+		protected RelayCommand command;
+		public virtual ICommand Command
 		{
 			get
 			{
-				return loginCommand ?? (loginCommand = new RelayCommand(async () =>
+				return command ?? (command = new RelayCommand(async () =>
 				{
 					if(await loginAsync())
 					{
@@ -78,6 +78,18 @@ namespace Particle.Common.ViewModel
 					}
 				}));
 			}
+		}
+
+		/// <summary>
+		/// Should we auto login when the app starts
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if [automatic login]; otherwise, <c>false</c>.
+		/// </value>
+		public bool AutoLogin
+		{
+			get;
+			set;
 		}
 
 		/// <summary>
@@ -100,9 +112,7 @@ namespace Particle.Common.ViewModel
 		/// <returns></returns>
 		private async Task<bool> loginAsync()
 		{
-			MessageDialog mess = new MessageDialog("login");
-			await mess.ShowAsync();
-			isProcessing = true;
+			IsAuthenticating = true;
 			var settings = AppSettings.Current;
 			settings.Username = username;
 			if (RememberPassword)
@@ -110,7 +120,8 @@ namespace Particle.Common.ViewModel
 				settings.Password = password;
 			}
 			settings.RememberPassword = rememberPassword;
-			isProcessing = false;
+			await Task.Delay(2000);
+			IsAuthenticating = false;
 			return false;
 		}
 	}

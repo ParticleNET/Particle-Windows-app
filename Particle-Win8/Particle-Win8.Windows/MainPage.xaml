@@ -6,9 +6,12 @@
 	xmlns:controls="using:Particle.Common.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding Source={StaticResource Locator}}"
 	mc:Ignorable="d">
 
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<controls:LoginControl />
-	</Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Popup x:Name="LoginPopup" HorizontalAlignment="Center" Width="450">
+            <controls:LoginControl HorizontalAlignment="Center" Width="450" />
+        </Popup>
+    </Grid>
 </Page>

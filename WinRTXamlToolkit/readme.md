@@ -1,0 +1,1 @@
+﻿Everything in this project is from the WINRT Toolkit located here http://winrtxamltoolkit.codeplex.com/ and is licensed under the MIT license http://winrtxamltoolkit.codeplex.com/license
