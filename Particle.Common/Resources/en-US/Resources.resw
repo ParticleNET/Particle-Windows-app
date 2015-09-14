@@ -120,4 +120,13 @@
   <data name="MustBeAValidEmailAddress" xml:space="preserve">
     <value>Email must be a valid email address</value>
   </data>
+  <data name="PasswordIsRequired" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="PasswordMustMatch" xml:space="preserve">
+    <value>Password and Verify password must match</value>
+  </data>
+  <data name="VerifyPasswordIsRequired" xml:space="preserve">
+    <value>Verify password is required</value>
+  </data>
 </root>

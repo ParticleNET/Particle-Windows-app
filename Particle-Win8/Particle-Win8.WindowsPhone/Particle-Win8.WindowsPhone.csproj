@@ -84,6 +84,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AuthDialog.xaml.cs">
+      <DependentUpon>AuthDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\AuthDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +154,10 @@
     <ProjectReference Include="..\..\Particle.Common\Particle.Common.csproj">
       <Project>{6be787b5-1e56-4e23-b048-594bf8d43890}</Project>
       <Name>Particle.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WinRTXamlToolkit\WinRTXamlToolkit.csproj">
+      <Project>{2ad7c123-7712-4196-bc7d-dcb09417b2c8}</Project>
+      <Name>WinRTXamlToolkit</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

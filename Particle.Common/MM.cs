@@ -8,13 +8,13 @@ using Windows.ApplicationModel.Resources;
 
 namespace Particle.Common
 {
-	public class Messages
+	public class MM
 	{
-		public static Messages MM { get; } = new Messages();
+		public static MM M { get; } = new MM();
 
 		private ResourceLoader loader;
 
-		public Messages()
+		public MM()
 		{
 			loader = ResourceLoader.GetForCurrentView("Particle.Common/Resources");
 		}

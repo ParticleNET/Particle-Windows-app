@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 using Particle.Common.Interfaces;
 using System;
@@ -52,6 +53,14 @@ namespace Particle.Common.ViewModel
 			get
 			{
 				return cloud;
+			}
+		}
+
+		public static IMessenger Messenger
+		{
+			get
+			{
+				return GalaSoft.MvvmLight.Messaging.Messenger.Default;
 			}
 		}
 	}

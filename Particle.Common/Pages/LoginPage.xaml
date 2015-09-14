@@ -11,7 +11,7 @@
 	<Page.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:/Particle.Common/MainDictionary.xaml" />
+				<ResourceDictionary Source="ms-appx:///Particle.Common/MainDictionary.xaml" />
 				<ResourceDictionary
 			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
 				<ResourceDictionary
@@ -19,8 +19,8 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<StackPanel>
 			<TextBlock Text="Particle Login" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
 			<toolkit:WatermarkTextBox Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" Margin="0,12" />
 			<toolkit:WatermarkPasswordBox Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="password" >
@@ -32,13 +32,19 @@
 				<ToggleSwitch IsOn="{Binding RememberPassword, Mode=TwoWay}">
 				</ToggleSwitch>
 			</StackPanel>
-            <StackPanel x:Name="AuthenticatingContainer" Visibility="{Binding IsAuthenticating, Converter={StaticResource VisibilityConverter}}" Orientation="Horizontal" Margin="0,12" HorizontalAlignment="Center">
-                <TextBlock Text="Logging in..." Style="{StaticResource BodyTextBlockStyle}" />
-                <ProgressRing IsActive="True" />
-            </StackPanel>
-            <Button x:Name="LoginAction" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding LoginCommand}" HorizontalAlignment="Center">LOG IN</Button>
-            <HyperlinkButton x:Name="RegisterAction" HorizontalAlignment="Center" Click="RegisterAction_Click">I don't have an account</HyperlinkButton>
-            <HyperlinkButton x:Name="ForgotPasswordAction" HorizontalAlignment="Center">I forgot my password</HyperlinkButton>
-        </StackPanel>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+				<TextBlock Text="Auto Login" VerticalAlignment="Center" />
+
+				<ToggleSwitch IsOn="{Binding AutoLogin, Mode=TwoWay}">
+				</ToggleSwitch>
+			</StackPanel>
+			<StackPanel x:Name="AuthenticatingContainer" Visibility="{Binding IsAuthenticating, Converter={StaticResource VisibilityConverter}}" Orientation="Horizontal" Margin="0,12" HorizontalAlignment="Center">
+				<TextBlock Text="Logging in..." Style="{StaticResource BodyTextBlockStyle}" />
+				<ProgressRing IsActive="True" />
+			</StackPanel>
+			<Button x:Name="LoginAction" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding Command}" HorizontalAlignment="Center">LOG IN</Button>
+			<HyperlinkButton x:Name="RegisterAction" HorizontalAlignment="Center" Click="RegisterAction_Click">I don't have an account</HyperlinkButton>
+			<HyperlinkButton x:Name="ForgotPasswordAction" HorizontalAlignment="Center">I forgot my password</HyperlinkButton>
+		</StackPanel>
 	</Grid>
 </Page>

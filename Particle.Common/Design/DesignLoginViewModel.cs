@@ -31,7 +31,7 @@ namespace Particle.Common.Design
 		{
 			get
 			{
-				return false;
+				return true;
 			}
 			set { }
 		}

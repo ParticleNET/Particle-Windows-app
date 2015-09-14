@@ -49,6 +49,7 @@
     <Compile Include="Design\DesignRegisterViewModel.cs" />
     <Compile Include="Interfaces\ILoginViewModel.cs" />
     <Compile Include="Interfaces\IRegisterViewModel.cs" />
+    <Compile Include="Messages\DialogMessage.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -56,7 +57,7 @@
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Messages.resw.cs" />
+    <Compile Include="MM.cs" />
     <Compile Include="ViewModel\AppSettingsViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
