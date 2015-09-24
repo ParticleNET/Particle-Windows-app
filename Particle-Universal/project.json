@@ -4,8 +4,8 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.0.0",
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
-    "MvvmLightLibs": "5.1.1",
-    "Sannel.ParticleSDK": "0.5.0"
+    "MvvmLightLibs": "5.2.0",
+    "ParticleNET.ParticleSDK": "0.7.9-beta01"
   },
   "frameworks": {
     "uap10.0": {}

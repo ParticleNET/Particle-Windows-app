@@ -13,27 +13,30 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
-using Particle.Common.Pages;
-using Particle.Common.ViewModel;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
+
+// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
 
 namespace Particle.Common.Controls
 {
-	public sealed partial class LoginControl : UserControl
+	public sealed partial class DevicesListControl : UserControl
 	{
-		public LoginControl()
+		public DevicesListControl()
 		{
 			this.InitializeComponent();
-			if (!String.IsNullOrWhiteSpace(AppSettings.Current.Username))
-			{
-				LoginFrame.Navigate(typeof(LoginPage));
-			}
-			else
-			{
-				LoginFrame.Navigate(typeof(RegisterPage));
-			}
 		}
 	}
 }

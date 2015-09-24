@@ -13,27 +13,15 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
-using Particle.Common.Pages;
-using Particle.Common.ViewModel;
 using System;
-using Windows.UI.Xaml.Controls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Particle.Common.Controls
+namespace Particle.Common.Messages
 {
-	public sealed partial class LoginControl : UserControl
+	public class LoggedInMessage
 	{
-		public LoginControl()
-		{
-			this.InitializeComponent();
-			if (!String.IsNullOrWhiteSpace(AppSettings.Current.Username))
-			{
-				LoginFrame.Navigate(typeof(LoginPage));
-			}
-			else
-			{
-				LoginFrame.Navigate(typeof(RegisterPage));
-			}
-		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using Particle.Common.ViewModel;
+﻿using Particle.Common.Messages;
+using Particle.Common.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,6 +29,12 @@ namespace Particle_Win8
 		public MainPage()
 		{
 			this.InitializeComponent();
+			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
+		}
+
+		private void loggedIn(LoggedInMessage message)
+		{
+			LoginPopup.IsOpen = false;
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)

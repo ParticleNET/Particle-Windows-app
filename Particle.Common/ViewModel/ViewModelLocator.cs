@@ -22,11 +22,13 @@ namespace Particle.Common.ViewModel
 			{
 				SimpleIoc.Default.Register<ILoginViewModel, Design.DesignLoginViewModel>();
 				SimpleIoc.Default.Register<IRegisterViewModel, Design.DesignRegisterViewModel>();
+				SimpleIoc.Default.Register<IDevicesListViewModel, Design.DesignDevicesListViewModel>();
 			}
 			else
 			{
 				SimpleIoc.Default.Register<ILoginViewModel, LoginViewModel>();
 				SimpleIoc.Default.Register<IRegisterViewModel, RegisterViewModel>();
+				SimpleIoc.Default.Register<IDevicesListViewModel, DevicesListViewModel>();
 			}
 			cloud = new ParticleCloud();
 			//SimpleIoc.Default.Register<MainViewModel>();
@@ -45,6 +47,14 @@ namespace Particle.Common.ViewModel
 			get
 			{
 				return SimpleIoc.Default.GetInstance<IRegisterViewModel>();
+			}
+		}
+
+		public static IDevicesListViewModel DevicesListViewModel
+		{
+			get
+			{
+				return SimpleIoc.Default.GetInstance<IDevicesListViewModel>();
 			}
 		}
 

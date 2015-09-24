@@ -10,4 +10,5 @@
 	<converts:NotBooleanConverter x:Key="NotBooleanConverter" />
 	<converts:VisibilityConverter x:Key="VisibilityConverter" />
 	<converts:VisibilityNotConverter x:Key="VisibilityNotConverter" />
+	<converts:ParticleDeviceTypeConverter x:Key="ParticleDeviceTypeConverter" />
 </ResourceDictionary>

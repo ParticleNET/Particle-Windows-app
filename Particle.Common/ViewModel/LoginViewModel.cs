@@ -16,7 +16,9 @@
 
 using GalaSoft.MvvmLight.Command;
 using Particle.Common.Interfaces;
+using Particle.Common.Messages;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
@@ -72,10 +74,12 @@ namespace Particle.Common.ViewModel
 			{
 				return command ?? (command = new RelayCommand(async () =>
 				{
-					if(await loginAsync())
+					IsAuthenticating = true;
+					if(await loginAsync() && ViewModelLocator.Cloud.IsAuthenticated)
 					{
-
+						ViewModelLocator.Messenger.Send<LoggedInMessage>(new LoggedInMessage());
 					}
+					IsAuthenticating = false;
 				}));
 			}
 		}
@@ -112,7 +116,25 @@ namespace Particle.Common.ViewModel
 		/// <returns></returns>
 		private async Task<bool> loginAsync()
 		{
-			IsAuthenticating = true;
+			var errors = new List<String>();
+			if (String.IsNullOrWhiteSpace(Username) || !Username.Contains("@"))
+			{
+				errors.Add(MM.M.GetString("MustBeAValidEmailAddress"));
+			}
+			if(String.IsNullOrWhiteSpace(Password))
+			{
+				errors.Add(MM.M.GetString("PasswordIsRequired"));
+			}
+
+			if(errors.Count > 0)
+			{
+				ViewModelLocator.Messenger.Send<DialogMessage>(new DialogMessage()
+				{
+					Title = "Error",
+					Description = String.Join(Environment.NewLine, errors)
+				});
+				return false;
+			}
 			var settings = AppSettings.Current;
 			settings.Username = username;
 			if (RememberPassword)
@@ -120,9 +142,21 @@ namespace Particle.Common.ViewModel
 				settings.Password = password;
 			}
 			settings.RememberPassword = rememberPassword;
-			await Task.Delay(2000);
-			IsAuthenticating = false;
-			return false;
+
+			var result = await ViewModelLocator.Cloud.LoginWithUserAsync(username, password);
+			if(result.Success)
+			{
+				return true;
+			}
+			else
+			{
+				ViewModelLocator.Messenger.Send<DialogMessage>(new DialogMessage()
+				{
+					Title = result.Error ?? "",
+					Description = result.ErrorDescription ?? ""
+				});
+				return false;
+			}
 		}
 	}
 }

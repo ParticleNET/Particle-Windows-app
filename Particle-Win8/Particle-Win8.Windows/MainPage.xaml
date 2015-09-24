@@ -9,9 +9,22 @@
 	DataContext="{Binding Source={StaticResource Locator}}"
 	mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Popup x:Name="LoginPopup" HorizontalAlignment="Center" Width="450">
-            <controls:LoginControl HorizontalAlignment="Center" Width="450" />
-        </Popup>
-    </Grid>
+	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*" />
+			<ColumnDefinition Width="3*" />
+		</Grid.ColumnDefinitions>
+		<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="24">
+			<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
+			<TextBlock Text="Particle" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
+		</StackPanel>
+		<Popup x:Name="LoginPopup" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Width="450">
+			<controls:LoginControl HorizontalAlignment="Center" Width="450" />
+		</Popup>
+		<controls:DevicesListControl Margin="24" Grid.Column="0" Grid.Row="1" />
+	</Grid>
 </Page>

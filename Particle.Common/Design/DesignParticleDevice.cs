@@ -13,27 +13,23 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-
-using Particle.Common.Pages;
-using Particle.Common.ViewModel;
 using System;
-using Windows.UI.Xaml.Controls;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using Particle.Common.ViewModel;
 
-namespace Particle.Common.Controls
+namespace Particle.Common.Design
 {
-	public sealed partial class LoginControl : UserControl
+	public class DesignParticleDevice : ParticleDevice
 	{
-		public LoginControl()
+		public DesignParticleDevice(JObject obj) : base(ViewModelLocator.Cloud, obj)
 		{
-			this.InitializeComponent();
-			if (!String.IsNullOrWhiteSpace(AppSettings.Current.Username))
-			{
-				LoginFrame.Navigate(typeof(LoginPage));
-			}
-			else
-			{
-				LoginFrame.Navigate(typeof(RegisterPage));
-			}
+		}
+		protected internal DesignParticleDevice(ParticleCloud cloud, JObject obj) : base(cloud, obj)
+		{
 		}
 	}
 }
