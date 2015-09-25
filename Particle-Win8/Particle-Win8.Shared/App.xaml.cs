@@ -1,4 +1,5 @@
-﻿using Particle.Common.Messages;
+﻿using Particle;
+using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,7 @@ namespace Particle_Win8
 #endif
 
 			Frame rootFrame = Window.Current.Content as Frame;
+			ParticleCloud.SyncContext = System.Threading.SynchronizationContext.Current;
 
 			// Do not repeat app initialization when the Window already has content,
 			// just ensure that the window is active

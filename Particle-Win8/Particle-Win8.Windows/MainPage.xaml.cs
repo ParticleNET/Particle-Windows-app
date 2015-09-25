@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,6 +31,11 @@ namespace Particle_Win8
 		{
 			this.InitializeComponent();
 			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
+			ViewModelLocator.Messenger.Register<SelectedDeviceMessage>(this, async (m) =>
+			{
+				var d = new MessageDialog(String.Format("{0}\r\n{1}", m.Device.Id, m.Device.Name));
+				await d.ShowAsync();
+			});
 		}
 
 		private void loggedIn(LoggedInMessage message)

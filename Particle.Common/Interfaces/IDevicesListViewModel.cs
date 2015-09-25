@@ -39,5 +39,12 @@ namespace Particle.Common.Interfaces
 		/// The devices.
 		/// </value>
 		ObservableCollection<ParticleDevice> Devices { get; }
+		/// <summary>
+		/// Gets or sets the selected device.
+		/// </summary>
+		/// <value>
+		/// The selected device.
+		/// </value>
+		ParticleDevice SelectedDevice { get; set; }
 	}
 }

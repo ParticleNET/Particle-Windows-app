@@ -45,6 +45,7 @@
     <Compile Include="Controls\LoginControl.xaml.cs">
       <DependentUpon>LoginControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ConnectedColorConverter.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
     <Compile Include="Converters\ParticleDeviceTypeConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Interfaces\IRegisterViewModel.cs" />
     <Compile Include="Messages\DialogMessage.cs" />
     <Compile Include="Messages\LoggedInMessage.cs" />
+    <Compile Include="Messages\RefreshDevicesMessage.cs" />
+    <Compile Include="Messages\SelectedDeviceMessage.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

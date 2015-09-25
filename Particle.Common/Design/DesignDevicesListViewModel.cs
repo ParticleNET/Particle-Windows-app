@@ -36,21 +36,21 @@ namespace Particle.Common.Design
 @"{
 name: 'Test1',
 id: 'abc123',
-isConnected: false,
+connected: false,
 product_id: 0
 }")),
 			new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test2',
 id: 'def456',
-isConnected: true,
+connected: true,
 product_id: 6
 }")),
 			new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test3',
 id: 'ghi789',
-isConnected: true,
+connected: true,
 product_id: 0
 }"))
 		};
@@ -61,6 +61,12 @@ product_id: 0
 			{
 				return false;
 			}
+		}
+
+		public ParticleDevice SelectedDevice
+		{
+			get;
+			set;
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

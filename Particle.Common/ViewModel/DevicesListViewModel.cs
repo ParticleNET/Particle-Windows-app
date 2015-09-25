@@ -21,24 +21,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using Particle;
 
 namespace Particle.Common.ViewModel
 {
 	public class DevicesListViewModel : ViewModelBase, IDevicesListViewModel
 	{
-		private ParticleCloud cloud;
+		private ObservableCollection<ParticleDevice> devices;
+		private bool isRefreshing;
 		public DevicesListViewModel()
 		{
-			cloud = ViewModelLocator.Cloud;
-			cloud.PropertyChanged += Cloud_PropertyChanged;
+			devices = new ObservableCollection<ParticleDevice>();
+			ViewModelLocator.Messenger.Register<Messages.RefreshDevicesMessage>(this, refreshDevices);
+			ViewModelLocator.Messenger.Register<Messages.LoggedInMessage>(this, (e)=>
+			{
+				ViewModelLocator.Messenger.Send(new Messages.RefreshDevicesMessage());
+			});
 		}
 
-		private void Cloud_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		private async void refreshDevices(Messages.RefreshDevicesMessage message)
 		{
-			if(String.Compare(nameof(IsRefreshing), e.PropertyName) == 0 || String.Compare(nameof(Devices), e.PropertyName) == 0)
+			IsRefreshing = true;
+			var de = await ViewModelLocator.Cloud.GetDevicesAsync();
+			if (de.Success)
 			{
-				RaisePropertyChanged(e.PropertyName);
+				List<Task> tasks = new List<Task>();
+				foreach (var d in de.Data)
+				{
+					ParticleCloud.SyncContext.InvokeIfRequired(() =>
+					{
+						devices.Add(d);
+					});
+					if (d.Connected)
+					{
+						tasks.Add(d.RefreshAsync());
+					}
+				}
+				IsRefreshing = false;
+				await Task.WhenAll(tasks);
 			}
+			IsRefreshing = false;
 		}
 
 		/// <summary>
@@ -51,7 +73,7 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return ViewModelLocator.Cloud.Devices;
+				return devices;
 			}
 		}
 		/// <summary>
@@ -64,7 +86,30 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return ViewModelLocator.Cloud.IsRefreshing;
+				return isRefreshing;
+			}
+			private set
+			{
+				Set(nameof(IsRefreshing), ref isRefreshing, value);
+			}
+		}
+
+		private ParticleDevice selectedDevice;
+		public ParticleDevice SelectedDevice
+		{
+			get
+			{
+				return selectedDevice;
+			}
+			set
+			{
+				if (Set(nameof(SelectedDevice), ref selectedDevice, value))
+				{
+					ViewModelLocator.Messenger.Send(new Messages.SelectedDeviceMessage
+					{
+						Device = value
+					});
+				}
 			}
 		}
 	}
