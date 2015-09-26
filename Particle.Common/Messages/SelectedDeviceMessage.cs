@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Particle.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Particle.Common.Messages
 {
 	public class SelectedDeviceMessage
 	{
-		public ParticleDevice Device { get; set; }
+		public ParticleDeviceWrapper Device { get; set; }
 	}
 }

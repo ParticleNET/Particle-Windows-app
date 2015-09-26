@@ -11,5 +11,4 @@
 	<converts:VisibilityConverter x:Key="VisibilityConverter" />
 	<converts:VisibilityNotConverter x:Key="VisibilityNotConverter" />
 	<converts:ParticleDeviceTypeConverter x:Key="ParticleDeviceTypeConverter" />
-	<converts:ConnectedColorConverter x:Key="ConnectedColorConverter" />
 </ResourceDictionary>

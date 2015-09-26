@@ -5,7 +5,7 @@
     "Microsoft.ApplicationInsights.WindowsApps": "1.0.0",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmLightLibs": "5.2.0",
-    "ParticleNET.ParticleSDK": "0.7.9-beta01"
+    "ParticleNET.ParticleSDK": "0.7.9-beta03"
   },
   "frameworks": {
     "uap10.0": {}

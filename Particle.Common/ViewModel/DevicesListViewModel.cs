@@ -22,43 +22,59 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Particle;
+using Particle.Common.Models;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace Particle.Common.ViewModel
 {
 	public class DevicesListViewModel : ViewModelBase, IDevicesListViewModel
 	{
-		private ObservableCollection<ParticleDevice> devices;
+		private ObservableCollection<ParticleDeviceWrapper> devices;
 		private bool isRefreshing;
 		public DevicesListViewModel()
 		{
-			devices = new ObservableCollection<ParticleDevice>();
+			devices = new ObservableCollection<ParticleDeviceWrapper>();
 			ViewModelLocator.Messenger.Register<Messages.RefreshDevicesMessage>(this, refreshDevices);
 			ViewModelLocator.Messenger.Register<Messages.LoggedInMessage>(this, (e)=>
 			{
-				ViewModelLocator.Messenger.Send(new Messages.RefreshDevicesMessage());
+				RefreshCommand.Execute(null);
 			});
 		}
 
 		private async void refreshDevices(Messages.RefreshDevicesMessage message)
 		{
 			IsRefreshing = true;
+			await Task.Delay(5000);
 			var de = await ViewModelLocator.Cloud.GetDevicesAsync();
 			if (de.Success)
 			{
 				List<Task> tasks = new List<Task>();
 				foreach (var d in de.Data)
 				{
-					ParticleCloud.SyncContext.InvokeIfRequired(() =>
+					var current = devices.FirstOrDefault(i => String.Compare(i.Device.Id, d.Id) == 0);
+					if (current == null)
 					{
-						devices.Add(d);
-					});
-					if (d.Connected)
+						ParticleCloud.SyncContext.InvokeIfRequired(() =>
+						{
+							devices.Add(new ParticleDeviceWrapper(d));
+						});
+						if (d.Connected)
+						{
+							tasks.Add(d.RefreshAsync());
+						}
+					}
+					else
 					{
-						tasks.Add(d.RefreshAsync());
+						tasks.Add(current.Device.RefreshAsync());
 					}
 				}
 				IsRefreshing = false;
 				await Task.WhenAll(tasks);
+			}
+			else
+			{
+				de.SendDialogMessage();
 			}
 			IsRefreshing = false;
 		}
@@ -69,7 +85,7 @@ namespace Particle.Common.ViewModel
 		/// <value>
 		/// The devices.
 		/// </value>
-		public ObservableCollection<ParticleDevice> Devices
+		public ObservableCollection<ParticleDeviceWrapper> Devices
 		{
 			get
 			{
@@ -94,8 +110,8 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
-		private ParticleDevice selectedDevice;
-		public ParticleDevice SelectedDevice
+		private ParticleDeviceWrapper selectedDevice;
+		public ParticleDeviceWrapper SelectedDevice
 		{
 			get
 			{
@@ -110,6 +126,19 @@ namespace Particle.Common.ViewModel
 						Device = value
 					});
 				}
+			}
+		}
+
+		private ICommand refreshCommand;
+
+		public ICommand RefreshCommand
+		{
+			get
+			{
+				return refreshCommand ?? (refreshCommand = new RelayCommand(() =>
+				{
+					ViewModelLocator.Messenger.Send(new Messages.RefreshDevicesMessage());
+				}));
 			}
 		}
 	}

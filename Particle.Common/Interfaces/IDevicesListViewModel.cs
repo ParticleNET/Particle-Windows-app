@@ -13,6 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using Particle.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Particle.Common.Interfaces
 {
@@ -38,13 +40,20 @@ namespace Particle.Common.Interfaces
 		/// <value>
 		/// The devices.
 		/// </value>
-		ObservableCollection<ParticleDevice> Devices { get; }
+		ObservableCollection<ParticleDeviceWrapper> Devices { get; }
 		/// <summary>
 		/// Gets or sets the selected device.
 		/// </summary>
 		/// <value>
 		/// The selected device.
 		/// </value>
-		ParticleDevice SelectedDevice { get; set; }
+		ParticleDeviceWrapper SelectedDevice { get; set; }
+		/// <summary>
+		/// The command to call to Refresh the devices
+		/// </summary>
+		/// <value>
+		/// The command to call to Refresh the devices
+		/// </value>
+		ICommand RefreshCommand { get; }
 	}
 }

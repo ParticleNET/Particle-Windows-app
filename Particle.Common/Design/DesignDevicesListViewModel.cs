@@ -22,37 +22,40 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Newtonsoft.Json.Linq;
+using Particle.Common.Models;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
 
 namespace Particle.Common.Design
 {
 	public class DesignDevicesListViewModel : IDevicesListViewModel
 	{
-		public ObservableCollection<ParticleDevice> Devices
+		public ObservableCollection<ParticleDeviceWrapper> Devices
 		{
 			get;
-		} = new ObservableCollection<ParticleDevice>()
+		} = new ObservableCollection<ParticleDeviceWrapper>()
 		{
-			new DesignParticleDevice(JObject.Parse(
+			new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test1',
 id: 'abc123',
 connected: false,
 product_id: 0
-}")),
-			new DesignParticleDevice(JObject.Parse(
+}"))),
+			new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test2',
 id: 'def456',
 connected: true,
 product_id: 6
-}")),
-			new DesignParticleDevice(JObject.Parse(
+}"))),
+			new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test3',
 id: 'ghi789',
 connected: true,
 product_id: 0
-}"))
+}")))
 		};
 
 		public bool IsRefreshing
@@ -63,7 +66,15 @@ product_id: 0
 			}
 		}
 
-		public ParticleDevice SelectedDevice
+		public ICommand RefreshCommand
+		{
+			get
+			{
+				return new RelayCommand(() => { });
+			}
+		}
+
+		public ParticleDeviceWrapper SelectedDevice
 		{
 			get;
 			set;

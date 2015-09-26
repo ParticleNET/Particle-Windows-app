@@ -33,7 +33,7 @@ namespace Particle_Win8
 			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
 			ViewModelLocator.Messenger.Register<SelectedDeviceMessage>(this, async (m) =>
 			{
-				var d = new MessageDialog(String.Format("{0}\r\n{1}", m.Device.Id, m.Device.Name));
+				var d = new MessageDialog(String.Format("{0}\r\n{1}", m.Device.Device?.Id, m.Device.Device?.Name));
 				await d.ShowAsync();
 			});
 		}

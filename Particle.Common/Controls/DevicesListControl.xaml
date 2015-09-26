@@ -7,7 +7,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}"
 	mc:Ignorable="d"
-	d:DesignHeight="200"
+	d:DesignHeight="400"
 	d:DesignWidth="400">
 	<UserControl.Resources>
 		<ResourceDictionary>
@@ -22,13 +22,13 @@
 	</UserControl.Resources>
 
 	<Grid>
-		<Border Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}">
-			<StackPanel>
-				<TextBlock Text="Refreshing" Style="{StaticResource SubheaderTextBlockStyle}" />
-				<ProgressRing IsActive="{Binding IsRefreshing}" />
-			</StackPanel>
-		</Border>
-		<ListView ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+		<TextBlock Text="Devices" Style="{StaticResource SubheaderTextBlockStyle}" Margin="12,0,0,0" />
+		<ListView Grid.Row="1" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
 			<ListView.ItemContainerStyle>
 				<Style TargetType="ListViewItem">
 					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -46,16 +46,33 @@
 							<ColumnDefinition />
 							<ColumnDefinition Width="Auto" />
 							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
-						<TextBlock Grid.ColumnSpan="2" Text="{Binding Name}" />
-						<TextBlock Grid.Row="1" Text="{Binding DeviceType, Converter={StaticResource ParticleDeviceTypeConverter}}" />
-						<TextBlock Text="Online" Grid.Column="1" Grid.Row="1" Visibility="{Binding Connected, Converter={StaticResource VisibilityConverter}}" HorizontalAlignment="Right" />
-						<TextBlock Text="Offline" Grid.Column="1" Grid.Row="1" Visibility="{Binding Connected, Converter={StaticResource VisibilityNotConverter}}" />
-						<Border Grid.Row="1" Grid.Column="2" Background="{Binding Connected, Converter={StaticResource ConnectedColorConverter}}" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0" />
-						<TextBlock Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding Id}" />
+						<TextBlock Grid.ColumnSpan="2" Text="{Binding Device.Name}" />
+						<TextBlock Grid.Row="1" Text="{Binding Device.DeviceType, Converter={StaticResource ParticleDeviceTypeConverter}}" />
+						<TextBlock Text="Online" Grid.Column="1" Grid.Row="1" Visibility="{Binding Device.Connected, Converter={StaticResource VisibilityConverter}}" HorizontalAlignment="Right" />
+						<TextBlock Text="Offline" Grid.Column="1" Grid.Row="1" Visibility="{Binding Device.Connected, Converter={StaticResource VisibilityNotConverter}}" />
+						<Border Grid.Column="2" Grid.Row="1" Visibility="{Binding Device.Connected,Converter={StaticResource VisibilityConverter}}">
+							<TextBlock Text=", non-Tinker" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityNotConverter}}" />
+						</Border>
+						<Border Grid.Row="1" Grid.Column="3" Background="Red" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0" Visibility="{Binding Device.Connected, Converter={StaticResource VisibilityNotConverter}}">
+							
+						</Border>
+						<Grid Grid.Row="1" Grid.Column="3" Width="20" Height="20" Margin="24,0,0,0" Visibility="{Binding Device.Connected,Converter={StaticResource VisibilityConverter}}">
+							<Border Background="Yellow" Width="20" Height="20" CornerRadius="100" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityNotConverter}}" />
+							<Border Background="Green" Width="20" Height="20" CornerRadius="100" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityConverter}}"/>
+						</Grid>
+						<TextBlock Grid.ColumnSpan="2" Grid.Row="2" Text="{Binding Device.Id}" />
 					</Grid>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
+		<Button Command="{Binding RefreshCommand}" Grid.Row="2" HorizontalAlignment="Stretch">Refresh</Button>
+		<Border Grid.RowSpan="3" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Background="#BF000000">
+			<StackPanel>
+				<TextBlock Text="Refreshing" Style="{StaticResource SubheaderTextBlockStyle}" />
+				<ProgressRing IsActive="{Binding IsRefreshing}" />
+			</StackPanel>
+		</Border>
 	</Grid>
 </UserControl>
