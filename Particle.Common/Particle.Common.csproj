@@ -57,11 +57,15 @@
     <Compile Include="Design\DesignDevicesListViewModel.cs" />
     <Compile Include="Design\DesignLoginViewModel.cs" />
     <Compile Include="Design\DesignParticleDevice.cs" />
+    <Compile Include="Design\DesignPinViewModel.cs" />
     <Compile Include="Design\DesignRegisterViewModel.cs" />
+    <Compile Include="Design\DesignTinkerViewModel.cs" />
     <Compile Include="Extentions.cs" />
     <Compile Include="Interfaces\IDevicesListViewModel.cs" />
     <Compile Include="Interfaces\ILoginViewModel.cs" />
+    <Compile Include="Interfaces\IPinViewModel.cs" />
     <Compile Include="Interfaces\IRegisterViewModel.cs" />
+    <Compile Include="Interfaces\ITinkerViewModel.cs" />
     <Compile Include="Messages\DialogMessage.cs" />
     <Compile Include="Messages\LoggedInMessage.cs" />
     <Compile Include="Messages\RefreshDevicesMessage.cs" />
@@ -73,12 +77,15 @@
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PinMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MM.cs" />
     <Compile Include="ViewModel\AppSettingsViewModel.cs" />
     <Compile Include="ViewModel\DevicesListViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\PinViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\TinkerViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>

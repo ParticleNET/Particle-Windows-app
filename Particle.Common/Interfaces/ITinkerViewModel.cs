@@ -13,30 +13,34 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using Particle.Common.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using System.Text;
+using System.Threading.Tasks;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
-namespace Particle.Common.Controls
+namespace Particle.Common.Interfaces
 {
-	public sealed partial class TinkerControl : UserControl
+	public interface ITinkerViewModel : INotifyPropertyChanged
 	{
-		public TinkerControl()
-		{
-			this.InitializeComponent();
-		}
+		ParticleDeviceWrapper Device { get; }
+
+
+		/// <summary>
+		/// Gets the right pins.
+		/// </summary>
+		/// <value>
+		/// The right pins.
+		/// </value>
+		IEnumerable<IPinViewModel> RightPins { get; }
+		/// <summary>
+		/// Gets the left pins.
+		/// </summary>
+		/// <value>
+		/// The left pins.
+		/// </value>
+		IEnumerable<IPinViewModel> LeftPins { get; }
 	}
 }

@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2015 ParticleNET
+   Copyright 2015 Sannel Software, L.L.C.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -13,30 +13,41 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using GalaSoft.MvvmLight;
+using Particle.Common.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using System.Text;
+using System.Threading.Tasks;
+using Particle.Common.Models;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
-
-namespace Particle.Common.Controls
+namespace Particle.Common.ViewModel
 {
-	public sealed partial class TinkerControl : UserControl
+	public class TinkerViewModel : ViewModelBase, ITinkerViewModel
 	{
-		public TinkerControl()
+		public ParticleDeviceWrapper Device
 		{
-			this.InitializeComponent();
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IEnumerable<IPinViewModel> LeftPins
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
+
+		public IEnumerable<IPinViewModel> RightPins
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
 		}
 	}
 }

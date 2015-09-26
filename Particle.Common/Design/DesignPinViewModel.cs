@@ -1,0 +1,103 @@
+﻿using Particle.Common.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Particle.Common.Models;
+using System.ComponentModel;
+using System.Windows.Input;
+using GalaSoft.MvvmLight.Command;
+
+namespace Particle.Common.Design
+{
+	public class DesignPinViewModel : IPinViewModel
+	{
+		private ICommand cmd = new RelayCommand(() =>
+		{
+
+		});
+		public ICommand AnalogRead
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
+		public ICommand AnalogWrite
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
+		public ParticleDeviceWrapper Device
+		{
+			get;
+
+			set;
+		}
+
+		public ICommand DigitalRead
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
+		public ICommand DigitalWrite
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
+		public PinMode Mode
+		{
+			get;
+			set;
+		}
+
+		public string PinDisplayName
+		{
+			get;
+
+			set;
+		}
+
+		public string PinId
+		{
+			get;
+
+			set;
+		}
+
+		public ICommand Refresh
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
+		public PinMode SupportedModes
+		{
+			get;
+
+			set;
+		}
+
+		public short Value
+		{
+			get;
+
+			set;
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+	}
+}
