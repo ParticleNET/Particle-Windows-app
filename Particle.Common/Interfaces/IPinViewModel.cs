@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml.Input;
 
 namespace Particle.Common.Interfaces
 {
@@ -106,6 +107,17 @@ namespace Particle.Common.Interfaces
 		/// The value.
 		/// </value>
 		short Value { get; set; }
+		/// <summary>
+		/// Gets or sets a value indicating whether this instance is on the right.
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if this instance is on the right; otherwise, <c>false</c>.
+		/// </value>
+		bool IsRight { get; set; }
+		/// <summary>
+		/// true if we should show the select mode dialog.
+		/// </summary>
+		bool ShowSelect { get; set; }
 
 		/// <summary>
 		/// Gets the refresh command
@@ -115,5 +127,7 @@ namespace Particle.Common.Interfaces
 		/// The refresh.
 		/// </value>
 		ICommand Refresh { get; }
+
+		ICommand Holding { get; }
 	}
 }

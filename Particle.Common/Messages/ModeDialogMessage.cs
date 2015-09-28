@@ -13,6 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using Particle.Common.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,9 @@ using System.Threading.Tasks;
 
 namespace Particle.Common.Messages
 {
-	public class DialogMessage
+	public class ModeDialogMessage
 	{
-		public String Title { get; set; }
-		public String Description { get; set; }
+		public IPinViewModel Source{ get; set; }
+		public bool IsOpen { get; set; }
 	}
 }

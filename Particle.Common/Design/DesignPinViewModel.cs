@@ -8,6 +8,7 @@ using Particle.Common.Models;
 using System.ComponentModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using Windows.UI.Xaml.Input;
 
 namespace Particle.Common.Design
 {
@@ -56,6 +57,20 @@ namespace Particle.Common.Design
 			}
 		}
 
+		public ICommand Holding
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
+		public bool IsRight
+		{
+			get;
+			set;
+		}
+
 		public PinMode Mode
 		{
 			get;
@@ -82,6 +97,12 @@ namespace Particle.Common.Design
 			{
 				return cmd;
 			}
+		}
+
+		public bool ShowSelect
+		{
+			get;
+			set;
 		}
 
 		public PinMode SupportedModes

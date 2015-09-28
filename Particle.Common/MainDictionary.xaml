@@ -11,4 +11,6 @@
 	<converts:VisibilityConverter x:Key="VisibilityConverter" />
 	<converts:VisibilityNotConverter x:Key="VisibilityNotConverter" />
 	<converts:ParticleDeviceTypeConverter x:Key="ParticleDeviceTypeConverter" />
+	<converts:BooleanNumberConverter x:Key="BooleanNumberConverter" />
+	<converts:PinBorderColorConverter x:Key="PinBorderColorConverter" />
 </ResourceDictionary>

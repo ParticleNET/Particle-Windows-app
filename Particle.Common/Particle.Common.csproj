@@ -47,11 +47,17 @@
     <Compile Include="Controls\LoginControl.xaml.cs">
       <DependentUpon>LoginControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PinControl.xaml.cs">
+      <DependentUpon>PinControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TinkerControl.xaml.cs">
       <DependentUpon>TinkerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\BooleanNumberConverter.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
     <Compile Include="Converters\ParticleDeviceTypeConverter.cs" />
+    <Compile Include="Converters\PinBorderColorConverter.cs" />
+    <Compile Include="Converters\TextAlignConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityNotConverter.cs" />
     <Compile Include="Design\DesignDevicesListViewModel.cs" />
@@ -59,17 +65,21 @@
     <Compile Include="Design\DesignParticleDevice.cs" />
     <Compile Include="Design\DesignPinViewModel.cs" />
     <Compile Include="Design\DesignRegisterViewModel.cs" />
+    <Compile Include="Design\DesignTinkerRowViewModel.cs" />
     <Compile Include="Design\DesignTinkerViewModel.cs" />
     <Compile Include="Extentions.cs" />
     <Compile Include="Interfaces\IDevicesListViewModel.cs" />
     <Compile Include="Interfaces\ILoginViewModel.cs" />
     <Compile Include="Interfaces\IPinViewModel.cs" />
     <Compile Include="Interfaces\IRegisterViewModel.cs" />
+    <Compile Include="Interfaces\ITinkerRowViewModel.cs" />
     <Compile Include="Interfaces\ITinkerViewModel.cs" />
     <Compile Include="Messages\DialogMessage.cs" />
     <Compile Include="Messages\LoggedInMessage.cs" />
+    <Compile Include="Messages\ModeDialogMessage.cs" />
     <Compile Include="Messages\RefreshDevicesMessage.cs" />
     <Compile Include="Messages\SelectedDeviceMessage.cs" />
+    <Compile Include="Models\BooleanToNumber.cs" />
     <Compile Include="Models\ParticleDeviceWrapper.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -85,6 +95,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PinViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="ViewModel\TinkerRowViewModel.cs" />
     <Compile Include="ViewModel\TinkerViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
   </ItemGroup>
@@ -124,6 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\DevicesListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PinControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -26,27 +26,348 @@ namespace Particle.Common.ViewModel
 {
 	public class TinkerViewModel : ViewModelBase, ITinkerViewModel
 	{
+		public TinkerViewModel()
+		{
+			ViewModelLocator.Messenger.Register<Messages.SelectedDeviceMessage>(this, async (d) =>
+			{
+				Device = d.Device;
+				await Device.Device.RefreshAsync();
+			});
+		}
+
+		private ParticleDeviceWrapper device;
 		public ParticleDeviceWrapper Device
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return device;
+			}
+			set
+			{
+				if(Set(nameof(Device), ref device, value))
+				{
+					switch(device.Device.DeviceType)
+					{
+						case ParticleDeviceType.SparkDeviceTypePhoton:
+							setupPhotonPins();
+							break;
+						case ParticleDeviceType.SparkDeviceTypeCore:
+						default:
+							setupCorePins();
+							break;
+					}
+				}
 			}
 		}
 
-		public IEnumerable<IPinViewModel> LeftPins
+		private void setupCorePins()
 		{
-			get
+			pinRows = new List<ITinkerRowViewModel>();
+			pinRows.Add(new TinkerRowViewModel
 			{
-				throw new NotImplementedException();
-			}
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A7",
+					PinDisplayName = "A7",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D7",
+					PinDisplayName = "D7",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A6",
+					PinDisplayName = "A6",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D6",
+					PinDisplayName = "D6",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A5",
+					PinDisplayName = "A5",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D5",
+					PinDisplayName = "D5",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A4",
+					PinDisplayName = "A4",
+					SupportedModes = PinMode.AnalogRead | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D4",
+					PinDisplayName = "D4",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A3",
+					PinDisplayName = "A3",
+					SupportedModes = PinMode.AnalogRead | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D3",
+					PinDisplayName = "D3",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A2",
+					PinDisplayName = "A2",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D2",
+					PinDisplayName = "D2",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A1",
+					PinDisplayName = "A1",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D1",
+					PinDisplayName = "D1",
+					SupportedModes = PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A0",
+					PinDisplayName = "A0",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D0",
+					PinDisplayName = "D0",
+					SupportedModes = PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+
+			RaisePropertyChanged(nameof(PinRows));
 		}
 
-		public IEnumerable<IPinViewModel> RightPins
+		private void setupPhotonPins()
+		{
+			pinRows = new List<ITinkerRowViewModel>();
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A7",
+					PinDisplayName = "WKP",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D7",
+					PinDisplayName = "D7",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A6",
+					PinDisplayName = "DAK",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D6",
+					PinDisplayName = "D6",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A5",
+					PinDisplayName = "A5",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D5",
+					PinDisplayName = "D5",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A4",
+					PinDisplayName = "A4",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D4",
+					PinDisplayName = "D4",
+					SupportedModes = PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A3",
+					PinDisplayName = "A3",
+					SupportedModes = PinMode.AnalogRead | PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D3",
+					PinDisplayName = "D3",
+					SupportedModes = PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A2",
+					PinDisplayName = "A2",
+					SupportedModes = PinMode.AnalogRead | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D2",
+					PinDisplayName = "D2",
+					SupportedModes = PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A1",
+					PinDisplayName = "A1",
+					SupportedModes = PinMode.AnalogRead | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D1",
+					PinDisplayName = "D1",
+					SupportedModes = PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			pinRows.Add(new TinkerRowViewModel
+			{
+				Left = new PinViewModel
+				{
+					Device = Device,
+					PinId = "A0",
+					PinDisplayName = "A0",
+					SupportedModes = PinMode.AnalogRead | PinMode.DigitalRead | PinMode.DigitalWrite
+				},
+				Right = new PinViewModel
+				{
+					Device = Device,
+					PinId = "D0",
+					PinDisplayName = "D0",
+					SupportedModes = PinMode.AnalogWrite | PinMode.DigitalRead | PinMode.DigitalWrite,
+					IsRight = true
+				}
+			});
+			RaisePropertyChanged(nameof(PinRows));
+		}
+
+		private IList<ITinkerRowViewModel> pinRows;
+
+		public IEnumerable<ITinkerRowViewModel> PinRows
 		{
 			get
 			{
-				throw new NotImplementedException();
+				return pinRows;
 			}
 		}
 	}

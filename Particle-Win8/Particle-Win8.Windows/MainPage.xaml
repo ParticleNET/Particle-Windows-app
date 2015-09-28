@@ -26,5 +26,6 @@
 			<controls:LoginControl HorizontalAlignment="Center" Width="450" />
 		</Popup>
 		<controls:DevicesListControl Margin="24" Grid.Column="0" Grid.Row="1" />
+		<controls:TinkerControl Grid.Column="1" Grid.Row="1" />
 	</Grid>
 </Page>

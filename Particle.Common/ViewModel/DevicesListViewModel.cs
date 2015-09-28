@@ -45,7 +45,6 @@ namespace Particle.Common.ViewModel
 		private async void refreshDevices(Messages.RefreshDevicesMessage message)
 		{
 			IsRefreshing = true;
-			await Task.Delay(5000);
 			var de = await ViewModelLocator.Cloud.GetDevicesAsync();
 			if (de.Success)
 			{

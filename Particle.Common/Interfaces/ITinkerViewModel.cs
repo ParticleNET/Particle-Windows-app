@@ -25,22 +25,19 @@ namespace Particle.Common.Interfaces
 {
 	public interface ITinkerViewModel : INotifyPropertyChanged
 	{
+		/// <summary>
+		/// Gets the device.
+		/// </summary>
+		/// <value>
+		/// The device.
+		/// </value>
 		ParticleDeviceWrapper Device { get; }
-
-
 		/// <summary>
-		/// Gets the right pins.
+		/// Gets the pin rows.
 		/// </summary>
 		/// <value>
-		/// The right pins.
+		/// The pin rows.
 		/// </value>
-		IEnumerable<IPinViewModel> RightPins { get; }
-		/// <summary>
-		/// Gets the left pins.
-		/// </summary>
-		/// <value>
-		/// The left pins.
-		/// </value>
-		IEnumerable<IPinViewModel> LeftPins { get; }
+		IEnumerable<ITinkerRowViewModel> PinRows { get; }
 	}
 }

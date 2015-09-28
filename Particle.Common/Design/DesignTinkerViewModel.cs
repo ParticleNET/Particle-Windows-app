@@ -27,123 +27,146 @@ product_id: 0
 			}
 		}
 
-		private List<IPinViewModel> leftPins;
+		private List<ITinkerRowViewModel> pinRows;
 
-		public IEnumerable<IPinViewModel> LeftPins
+		public IEnumerable<ITinkerRowViewModel> PinRows
 		{
 			get
 			{
-				return leftPins ?? (leftPins = new List<IPinViewModel>
+				return pinRows ?? (pinRows = new List<ITinkerRowViewModel>
 				{
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A7",
-						Mode = PinMode.AnalogRead
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.AnalogWrite,
+							PinDisplayName = "A7",
+							Value = 122
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							PinDisplayName = "D7",
+							Mode = PinMode.DigitalWrite,
+							Value = 1,
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A6",
-						Mode = PinMode.AnalogWrite
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.AnalogRead,
+							PinDisplayName = "A6",
+							Value = 1024
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = device,
+							Mode = PinMode.DigitalRead,
+							PinDisplayName = "D6",
+							Value = 1,
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A5",
-						Mode = PinMode.Unknown
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "A5"
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "D5",
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A4",
-						Mode = PinMode.Unknown
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "A4"
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "D4",
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A3",
-						Mode = PinMode.Unknown
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "A3"
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "D3",
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A2",
-						Mode = PinMode.Unknown
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "A2"
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "D2",
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A1",
-						Mode = PinMode.Unknown
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "A1"
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "D1",
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
+					new DesignTinkerRowViewModel
 					{
-						Device = Device,
-						PinDisplayName = "A0",
-						Mode = PinMode.Unknown
-					}
-				});
-			}
-		}
-
-		private List<IPinViewModel> rightPins;
-		public IEnumerable<IPinViewModel> RightPins
-		{
-			get
-			{
-				return rightPins ?? (rightPins = new List<IPinViewModel>
-				{
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D7",
-						Mode = PinMode.DigitalRead,
-						Value = 0
+						Left = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "A0"
+						},
+						Right = new DesignPinViewModel
+						{
+							Device = Device,
+							Mode = PinMode.Unknown,
+							PinDisplayName = "D0",
+							IsRight = true
+						}
 					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D6",
-						Mode = PinMode.DigitalWrite,
-						Value = 1
-					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D5",
-						Mode = PinMode.Unknown
-					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D4",
-						Mode = PinMode.Unknown
-					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D3",
-						Mode = PinMode.Unknown
-					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D2",
-						Mode = PinMode.Unknown
-					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D1",
-						Mode = PinMode.Unknown
-					},
-					new DesignPinViewModel
-					{
-						Device = Device,
-						PinDisplayName = "D0",
-						Mode = PinMode.Unknown
-					}
 				});
 			}
 		}
