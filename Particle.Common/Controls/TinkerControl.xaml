@@ -31,8 +31,12 @@
 			</Style>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Grid>
-		<Border Background="#99000000" Width="320" VerticalAlignment="Top">
+	<Grid VerticalAlignment="Top">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="auto" />
+		</Grid.RowDefinitions>
+		<Border Background="#99000000" Width="320">
 			<ListView ItemsSource="{Binding PinRows}" SelectionMode="None" ItemContainerStyle="{StaticResource TinkerItemContainer}">
 				<ListView.ItemTemplate>
 					<DataTemplate>
@@ -48,5 +52,8 @@
 				</ListView.ItemTemplate>
 			</ListView>
 		</Border>
+		<Path Grid.Row="1" Width="320" Fill="#99000000" Data="M 0,0 L 320,0 L 305,20 L 15,20 L 0,0">
+
+		</Path>
 	</Grid>
 </UserControl>
