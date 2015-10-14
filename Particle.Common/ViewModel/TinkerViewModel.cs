@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Particle.Common.Models;
+using Windows.UI.Popups;
 
 namespace Particle.Common.ViewModel
 {
@@ -31,6 +32,16 @@ namespace Particle.Common.ViewModel
 			ViewModelLocator.Messenger.Register<Messages.SelectedDeviceMessage>(this, async (d) =>
 			{
 				Device = d.Device;
+
+				if (!d.Device.HasTinker)
+				{
+					MessageDialog dialog = new MessageDialog("This device is not running Tinker firmware", "Device not running Tinker");
+					dialog.Commands.Add(new UICommand("Re-Flash Tinker") {Id=1 });
+					dialog.Commands.Add(new UICommand("Cancel") { Id = 2 });
+					dialog.Commands.Add(new UICommand("Tinker Anyways") { Id = 3 });
+					var result = await dialog.ShowAsync();
+				}
+
 				await Device.Device.RefreshAsync();
 			});
 		}

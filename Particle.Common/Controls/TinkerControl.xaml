@@ -31,13 +31,13 @@
 			</Style>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Grid VerticalAlignment="Top">
+	<Grid VerticalAlignment="Top" Visibility="{Binding Device, Converter={StaticResource VisibilityNotNullConverter}}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto" />
 			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
 		<Border Background="#99000000" Width="320">
-			<ListView ItemsSource="{Binding PinRows}" SelectionMode="None" ItemContainerStyle="{StaticResource TinkerItemContainer}">
+			<ListView ItemsSource="{Binding PinRows}" SelectionMode="None" ItemContainerStyle="{StaticResource TinkerItemContainer}" Margin="0">
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<Grid>

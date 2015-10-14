@@ -13,4 +13,7 @@
 	<converts:ParticleDeviceTypeConverter x:Key="ParticleDeviceTypeConverter" />
 	<converts:BooleanNumberConverter x:Key="BooleanNumberConverter" />
 	<converts:PinBorderColorConverter x:Key="PinBorderColorConverter" />
+	<converts:VisibilityNotNullConverter x:Key="VisibilityNotNullConverter" />
+	<converts:AlignmentConverter x:Key="AlignmentConverter" />
+	<converts:PinModeConverter x:Key="PinModeConverter" />
 </ResourceDictionary>

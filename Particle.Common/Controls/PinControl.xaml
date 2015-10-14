@@ -6,6 +6,7 @@
 	xmlns:model="using:Particle.Common.Models"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:common="using:Particle.Common"
 	mc:Ignorable="d"
 	d:DesignHeight="300"
 	d:DesignWidth="400">
@@ -22,7 +23,7 @@
 	</UserControl.Resources>
 	<Grid>
 		<Button HorizontalAlignment="Stretch" BorderThickness="0" HorizontalContentAlignment="Stretch" Command="{Binding Refresh}" Holding="Button_Holding" RightTapped="Button_RightTapped" DoubleTapped="Button_DoubleTapped" >
-			<Grid>
+			<Grid HorizontalAlignment="{Binding IsRight, Converter={StaticResource AlignmentConverter}}">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto" />
 					<ColumnDefinition Width="auto" />
@@ -36,15 +37,16 @@
 		<Popup IsOpen="{Binding ShowSelect}">
 			<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition />
-					<ColumnDefinition />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="1*" />
 				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition />
 					<RowDefinition />
+					<RowDefinition Height="1" />
 				</Grid.RowDefinitions>
-				<Button Grid.Row="0" Grid.Column="0" Command="{Binding AnalogRead}" HorizontalAlignment="Stretch">analogRead</Button>
-				<Button Grid.Row="1" Grid.Column="0" Command="{Binding AnalogWrite}" HorizontalAlignment="Stretch">analogWrite</Button>
+				<Button Grid.Row="0" Grid.Column="0" Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}" HorizontalAlignment="Stretch">analogRead</Button>
+				<Button Grid.Row="1" Grid.Column="0" Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}" HorizontalAlignment="Stretch">analogWrite</Button>
 				<Button Grid.Row="0" Grid.Column="1" Command="{Binding DigitalRead}" HorizontalAlignment="Stretch">digitalRead</Button>
 				<Button Grid.Row="1" Grid.Column="1" Command="{Binding DigitalWrite}" HorizontalAlignment="Stretch">digitalWrite</Button>
 			</Grid>

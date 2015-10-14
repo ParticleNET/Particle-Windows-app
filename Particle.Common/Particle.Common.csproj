@@ -53,13 +53,16 @@
     <Compile Include="Controls\TinkerControl.xaml.cs">
       <DependentUpon>TinkerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\AlignmentConverter.cs" />
     <Compile Include="Converters\BooleanNumberConverter.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
     <Compile Include="Converters\ParticleDeviceTypeConverter.cs" />
     <Compile Include="Converters\PinBorderColorConverter.cs" />
+    <Compile Include="Converters\PinModeConverter.cs" />
     <Compile Include="Converters\TextAlignConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityNotConverter.cs" />
+    <Compile Include="Converters\VisibilityNotNullConverter.cs" />
     <Compile Include="Design\DesignDevicesListViewModel.cs" />
     <Compile Include="Design\DesignLoginViewModel.cs" />
     <Compile Include="Design\DesignParticleDevice.cs" />
