@@ -32,17 +32,10 @@ namespace Particle.Common.ViewModel
 			ViewModelLocator.Messenger.Register<Messages.SelectedDeviceMessage>(this, async (d) =>
 			{
 				Device = d.Device;
-
-				if (!d.Device.HasTinker)
+				if (Device != null)
 				{
-					MessageDialog dialog = new MessageDialog("This device is not running Tinker firmware", "Device not running Tinker");
-					dialog.Commands.Add(new UICommand("Re-Flash Tinker") {Id=1 });
-					dialog.Commands.Add(new UICommand("Cancel") { Id = 2 });
-					dialog.Commands.Add(new UICommand("Tinker Anyways") { Id = 3 });
-					var result = await dialog.ShowAsync();
+					await Device.Device.RefreshAsync();
 				}
-
-				await Device.Device.RefreshAsync();
 			});
 		}
 
@@ -57,15 +50,23 @@ namespace Particle.Common.ViewModel
 			{
 				if(Set(nameof(Device), ref device, value))
 				{
-					switch(device.Device.DeviceType)
+					if (Device != null)
 					{
-						case ParticleDeviceType.SparkDeviceTypePhoton:
-							setupPhotonPins();
-							break;
-						case ParticleDeviceType.SparkDeviceTypeCore:
-						default:
-							setupCorePins();
-							break;
+						switch (device.Device.DeviceType)
+						{
+							case ParticleDeviceType.SparkDeviceTypePhoton:
+								setupPhotonPins();
+								break;
+							case ParticleDeviceType.SparkDeviceTypeCore:
+							default:
+								setupCorePins();
+								break;
+						}
+					}
+					else
+					{
+						pinRows = null;
+						RaisePropertyChanged(nameof(PinRows));
 					}
 				}
 			}

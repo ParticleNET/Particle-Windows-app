@@ -13,20 +13,17 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle.Common.Messages
+namespace Particle.Common.Models
 {
-	public class DialogMessage
+	public class MessageButtonModel
 	{
-		public String Title { get; set; }
-		public String Description { get; set; }
-		public List<MessageButtonModel> Buttons { get; set; }
-		public Action<int> CallBack { get; set; }
+		public int Id { get; set; }
+		public String Text { get; set; }
 	}
 }

@@ -22,7 +22,7 @@
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<StackPanel>
 			<TextBlock Text="Particle Login" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
-			<toolkit:WatermarkTextBox Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" Margin="0,12" />
+			<toolkit:WatermarkTextBox Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" InputScope="EmailSmtpAddress" Margin="0,12" />
 			<toolkit:WatermarkPasswordBox Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="password" >
 			</toolkit:WatermarkPasswordBox>
 

@@ -25,6 +25,7 @@ using Particle;
 using Particle.Common.Models;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
+using Particle.Common.Messages;
 
 namespace Particle.Common.ViewModel
 {
@@ -109,6 +110,16 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		private void setSelectedDevice(ParticleDeviceWrapper value)
+		{
+			selectedDevice = value;
+			RaisePropertyChanged(nameof(SelectedDevice));
+			ViewModelLocator.Messenger.Send(new Messages.SelectedDeviceMessage
+			{
+				Device = value
+			});
+		}
+
 		private ParticleDeviceWrapper selectedDevice;
 		public ParticleDeviceWrapper SelectedDevice
 		{
@@ -118,12 +129,73 @@ namespace Particle.Common.ViewModel
 			}
 			set
 			{
-				if (Set(nameof(SelectedDevice), ref selectedDevice, value))
+				if (selectedDevice != value)
 				{
-					ViewModelLocator.Messenger.Send(new Messages.SelectedDeviceMessage
+					if (!value.Device.Connected)
 					{
-						Device = value
-					});
+						DialogMessage dm = new DialogMessage();
+						dm.Title = MM.M.GetString("DeviceOfflineTitle");
+						dm.Description = MM.M.GetString("DeviceOffline");
+						dm.Buttons = new List<MessageButtonModel>
+						{
+							new MessageButtonModel
+							{
+								Id = 1,
+								Text = MM.M.GetString("DeviceOfflineButton")
+							}
+						};
+						dm.CallBack = ((m) =>
+						{
+							selectedDevice = null;
+							setSelectedDevice(null);
+						});
+						ViewModelLocator.Messenger.Send(dm);
+						return;
+					}
+					else if(!value.HasTinker)
+					{
+						DialogMessage dm = new DialogMessage();
+						dm.Title = MM.M.GetString("DeviceNotRunningTinkerTitle");
+						dm.Description = MM.M.GetString("DeviceNotRunningTinker");
+						dm.Buttons = new List<MessageButtonModel>
+						{
+							new MessageButtonModel
+							{
+								Id=1,
+								Text = MM.M.GetString("DeviceReflashButton")
+							},
+							new MessageButtonModel
+							{
+								Id=2,
+								Text = MM.M.GetString("DeviceCancelButton")
+							},
+							new MessageButtonModel
+							{
+								Id=3,
+								Text = MM.M.GetString("DeviceTinkerAnywaysButton")
+							}
+						};
+						dm.CallBack = (option) =>
+						{
+							switch (option)
+							{
+								case 1:
+									break;
+								case 2:
+									setSelectedDevice(null);
+									break;
+								case 3:
+								default:
+									setSelectedDevice(value);
+									break;
+							}
+						};
+						ViewModelLocator.Messenger.Send(dm);
+					}
+					else
+					{
+						setSelectedDevice(value);
+					}
 				}
 			}
 		}

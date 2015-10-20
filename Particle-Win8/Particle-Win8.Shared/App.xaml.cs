@@ -33,6 +33,8 @@ namespace Particle_Win8
 		private TransitionCollection transitions;
 #endif
 
+		private static AppMessagesHandler messageHandler;
+
 		/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
 		/// executed, and as such is the logical equivalent of main() or WinMain().
@@ -106,12 +108,12 @@ namespace Particle_Win8
 				}
 			}
 
-
-			GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<DialogMessage>(this, async (dm) =>
+			if(messageHandler == null)
 			{
-				MessageDialog dialog = new MessageDialog(dm.Description, dm.Title);
-				await dialog.ShowAsync();
-			});
+				messageHandler = new AppMessagesHandler();
+				messageHandler.SetupMessageHandlers();
+			}
+			
 
 			// Ensure the current window is active
 			Window.Current.Activate();

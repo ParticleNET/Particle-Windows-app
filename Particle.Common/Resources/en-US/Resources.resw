@@ -120,6 +120,33 @@
   <data name="Core" xml:space="preserve">
     <value>Core</value>
   </data>
+  <data name="CurrentlyFlashing" xml:space="preserve">
+    <value>The Device is currently being flashed please wait for the flashing process to finish</value>
+  </data>
+  <data name="DeviceCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="DeviceNotRunningTinker" xml:space="preserve">
+    <value>This device is not running Tinker firmware</value>
+  </data>
+  <data name="DeviceNotRunningTinkerTitle" xml:space="preserve">
+    <value>Device not running Tinker</value>
+  </data>
+  <data name="DeviceOffline" xml:space="preserve">
+    <value>This device is offline, please turn it on and refresh in order to Tinker with it.</value>
+  </data>
+  <data name="DeviceOfflineButton" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="DeviceOfflineTitle" xml:space="preserve">
+    <value>Device offline</value>
+  </data>
+  <data name="DeviceReflashButton" xml:space="preserve">
+    <value>Re-Flash Tinker</value>
+  </data>
+  <data name="DeviceTinkerAnywaysButton" xml:space="preserve">
+    <value>Tinker Anyways</value>
+  </data>
   <data name="Electron" xml:space="preserve">
     <value>Electron</value>
   </data>

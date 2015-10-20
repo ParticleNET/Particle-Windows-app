@@ -83,6 +83,7 @@
     <Compile Include="Messages\RefreshDevicesMessage.cs" />
     <Compile Include="Messages\SelectedDeviceMessage.cs" />
     <Compile Include="Models\BooleanToNumber.cs" />
+    <Compile Include="Models\MessageButtonModel.cs" />
     <Compile Include="Models\ParticleDeviceWrapper.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>

@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace Particle.Common.Models
 {
+	public enum DeviceStatus
+	{
+		Offline,
+		Connected,
+		Tinker,
+		Flashing
+	}
 	public class ParticleDeviceWrapper : Particle.ParticleBase
 	{
 		private ParticleDevice device;
@@ -18,11 +25,32 @@ namespace Particle.Common.Models
 
 		private void Device_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if(String.Compare(e.PropertyName, "IsRefreshing") == 0)
+			if(String.Compare(e.PropertyName, nameof(ParticleDevice.IsRefreshing)) == 0)
 			{
+				FirePropertyChanged(nameof(IsRefreshing));
 				FirePropertyChanged(nameof(HasTinker));
 			}
 		}
+
+		private bool isRefreshing;
+
+		public bool IsRefreshing
+		{
+			get { return Device.IsRefreshing; }
+		}
+
+
+		private DeviceStatus status;
+
+		public DeviceStatus Status
+		{
+			get { return status; }
+			internal set
+			{
+				SetProperty(ref status, value, nameof(Status));
+			}
+		}
+
 
 		public ParticleDevice Device
 		{
@@ -32,6 +60,8 @@ namespace Particle.Common.Models
 				SetProperty(ref device, value, nameof(Device));
 			}
 		}
+
+
 
 		public bool HasTinker
 		{

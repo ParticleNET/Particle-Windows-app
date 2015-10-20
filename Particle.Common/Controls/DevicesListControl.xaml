@@ -41,6 +41,7 @@
 							<RowDefinition />
 							<RowDefinition />
 							<RowDefinition />
+							<RowDefinition />
 						</Grid.RowDefinitions>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition />
@@ -63,6 +64,7 @@
 							<Border Background="Green" Width="20" Height="20" CornerRadius="100" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityConverter}}"/>
 						</Grid>
 						<TextBlock Grid.ColumnSpan="4" Grid.Row="2" Text="{Binding Device.Id}" />
+						<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Grid.Row="4" Grid.ColumnSpan="4" />
 					</Grid>
 				</DataTemplate>
 			</ListView.ItemTemplate>
