@@ -89,6 +89,9 @@
     <Compile Include="Controls\AuthDialog.xaml.cs">
       <DependentUpon>AuthDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MDialog.xaml.cs">
+      <DependentUpon>MDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\AuthDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,15 +159,15 @@
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\wpa81\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WinRTXamlToolkit, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WinRTXamlToolkit.WindowsPhone.1.8.1.0\lib\wpa\WinRTXamlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Particle.Common\Particle.Common.csproj">
       <Project>{6be787b5-1e56-4e23-b048-594bf8d43890}</Project>
       <Name>Particle.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\WinRTXamlToolkit\WinRTXamlToolkit.csproj">
-      <Project>{2ad7c123-7712-4196-bc7d-dcb09417b2c8}</Project>
-      <Name>WinRTXamlToolkit</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

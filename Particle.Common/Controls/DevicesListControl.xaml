@@ -13,10 +13,6 @@
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="ms-appx:///Particle.Common/MainDictionary.xaml" />
-				<ResourceDictionary
-			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
-				<ResourceDictionary
-			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkTextBox/WatermarkTextBox.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
@@ -48,6 +44,7 @@
 							<ColumnDefinition Width="Auto" />
 							<ColumnDefinition Width="Auto" />
 							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
 						<TextBlock Grid.ColumnSpan="2" Text="{Binding Device.Name}" />
 						<TextBlock Grid.Row="1" Text="{Binding Device.DeviceType, Converter={StaticResource ParticleDeviceTypeConverter}}" />
@@ -65,6 +62,21 @@
 						</Grid>
 						<TextBlock Grid.ColumnSpan="4" Grid.Row="2" Text="{Binding Device.Id}" />
 						<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Grid.Row="4" Grid.ColumnSpan="4" />
+						<Button Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderThickness="0">
+							<Button.Flyout>
+								<MenuFlyout>
+									<MenuFlyoutItem Text="Rename..." />
+									<MenuFlyoutItem Text="Copy Device Id to clipboard" />
+									<MenuFlyoutItem Text="Re-flash Tinker" />
+									<MenuFlyoutItem Text="Unclaim" />
+								</MenuFlyout>
+							</Button.Flyout>
+							<StackPanel>
+								<Border Background="{ThemeResource ButtonBorderThemeBrush}" Height="10" Width="10" BorderThickness="0,0,0,3" CornerRadius="25" HorizontalAlignment="Center" />
+								<Border Background="{ThemeResource ButtonBorderThemeBrush}" Height="10" Width="10" BorderThickness="0,0,0,3" CornerRadius="25" HorizontalAlignment="Center" />
+								<Border Background="{ThemeResource ButtonBorderThemeBrush}" Height="10" Width="10" BorderThickness="0,0,0,3" CornerRadius="25" HorizontalAlignment="Center" />
+							</StackPanel>
+						</Button>
 					</Grid>
 				</DataTemplate>
 			</ListView.ItemTemplate>

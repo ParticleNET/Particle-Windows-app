@@ -1,4 +1,5 @@
-﻿using Particle.Common.ViewModel;
+﻿using Particle.Common.Messages;
+using Particle.Common.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,13 +31,39 @@ namespace Particle_Win8
 
 			this.NavigationCacheMode = NavigationCacheMode.Required;
 			Window.Current.Activated += Current_Activated;
+			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
+		}
+		
+		private void loggedIn(LoggedInMessage message)
+		{
+			LoginDialog.Hide();
+		}
+
+		private void showDialogMessage(DialogMessage mes)
+		{
+			Dialog.ShowMessageDialog(mes);
+		}
+
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+			ViewModelLocator.Messenger.Register<DialogMessage>(this, showDialogMessage);
+		}
+
+		protected override void OnNavigatedFrom(NavigationEventArgs e)
+		{
+			base.OnNavigatedFrom(e);
+			ViewModelLocator.Messenger.Unregister<DialogMessage>(this);
 		}
 
 		private async void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
 		{
-			if (!LoginDialog.IsOpen)
+			if (!ViewModelLocator.Cloud.IsAuthenticated)
 			{
-				await LoginDialog.ShowAsync();
+				if (!LoginDialog.IsOpen)
+				{
+					await LoginDialog.ShowAsync();
+				}
 			}
 		}
 

@@ -106,6 +106,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AppMessagesHandler.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -164,15 +165,15 @@
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\win8\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WinRTXamlToolkit, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\WinRTXamlToolkit.Windows.1.8.1.0\lib\netcore451\WinRTXamlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Particle.Common\Particle.Common.csproj">
       <Project>{6be787b5-1e56-4e23-b048-594bf8d43890}</Project>
       <Name>Particle.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\WinRTXamlToolkit\WinRTXamlToolkit.csproj">
-      <Project>{2ad7c123-7712-4196-bc7d-dcb09417b2c8}</Project>
-      <Name>WinRTXamlToolkit</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

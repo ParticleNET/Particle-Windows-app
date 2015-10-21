@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Particle.Common.Pages
+namespace Particle_Win8.Pages
 {
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
@@ -26,7 +26,7 @@ namespace Particle.Common.Pages
 		{
 			this.InitializeComponent();
 		}
-
+		
 		private void HyperlinkButton_Tapped(object sender, TappedRoutedEventArgs e)
 		{
 			this.Frame.Navigate(typeof(LoginPage));

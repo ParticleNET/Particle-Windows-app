@@ -9,6 +9,6 @@
     mc:Ignorable="d">
 
     <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-		<controls:LoginControl />
+		<local:LoginControl />
     </StackPanel>
 </ContentDialog>

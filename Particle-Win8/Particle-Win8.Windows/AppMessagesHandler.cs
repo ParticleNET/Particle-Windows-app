@@ -25,9 +25,9 @@ namespace Particle_Win8
 				dialog = new MessageDialog(dm.Description ?? "");
 			}
 
-			if(dm.Buttons != null && dm.Buttons.Count > 0)
+			if (dm.Buttons != null && dm.Buttons.Count > 0)
 			{
-				foreach(var b in dm.Buttons)
+				foreach (var b in dm.Buttons)
 				{
 					dialog.Commands.Add(new UICommand(b.Text) { Id = b.Id });
 				}
