@@ -3,15 +3,24 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:Particle_Win8"
+	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
 	xmlns:controls="using:Particle.Common.Controls"
 	xmlns:localControls="using:Particle_Win8.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	DataContext="{Binding Source={StaticResource Locator}}"
 	mc:Ignorable="d">
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="ms-appx:///Particle.Common/MainDictionary.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
 
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
 			<RowDefinition Height="Auto" />
 			<RowDefinition />
 		</Grid.RowDefinitions>
@@ -23,10 +32,21 @@
 			<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
 			<TextBlock Text="Particle" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
 		</StackPanel>
-		<Popup x:Name="LoginPopup" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalAlignment="Center" Width="450">
+		<Popup x:Name="LoginPopup" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450">
 			<localControls:LoginControl HorizontalAlignment="Center" Width="450" />
 		</Popup>
-		<controls:DevicesListControl Margin="24" Grid.Column="0" Grid.Row="1" />
-		<controls:TinkerControl Grid.Column="1" Grid.Row="1" />
+		<controls:DevicesComboControl Margin="24" Grid.Column="0" Grid.Row="1" />
+		<controls:DevicesListControl Margin="24" Grid.Column="0" Grid.Row="2" />
+		<controls:TinkerControl Grid.Column="1" Grid.Row="2" />
 	</Grid>
+	<Page.BottomAppBar>
+		<toolkit:CustomAppBar>
+			<StackPanel Orientation="Horizontal">
+				<AppBarButton Label="Rename" ></AppBarButton>
+				<AppBarButton Label="Copy Device Id to clipboard"></AppBarButton>
+				<AppBarButton Label="Re-flash Tinker" ></AppBarButton>
+				<AppBarButton Label="Unclaim" ></AppBarButton>
+			</StackPanel>
+		</toolkit:CustomAppBar>
+	</Page.BottomAppBar>
 </Page>

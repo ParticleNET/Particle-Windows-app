@@ -41,6 +41,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ComboBoxItemTemplateSelector.cs" />
+    <Compile Include="Controls\DevicesComboControl.xaml.cs">
+      <DependentUpon>DevicesComboControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DevicesListControl.xaml.cs">
       <DependentUpon>DevicesListControl.xaml</DependentUpon>
     </Compile>
@@ -53,6 +57,7 @@
     <Compile Include="Converters\AlignmentConverter.cs" />
     <Compile Include="Converters\BooleanNumberConverter.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
+    <Compile Include="Converters\NotNullConverter.cs" />
     <Compile Include="Converters\ParticleDeviceTypeConverter.cs" />
     <Compile Include="Converters\PinBorderColorConverter.cs" />
     <Compile Include="Converters\PinModeConverter.cs" />
@@ -129,6 +134,10 @@
     <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\DevicesComboControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\DevicesListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

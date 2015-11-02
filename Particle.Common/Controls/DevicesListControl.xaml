@@ -54,7 +54,7 @@
 							<TextBlock Text=", non-Tinker" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityNotConverter}}" />
 						</Border>
 						<Border Grid.Row="1" Grid.Column="3" Background="Red" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0" Visibility="{Binding Device.Connected, Converter={StaticResource VisibilityNotConverter}}">
-							
+
 						</Border>
 						<Grid Grid.Row="1" Grid.Column="3" Width="20" Height="20" Margin="24,0,0,0" Visibility="{Binding Device.Connected,Converter={StaticResource VisibilityConverter}}">
 							<Border Background="Yellow" Width="20" Height="20" CornerRadius="100" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityNotConverter}}" />

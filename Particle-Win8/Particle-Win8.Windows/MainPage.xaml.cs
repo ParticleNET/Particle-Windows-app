@@ -31,6 +31,18 @@ namespace Particle_Win8
 		{
 			this.InitializeComponent();
 			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
+			Window.Current.SizeChanged += Current_SizeChanged;
+			Unloaded += MainPage_Unloaded;
+		}
+
+		private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
+		{
+			
+		}
+
+		private void MainPage_Unloaded(object sender, RoutedEventArgs e)
+		{
+			Window.Current.SizeChanged -= Current_SizeChanged;
 		}
 
 		private void loggedIn(LoggedInMessage message)

@@ -16,4 +16,6 @@
 	<converts:VisibilityNotNullConverter x:Key="VisibilityNotNullConverter" />
 	<converts:AlignmentConverter x:Key="AlignmentConverter" />
 	<converts:PinModeConverter x:Key="PinModeConverter" />
+	<converts:NotNullConverter x:Key="NotNullConverter" />
+	
 </ResourceDictionary>

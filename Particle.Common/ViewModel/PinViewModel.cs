@@ -243,8 +243,6 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
-		private short localValue;
-
 		private short _value;
 		public short Value
 		{

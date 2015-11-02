@@ -20,17 +20,41 @@ namespace Particle.Common.Controls
 {
 	public sealed partial class PinControl : UserControl
 	{
+		private IPinViewModel viewModel
+		{
+			get
+			{
+				return DataContext as IPinViewModel;
+			}
+		}
 		public PinControl()
 		{
 			this.InitializeComponent();
 		}
 
+		private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			if(String.Compare(e.PropertyName, nameof(IPinViewModel.ShowSelect)) == 0)
+			{
+				if (viewModel.ShowSelect)
+				{
+					ButtonFlyout.ShowAt(this);
+				}
+				else
+				{
+					//PinAction.Flyout = null;
+				}
+			}
+		}
+
 		private void holding()
 		{
-			var vm = (IPinViewModel)DataContext;
-			if (vm.Holding.CanExecute(null))
+			if(viewModel != null)
 			{
-				vm.Holding.Execute(null);
+				if (viewModel.Holding.CanExecute(null))
+				{
+					viewModel.Holding.Execute(null);
+				}
 			}
 		}
 
@@ -47,6 +71,14 @@ namespace Particle.Common.Controls
 		private void Button_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
 		{
 			holding();
+		}
+
+		private void UserControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
+		{
+			if (args.NewValue is IPinViewModel)
+			{
+				(args.NewValue as IPinViewModel).PropertyChanged += ViewModel_PropertyChanged;
+			}
 		}
 	}
 }
