@@ -38,7 +38,7 @@
 		<controls:DevicesComboControl Margin="24" Grid.Column="0" Grid.Row="1" />
 		<controls:DevicesListControl Margin="24" Grid.Column="0" Grid.Row="2" />
 		<controls:TinkerControl Grid.Column="1" Grid.Row="2" />
-		<toolkit:CustomAppBar Grid.ColumnSpan="2" Grid.Row="3">
+		<toolkit:CustomAppBar x:Name="DeviceAppBar" Grid.ColumnSpan="2" Grid.Row="3" IsEnabled="{Binding TinkerViewModel.Device, Source={StaticResource Locator}, Converter={StaticResource NotNullConverter}}">
 			<StackPanel Orientation="Horizontal">
 				<AppBarButton Label="Rename" ></AppBarButton>
 				<AppBarButton Label="Copy Device Id to clipboard"></AppBarButton>
