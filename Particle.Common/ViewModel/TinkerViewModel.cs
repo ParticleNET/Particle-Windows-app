@@ -54,10 +54,10 @@ namespace Particle.Common.ViewModel
 					{
 						switch (device.Device.DeviceType)
 						{
-							case ParticleDeviceType.SparkDeviceTypePhoton:
+							case ParticleDeviceType.Photon:
 								setupPhotonPins();
 								break;
-							case ParticleDeviceType.SparkDeviceTypeCore:
+							case ParticleDeviceType.Core:
 							default:
 								setupCorePins();
 								break;

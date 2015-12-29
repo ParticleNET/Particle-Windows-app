@@ -29,10 +29,10 @@ namespace Particle.Common.Converters
 			ParticleDeviceType t = (ParticleDeviceType)value;
 			switch(t)
 			{
-				case ParticleDeviceType.SparkDeviceTypeCore:
+				case ParticleDeviceType.Core:
 					return MM.M.GetString("Core");
 
-				case ParticleDeviceType.SparkDeviceTypePhoton:
+				case ParticleDeviceType.Photon:
 					return MM.M.GetString("Photon");
 			}
 

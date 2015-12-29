@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -35,6 +36,35 @@ namespace Particle_Win8
 			Unloaded += MainPage_Unloaded;
 		}
 
+		private async void checkInternetAccess()
+		{
+			var profile = NetworkInformation.GetInternetConnectionProfile();
+			if(profile != null)
+			{
+				var state = profile.GetNetworkConnectivityLevel();
+				switch (state)
+				{
+					case NetworkConnectivityLevel.None:
+						MessageDialog dialog = new MessageDialog("There is currently no network connectivity.");
+						await dialog.ShowAsync();
+						break;
+
+					case NetworkConnectivityLevel.ConstrainedInternetAccess:
+						MessageDialog d1 = new MessageDialog("There is currently constrained internet access and this app may not function correctly.");
+						await d1.ShowAsync();
+						break;
+
+					case NetworkConnectivityLevel.LocalAccess:
+						MessageDialog d2 = new MessageDialog("You currently only have local network access. This app may not function correctly.");
+						await d2.ShowAsync();
+						break;
+
+					default:
+						break;
+				}
+			}
+		}
+
 		private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
 		{
 			
@@ -53,6 +83,7 @@ namespace Particle_Win8
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
+			checkInternetAccess();
 			if (!ViewModelLocator.Cloud.IsAuthenticated)
 			{
 				LoginPopup.IsOpen = true;
