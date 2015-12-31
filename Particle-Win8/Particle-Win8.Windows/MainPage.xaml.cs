@@ -34,6 +34,13 @@ namespace Particle_Win8
 			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
 			Window.Current.SizeChanged += Current_SizeChanged;
 			Unloaded += MainPage_Unloaded;
+			NetworkInformation.NetworkStatusChanged += async (s) =>
+			{
+				await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+				{
+					checkInternetAccess();
+				});
+			};
 		}
 
 		private async void checkInternetAccess()
@@ -50,7 +57,7 @@ namespace Particle_Win8
 						break;
 
 					case NetworkConnectivityLevel.ConstrainedInternetAccess:
-						MessageDialog d1 = new MessageDialog("There is currently constrained internet access and this app may not function correctly.");
+						MessageDialog d1 = new MessageDialog("There is currently constrained Internet access and this app may not function correctly.");
 						await d1.ShowAsync();
 						break;
 
@@ -62,6 +69,11 @@ namespace Particle_Win8
 					default:
 						break;
 				}
+			}
+			else
+			{
+				MessageDialog dialog = new MessageDialog("There is currently no network connectivity. This app may not function correctly.");
+				await dialog.ShowAsync();
 			}
 		}
 
