@@ -21,23 +21,28 @@
 	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
 			<RowDefinition />
 		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="1*" />
-			<ColumnDefinition Width="3*" />
-		</Grid.ColumnDefinitions>
 		<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="24">
 			<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
 			<TextBlock Text="Particle" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
 		</StackPanel>
-		<Popup x:Name="LoginPopup" Grid.ColumnSpan="2" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450">
+		<Popup x:Name="LoginPopup" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450" IsOpen="False">
 			<localControls:LoginControl HorizontalAlignment="Center" Width="450" />
 		</Popup>
-		<controls:DevicesComboControl Margin="24" Grid.Column="0" Grid.Row="1" />
-		<controls:DevicesListControl Margin="24" Grid.Column="0" Grid.Row="2" />
-		<controls:TinkerControl Grid.Column="1" Grid.Row="2" />
+		<Grid x:Name="TinkerContainer" Grid.Row="1" Visibility="Visible">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="auto" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="auto" />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<controls:DevicesComboControl x:Name="DevicesDropDown" Margin="24" Grid.ColumnSpan="2" Visibility="Collapsed" />
+			<controls:DevicesListControl x:Name="DevicesList" Width="400" Margin="24" Grid.Row="1" Grid.Column="0" />
+			<controls:TinkerControl x:Name="TinkerControl" Grid.Row="1" Grid.Column="1" />
+		</Grid>
 		<toolkit:CustomAppBar x:Name="DeviceAppBar" Grid.ColumnSpan="2" Grid.Row="3" IsEnabled="{Binding TinkerViewModel.Device, Source={StaticResource Locator}, Converter={StaticResource NotNullConverter}}">
 			<StackPanel Orientation="Horizontal">
 				<AppBarButton Label="Rename" ></AppBarButton>

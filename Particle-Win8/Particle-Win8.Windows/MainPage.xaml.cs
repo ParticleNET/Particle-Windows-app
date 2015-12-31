@@ -79,7 +79,24 @@ namespace Particle_Win8
 
 		private void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
 		{
-			
+			checkSize();
+		}
+
+		private void checkSize()
+		{
+			if (ViewModelLocator.Cloud.IsAuthenticated)
+			{
+				if(Window.Current.Bounds.Width < 800)
+				{
+					DevicesDropDown.Visibility = Visibility.Visible;
+					DevicesList.Visibility = Visibility.Collapsed;
+				}
+				else
+				{
+					DevicesDropDown.Visibility = Visibility.Collapsed;
+					DevicesList.Visibility = Visibility.Visible;
+				}
+			}
 		}
 
 		private void MainPage_Unloaded(object sender, RoutedEventArgs e)
@@ -90,6 +107,8 @@ namespace Particle_Win8
 		private void loggedIn(LoggedInMessage message)
 		{
 			LoginPopup.IsOpen = false;
+			TinkerContainer.Visibility = Visibility.Visible;
+			checkSize();
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -99,18 +118,13 @@ namespace Particle_Win8
 			if (!ViewModelLocator.Cloud.IsAuthenticated)
 			{
 				LoginPopup.IsOpen = true;
+				TinkerContainer.Visibility = Visibility.Collapsed;
 			}
 			else
 			{
 				LoginPopup.IsOpen = false;
-			}
-		}
-
-		private void LoginControl_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			if(String.Compare(e.PropertyName, "IsAuthenticating") == 0)
-			{
-
+				TinkerContainer.Visibility = Visibility.Visible;
+				checkSize();
 			}
 		}
 	}

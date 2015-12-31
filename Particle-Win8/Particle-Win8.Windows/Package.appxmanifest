@@ -17,6 +17,7 @@
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Particle_Win8.Windows.App">
       <m2:VisualElements DisplayName="Tinker" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Particle-Win8.Windows" ForegroundText="light" BackgroundColor="#0a81be">
         <m2:SplashScreen Image="Assets\SplashScreen.png" />
+        <m2:ApplicationView MinWidth="width320" />
       </m2:VisualElements>
     </Application>
   </Applications>
