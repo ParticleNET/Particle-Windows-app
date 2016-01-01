@@ -18,10 +18,10 @@
 					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="1" FalseValue="0" />
 					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="1" />
 					<MenuFlyout x:Name="ButtonFlyout">
-							<MenuFlyoutItem Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes, ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}">analogRead</MenuFlyoutItem>
-							<MenuFlyoutItem Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}">analogWrite</MenuFlyoutItem>
-							<MenuFlyoutItem Command="{Binding DigitalRead}">digitalRead</MenuFlyoutItem>
-							<MenuFlyoutItem Command="{Binding DigitalWrite}">digitalWrite</MenuFlyoutItem>
+						<MenuFlyoutItem Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes, ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}">analogRead</MenuFlyoutItem>
+						<MenuFlyoutItem Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}">analogWrite</MenuFlyoutItem>
+						<MenuFlyoutItem Command="{Binding DigitalRead}">digitalRead</MenuFlyoutItem>
+						<MenuFlyoutItem Command="{Binding DigitalWrite}">digitalWrite</MenuFlyoutItem>
 					</MenuFlyout>
 				</ResourceDictionary>
 			</ResourceDictionary.MergedDictionaries>
@@ -40,5 +40,8 @@
 				<TextBlock Margin="6,12" Grid.Column="{Binding IsRight,Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource TextRightLeft}}" Text="{Binding Value}" VerticalAlignment="Center" />
 			</Grid>
 		</Button>
+		<Border>
+			<Slider Grid.Column="1" Maximum="255" Minimum="0" IntermediateValue="1" Value="{Binding Value, Mode=TwoWay}" />
+		</Border>
 	</Grid>
 </UserControl>
