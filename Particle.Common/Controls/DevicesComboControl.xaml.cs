@@ -23,5 +23,13 @@ namespace Particle.Common.Controls
 		{
 			this.InitializeComponent();
 		}
+
+		public bool IsDropDownOpen
+		{
+			get
+			{
+				return DropDownList.IsDropDownOpen;
+			}
+		}
 	}
 }

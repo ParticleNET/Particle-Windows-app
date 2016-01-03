@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add_Device_Button" xml:space="preserve">
+    <value>Add Device</value>
+  </data>
+  <data name="Add_Device_Description" xml:space="preserve">
+    <value>Please enter device Id</value>
+  </data>
+  <data name="Add_Device_Title" xml:space="preserve">
+    <value>Add Device</value>
+  </data>
   <data name="Cancel_Button" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="Copied_Device_To_Clipboard" xml:space="preserve">
+    <value>Copied Device Id to Clipboard</value>
   </data>
   <data name="Core" xml:space="preserve">
     <value>Core</value>
@@ -153,8 +165,20 @@
   <data name="Electron" xml:space="preserve">
     <value>Electron</value>
   </data>
+  <data name="Error_Unclaiming_Device" xml:space="preserve">
+    <value>Error Unclaiming device</value>
+  </data>
+  <data name="Flash" xml:space="preserve">
+    <value>Flash</value>
+  </data>
+  <data name="Flash_Tinker" xml:space="preserve">
+    <value>Flash Tinker?</value>
+  </data>
   <data name="High" xml:space="preserve">
     <value>High</value>
+  </data>
+  <data name="Invalid_Device_Id" xml:space="preserve">
+    <value>Invalid Device Id</value>
   </data>
   <data name="Low" xml:space="preserve">
     <value>Low</value>
@@ -182,6 +206,16 @@
   </data>
   <data name="Rename_Device_Title" xml:space="preserve">
     <value>Rename Device</value>
+  </data>
+  <data name="Unclaim_Device_Button" xml:space="preserve">
+    <value>Unclaim</value>
+  </data>
+  <data name="Unclaim_Device_Description" xml:space="preserve">
+    <value>Name: {0}
+Id: {1}</value>
+  </data>
+  <data name="Unclaim_Device_Title" xml:space="preserve">
+    <value>Unclaim Device?</value>
   </data>
   <data name="VerifyPasswordIsRequired" xml:space="preserve">
     <value>Verify password is required</value>

@@ -50,6 +50,12 @@ namespace Particle.Common.ViewModel
 			if (de.Success)
 			{
 				List<Task> tasks = new List<Task>();
+				var dict = new Dictionary<String, bool>();
+				foreach(var dd in devices)
+				{
+					dict[dd.Device.Id] = false;
+				}
+
 				foreach (var d in de.Data)
 				{
 					var current = devices.FirstOrDefault(i => String.Compare(i.Device.Id, d.Id) == 0);
@@ -66,9 +72,23 @@ namespace Particle.Common.ViewModel
 					}
 					else
 					{
+						dict[current.Device.Id] = true;
 						tasks.Add(current.Device.RefreshAsync());
 					}
 				}
+
+				foreach (var toRemove in dict.Where(i => i.Value == false))
+				{
+					var item = devices.FirstOrDefault(i => String.Compare(i.Device.Id, toRemove.Key) == 0);
+					if (item != null)
+					{
+						ParticleCloud.SyncContext.InvokeIfRequired(() =>
+						{
+							devices.Remove(item);
+						});
+					}
+				}
+
 				IsRefreshing = false;
 				await Task.WhenAll(tasks);
 			}
@@ -209,6 +229,60 @@ namespace Particle.Common.ViewModel
 				return refreshCommand ?? (refreshCommand = new RelayCommand(() =>
 				{
 					ViewModelLocator.Messenger.Send(new Messages.RefreshDevicesMessage());
+				}));
+			}
+		}
+
+		private async void addDeviceReceived(String button, String text)
+		{
+			if(String.Compare(button, MM.M.GetString("Add_Device_Button")) == 0)
+			{
+				if (String.IsNullOrWhiteSpace(text))
+				{
+					ViewModelLocator.Messenger.Send(new DialogMessage()
+					{
+						Description = MM.M.GetString("Invalid_Device_Id")
+					});
+				}
+				else
+				{
+					var result = await ViewModelLocator.Cloud.ClaimDeviceAsync(text);
+					if (result.Success)
+					{
+						if (RefreshCommand.CanExecute(null))
+						{
+							RefreshCommand.Execute(null);
+						}
+					}
+					else
+					{
+						ViewModelLocator.Messenger.Send(new DialogMessage()
+						{
+							Description = result.Error
+						});
+					}
+				}
+			}
+		}
+
+		private ICommand addDeviceCommand;
+		public ICommand AddDeviceCommand
+		{
+			get
+			{
+				return addDeviceCommand ?? (addDeviceCommand = new RelayCommand(() =>
+				{
+					ViewModelLocator.Messenger.Send(new InputDialogMessage()
+					{
+						Title = MM.M.GetString("Add_Device_Title"),
+						Description = MM.M.GetString("Add_Device_Description"),
+						Buttons = new String[]
+						{
+							MM.M.GetString("Add_Device_Button"),
+							MM.M.GetString("Cancel_Button")
+						},
+						CallBack = addDeviceReceived
+					});
 				}));
 			}
 		}

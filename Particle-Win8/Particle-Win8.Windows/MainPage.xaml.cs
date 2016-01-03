@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Devices.Enumeration;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -44,6 +45,21 @@ namespace Particle_Win8
 			GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<InputDialogMessage>(this, inputDialogMessageReceiver);
 
 			GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<DialogMessage>(this, dialogMessageReceiver);
+			GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<CopyToClipboardMessage>(this, copyToClipboardReceiver);
+		}
+
+		private void copyToClipboardReceiver(CopyToClipboardMessage message)
+		{
+			DataPackage package = new DataPackage();
+			package.SetText(message.Content);
+			Clipboard.SetContent(package);
+			if (!String.IsNullOrWhiteSpace(message.SuccessMessage))
+			{
+				dialogMessageReceiver(new DialogMessage
+				{
+					Description = message.SuccessMessage
+				});
+			}
 		}
 
 		private async void inputDialogMessageReceiver(InputDialogMessage dm)

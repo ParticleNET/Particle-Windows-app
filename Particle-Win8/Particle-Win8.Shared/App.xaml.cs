@@ -1,24 +1,15 @@
 ﻿using Particle;
-using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+#if WINDOWS_PHONE_APP
+using Windows.Phone.UI.Input;
+#endif
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -41,7 +32,26 @@ namespace Particle_Win8
 		{
 			this.InitializeComponent();
 			this.Suspending += this.OnSuspending;
+#if WINDOWS_PHONE_APP
+			HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+			ViewModelLocator.SupportsClipboard = false;
+#else
+			ViewModelLocator.SupportsClipboard = true;
+#endif
 		}
+
+#if WINDOWS_PHONE_APP
+		void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+		{
+			Frame rootFrame = Window.Current.Content as Frame;
+
+			if (rootFrame != null && rootFrame.CanGoBack)
+			{
+				e.Handled = true;
+				rootFrame.GoBack();
+			}
+		}
+#endif
 
 		/// <summary>
 		/// Invoked when the application is launched normally by the end user.  Other entry points

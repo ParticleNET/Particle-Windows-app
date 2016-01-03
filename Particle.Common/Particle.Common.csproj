@@ -83,6 +83,7 @@
     <Compile Include="Interfaces\IRegisterViewModel.cs" />
     <Compile Include="Interfaces\ITinkerRowViewModel.cs" />
     <Compile Include="Interfaces\ITinkerViewModel.cs" />
+    <Compile Include="Messages\CopyToClipboardMessage.cs" />
     <Compile Include="Messages\DialogMessage.cs" />
     <Compile Include="Messages\InputDialogMessage.cs" />
     <Compile Include="Messages\LoggedInMessage.cs" />

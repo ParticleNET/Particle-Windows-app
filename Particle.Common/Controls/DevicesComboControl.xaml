@@ -86,7 +86,7 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<Grid>
-		<ComboBox ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" ItemTemplateSelector="{StaticResource TemplateSelector}">
+		<ComboBox x:Name="DropDownList" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" ItemTemplateSelector="{StaticResource TemplateSelector}">
 			<ComboBox.ItemContainerStyle>
 				<Style TargetType="ComboBoxItem">
 					<Setter Property="HorizontalContentAlignment" Value="Stretch" />

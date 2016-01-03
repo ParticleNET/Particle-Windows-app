@@ -83,5 +83,7 @@ namespace Particle.Common.ViewModel
 				return GalaSoft.MvvmLight.Messaging.Messenger.Default;
 			}
 		}
+
+		public static bool SupportsClipboard { get; set; }
 	}
 }

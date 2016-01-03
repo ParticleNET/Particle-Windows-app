@@ -23,8 +23,12 @@
 			<RowDefinition />
 			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
-		<TextBlock Text="Devices" Style="{StaticResource SubheaderTextBlockStyle}" Margin="12,0,0,0" />
-		<ListView Grid.Row="1" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<TextBlock Text="Devices" Grid.ColumnSpan="2" Style="{StaticResource SubheaderTextBlockStyle}" Margin="12,0,0,0" />
+		<ListView Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
 			<ListView.ItemContainerStyle>
 				<Style TargetType="ListViewItem">
 					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -66,9 +70,9 @@
 							<Button.Flyout>
 								<MenuFlyout>
 									<MenuFlyoutItem Text="Rename..." Command="{Binding RenameCommand}" />
-									<MenuFlyoutItem Text="Copy Device Id to clipboard" />
-									<MenuFlyoutItem Text="Re-flash Tinker" />
-									<MenuFlyoutItem Text="Unclaim" />
+									<MenuFlyoutItem Text="Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
+									<MenuFlyoutItem Text="Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
+									<MenuFlyoutItem Text="Unclaim" Command="{Binding UnclaimDeviceCommand}" />
 								</MenuFlyout>
 							</Button.Flyout>
 							<StackPanel>
@@ -82,7 +86,8 @@
 			</ListView.ItemTemplate>
 		</ListView>
 		<Button Command="{Binding RefreshCommand}" Grid.Row="2" HorizontalAlignment="Stretch">Refresh</Button>
-		<Border Grid.RowSpan="3" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Background="#BF000000">
+		<Button Command="{Binding AddDeviceCommand}" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch">Add</Button>
+		<Border Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Background="#BF000000">
 			<StackPanel>
 				<TextBlock Text="Refreshing" Style="{StaticResource SubheaderTextBlockStyle}" />
 				<ProgressRing IsActive="{Binding IsRefreshing}" />
