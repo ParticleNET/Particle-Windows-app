@@ -1,5 +1,4 @@
-﻿using InTheHand.ApplicationModel.DataTransfer;
-using Particle.Common.Messages;
+﻿using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -62,10 +61,10 @@ namespace Particle_Win8
 
 		private void copyToClipboardReceiver(CopyToClipboardMessage message)
 		{
-			
 			DataPackage package = new DataPackage();
 			package.SetText(message.Content);
-			Clipboard.SetContent(package);
+			// Clipboard api is missing from Winrt apps for windows phone 8.1
+			//Clipboard.SetContent(package);
 			if (!String.IsNullOrWhiteSpace(message.SuccessMessage))
 			{
 				ViewModelLocator.Messenger.Send(new DialogMessage

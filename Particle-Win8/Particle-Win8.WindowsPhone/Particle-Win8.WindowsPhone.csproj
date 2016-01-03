@@ -109,7 +109,6 @@
   <ItemGroup>
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\ScreenLogo.png" />
-    <Content Include="Assets\share.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />
     <Content Include="Assets\SplashScreen.scale-240.png" />
     <Content Include="Assets\Square71x71Logo.scale-240.png" />
@@ -146,10 +145,6 @@
     </Reference>
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.2.0.37227, Culture=neutral, PublicKeyToken=2d6752c4fdf70b88, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="InTheHand.ApplicationModel.DataTransfer, Version=8.1.0.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\InTheHand.ApplicationModel.DataTransfer.8.2014.5.19\lib\wpa\InTheHand.ApplicationModel.DataTransfer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
