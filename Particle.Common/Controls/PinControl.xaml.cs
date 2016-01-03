@@ -34,7 +34,7 @@ namespace Particle.Common.Controls
 
 		private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if(String.Compare(e.PropertyName, nameof(IPinViewModel.ShowSelect)) == 0)
+			if (String.Compare(e.PropertyName, nameof(IPinViewModel.ShowSelect)) == 0)
 			{
 				if (viewModel.ShowSelect)
 				{
@@ -49,7 +49,7 @@ namespace Particle.Common.Controls
 
 		private void holding()
 		{
-			if(viewModel != null)
+			if (viewModel != null)
 			{
 				if (viewModel.Holding.CanExecute(null))
 				{
@@ -78,6 +78,17 @@ namespace Particle.Common.Controls
 			if (args.NewValue is IPinViewModel)
 			{
 				(args.NewValue as IPinViewModel).PropertyChanged += ViewModel_PropertyChanged;
+			}
+		}
+
+		private void Slider_PointerCaptureLost(object sender, PointerRoutedEventArgs e)
+		{
+			if(viewModel != null)
+			{
+				if (viewModel.AnalogManipulationComplete.CanExecute(null))
+				{
+					viewModel.AnalogManipulationComplete.Execute(null);
+				}
 			}
 		}
 	}

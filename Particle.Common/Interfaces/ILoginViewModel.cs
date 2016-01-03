@@ -58,5 +58,12 @@ namespace Particle.Common.Interfaces
 		/// Represents the ICommand for the login action
 		/// </summary>
 		ICommand Command { get; }
+		/// <summary>
+		/// Gets a value indicating whether we should automatically login
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if [should automatic login]; otherwise, <c>false</c>.
+		/// </value>
+		bool ShouldAutoLogin { get; }
 	}
 }

@@ -181,6 +181,44 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		private bool showAnalogSelect = false;
+		public bool ShowAnalogSelect
+		{
+			get
+			{
+				return showAnalogSelect;
+			}
+			set
+			{
+				Set(nameof(ShowAnalogSelect), ref showAnalogSelect, value);
+			}
+		}
+
+		private ICommand analogManipulationComplete;
+		public ICommand AnalogManipulationComplete
+		{
+			get
+			{
+				return analogManipulationComplete ?? (analogManipulationComplete = new RelayCommand(async () =>
+				{
+					ShowAnalogSelect = false;
+					String sendValue = $"{PinId} {Value}";
+					var result = await Device.Device.CallFunctionAsync("analogwrite", sendValue);
+					if (result.Success)
+					{
+						// Check for negative number
+					}
+					else
+					{
+						ViewModelLocator.Messenger.Send(new DialogMessage()
+						{
+							Description = result.Error
+						});
+					}
+				}));
+			}
+		}
+
 		private ICommand refresh;
 		public ICommand Refresh
 		{
@@ -206,6 +244,13 @@ namespace Particle.Common.ViewModel
 						{
 							Value = (short)result.Data;
 						}
+						else
+						{
+							ViewModelLocator.Messenger.Send(new DialogMessage()
+							{
+								Description = result.Error
+							});
+						}
 					}
 					else if(Mode == PinMode.DigitalRead)
 					{
@@ -214,6 +259,30 @@ namespace Particle.Common.ViewModel
 						{
 							Value = (short)result.Data;
 						}
+						else
+						{
+							ViewModelLocator.Messenger.Send(new DialogMessage()
+							{
+								Description = result.Error
+							});
+						}
+					}
+					else if(Mode == PinMode.AnalogWrite)
+					{
+						ShowAnalogSelect = true;
+						//String sendValue = $"{PinId} {Value}";
+						//var result = await Device.Device.CallFunctionAsync("analogwrite", sendValue);
+						//if (result.Success)
+						//{
+						//	// Check for negative number
+						//}
+						//else
+						//{
+						//	ViewModelLocator.Messenger.Send(new DialogMessage()
+						//	{
+						//		Description = result.Error
+						//	});
+						//}
 					}
 					else if(Mode == PinMode.DigitalWrite)
 					{
@@ -223,6 +292,13 @@ namespace Particle.Common.ViewModel
 						if (result.Success)
 						{
 
+						}
+						else
+						{
+							ViewModelLocator.Messenger.Send(new DialogMessage()
+							{
+								Description = result.Error
+							});
 						}
 					}
 				}));

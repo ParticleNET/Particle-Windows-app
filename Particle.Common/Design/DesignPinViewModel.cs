@@ -57,6 +57,14 @@ namespace Particle.Common.Design
 			}
 		}
 
+		public ICommand AnalogManipulationComplete
+		{
+			get
+			{
+				return cmd;
+			}
+		}
+
 		public ICommand Holding
 		{
 			get

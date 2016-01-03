@@ -77,6 +77,14 @@ namespace Particle.Common.Design
 			}
 		}
 
+		public bool ShouldAutoLogin
+		{
+			get
+			{
+				return false;
+			}
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
 		public void Load()

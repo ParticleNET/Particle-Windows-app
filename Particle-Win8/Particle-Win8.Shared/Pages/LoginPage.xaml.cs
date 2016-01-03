@@ -39,6 +39,21 @@ namespace Particle_Win8.Pages
 			viewModel.Load();
 		}
 
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+			if(((bool?)e.Parameter) == true)
+			{
+				if (viewModel.ShouldAutoLogin)
+				{
+					if (viewModel.Command.CanExecute(null))
+					{
+						viewModel.Command.Execute(null);
+					}
+				}
+			}
+		}
+
 		private void RegisterAction_Click(object sender, RoutedEventArgs e)
 		{
 			Frame.Navigate(typeof(RegisterPage));

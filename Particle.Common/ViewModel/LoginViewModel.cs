@@ -84,6 +84,7 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		private bool autoLogin;
 		/// <summary>
 		/// Should we auto login when the app starts
 		/// </summary>
@@ -92,8 +93,29 @@ namespace Particle.Common.ViewModel
 		/// </value>
 		public bool AutoLogin
 		{
-			get;
-			set;
+			get
+			{
+				return autoLogin;
+			}
+			set
+			{
+				Set(nameof(AutoLogin), ref autoLogin, value);
+			}
+		}
+
+		/// <summary>
+		/// Gets a value indicating whether we should automatically login
+		/// </summary>
+		/// <value>
+		/// <c>true</c> if [should automatic login]; otherwise, <c>false</c>.
+		/// </value>
+		/// <exception cref="System.NotImplementedException"></exception>
+		public bool ShouldAutoLogin
+		{
+			get
+			{
+				return AutoLogin && !String.IsNullOrWhiteSpace(Username) && !String.IsNullOrWhiteSpace(Password);
+			}
 		}
 
 		/// <summary>
@@ -107,7 +129,8 @@ namespace Particle.Common.ViewModel
 			if (RememberPassword)
 			{
 				Password = settings.Password;
-			}
+				AutoLogin = settings.AutoLogin;
+			}			
 		}
 
 		/// <summary>
@@ -146,6 +169,7 @@ namespace Particle.Common.ViewModel
 			var result = await ViewModelLocator.Cloud.LoginWithUserAsync(username, password);
 			if(result.Success)
 			{
+				settings.AutoLogin = autoLogin;
 				return true;
 			}
 			else

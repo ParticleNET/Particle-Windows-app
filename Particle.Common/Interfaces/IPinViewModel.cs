@@ -101,6 +101,14 @@ namespace Particle.Common.Interfaces
 		ICommand DigitalWrite { get; }
 
 		/// <summary>
+		/// Gets the analog manipulation complete command.
+		/// </summary>
+		/// <value>
+		/// The analog manipulation complete command.
+		/// </value>
+		ICommand AnalogManipulationComplete { get; }
+
+		/// <summary>
 		/// Gets or sets the value.
 		/// </summary>
 		/// <value>

@@ -15,8 +15,8 @@
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="ms-appx:///Particle.Common/MainDictionary.xaml" />
 				<ResourceDictionary>
-					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="1" FalseValue="0" />
-					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="1" />
+					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="2" FalseValue="0" />
+					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="2" />
 					<MenuFlyout x:Name="ButtonFlyout">
 						<MenuFlyoutItem Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes, ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}">analogRead</MenuFlyoutItem>
 						<MenuFlyoutItem Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}">analogWrite</MenuFlyoutItem>
@@ -27,21 +27,23 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Grid>
-		<Button x:Name="PinAction" HorizontalAlignment="Stretch" BorderThickness="0" HorizontalContentAlignment="Stretch" Command="{Binding Refresh}" Holding="Button_Holding" RightTapped="Button_RightTapped" DoubleTapped="Button_DoubleTapped" >
-			<Grid HorizontalAlignment="{Binding IsRight, Converter={StaticResource AlignmentConverter}}">
+	<Grid Background="blue">
+		<Button x:Name="PinAction" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding Refresh}" Visibility="{Binding ShowAnalogSelect, Converter={StaticResource VisibilityNotConverter}}" Holding="Button_Holding" RightTapped="Button_RightTapped" DoubleTapped="Button_DoubleTapped" Padding="4" >
+			<Grid >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto" />
+					<ColumnDefinition Width="1*" />
 					<ColumnDefinition Width="auto" />
 				</Grid.ColumnDefinitions>
-				<Border Margin="6,12" CornerRadius="50" Padding="6" BorderBrush="{Binding Path=Mode,Converter={StaticResource PinBorderColorConverter}}" BorderThickness="3" Grid.Column="{Binding IsRight, Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource ButtonLeftRight}}" VerticalAlignment="Center">
+				<Border Margin="0,12" CornerRadius="50" Padding="0,6" BorderBrush="{Binding Path=Mode,Converter={StaticResource PinBorderColorConverter}}" BorderThickness="3" Grid.Column="{Binding IsRight, Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource ButtonLeftRight}}" VerticalAlignment="Center">
 					<TextBlock Text="{Binding PinDisplayName}" />
 				</Border>
-				<TextBlock Margin="6,12" Grid.Column="{Binding IsRight,Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource TextRightLeft}}" Text="{Binding Value}" VerticalAlignment="Center" />
+				<ProgressBar Grid.Column="1" Margin="6,12" Minimum="0" Value="{Binding Value}" Maximum="{Binding Mode, Converter={StaticResource MaximumConverter}}" Visibility="{Binding Mode, Converter={StaticResource ProgresBarVisibilityConverter}}" />
+				<TextBlock Margin="0,12" Grid.Column="{Binding IsRight,Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource TextRightLeft}}" Text="{Binding Value}" VerticalAlignment="Center" />
 			</Grid>
 		</Button>
-		<Border>
-			<Slider Grid.Column="1" Maximum="255" Minimum="0" IntermediateValue="1" Value="{Binding Value, Mode=TwoWay}" />
-		</Border>
+		<Grid Visibility="{Binding ShowAnalogSelect, Converter={StaticResource VisibilityConverter}}" Height="77">
+			<Slider Grid.Column="1" Margin="0,12" Maximum="255" Minimum="0" IntermediateValue="1" Value="{Binding Value, Mode=TwoWay}" PointerCaptureLost="Slider_PointerCaptureLost" VerticalAlignment="Center" />
+		</Grid>
 	</Grid>
 </UserControl>

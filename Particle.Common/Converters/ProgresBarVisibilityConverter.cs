@@ -13,29 +13,27 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
 namespace Particle.Common.Converters
 {
-	public class BooleanNumberConverter : IValueConverter
+	public class ProgresBarVisibilityConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			var bToN = (BooleanToNumber)parameter;
-			if ((bool)value)
+			var mode = (PinMode)value;
+			if(mode == PinMode.AnalogRead || mode == PinMode.AnalogWrite)
 			{
-				return bToN.TrueValue;
+				return Visibility.Visible;
 			}
-			else
-			{
-				return bToN.FalseValue;
-			}
+
+			return Visibility.Collapsed;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, string language)

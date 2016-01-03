@@ -248,5 +248,17 @@ namespace Particle.Common.ViewModel
 				setBoolean(value);
 			}
 		}
+
+		public bool AutoLogin
+		{
+			get
+			{
+				return getBoolean();
+			}
+			set
+			{
+				setBoolean(value);
+			}
+		}
 	}
 }

@@ -57,12 +57,13 @@
     </Compile>
     <Compile Include="Converters\AlignmentConverter.cs" />
     <Compile Include="Converters\BooleanNumberConverter.cs" />
+    <Compile Include="Converters\MaximumConverter.cs" />
     <Compile Include="Converters\NotBooleanConverter.cs" />
     <Compile Include="Converters\NotNullConverter.cs" />
     <Compile Include="Converters\ParticleDeviceTypeConverter.cs" />
     <Compile Include="Converters\PinBorderColorConverter.cs" />
     <Compile Include="Converters\PinModeConverter.cs" />
-    <Compile Include="Converters\TextAlignConverter.cs" />
+    <Compile Include="Converters\ProgresBarVisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityNotConverter.cs" />
     <Compile Include="Converters\VisibilityNotNullConverter.cs" />

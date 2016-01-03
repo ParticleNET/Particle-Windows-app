@@ -17,5 +17,7 @@
 	<converts:AlignmentConverter x:Key="AlignmentConverter" />
 	<converts:PinModeConverter x:Key="PinModeConverter" />
 	<converts:NotNullConverter x:Key="NotNullConverter" />
-	
+	<converts:MaximumConverter x:Key="MaximumConverter" />
+	<converts:ProgresBarVisibilityConverter x:Key="ProgresBarVisibilityConverter" />
+
 </ResourceDictionary>

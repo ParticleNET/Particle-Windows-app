@@ -26,7 +26,7 @@ namespace Particle_Win8.Controls
 			this.InitializeComponent();
 			if (!String.IsNullOrWhiteSpace(AppSettings.Current.Username))
 			{
-				LoginFrame.Navigate(typeof(LoginPage));
+				LoginFrame.Navigate(typeof(LoginPage), true);
 			}
 			else
 			{

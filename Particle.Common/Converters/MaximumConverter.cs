@@ -13,7 +13,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +22,17 @@ using Windows.UI.Xaml.Data;
 
 namespace Particle.Common.Converters
 {
-	public class BooleanNumberConverter : IValueConverter
+	public class MaximumConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, string language)
 		{
-			var bToN = (BooleanToNumber)parameter;
-			if ((bool)value)
+			var mode = (PinMode)value;
+			switch (mode)
 			{
-				return bToN.TrueValue;
-			}
-			else
-			{
-				return bToN.FalseValue;
+				case PinMode.AnalogRead:
+					return 4095;
+				default:
+					return 255;
 			}
 		}
 
