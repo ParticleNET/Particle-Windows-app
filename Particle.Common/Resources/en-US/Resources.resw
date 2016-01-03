@@ -150,6 +150,12 @@
   <data name="Electron" xml:space="preserve">
     <value>Electron</value>
   </data>
+  <data name="High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
   <data name="MustBeAValidEmailAddress" xml:space="preserve">
     <value>Email must be a valid email address</value>
   </data>

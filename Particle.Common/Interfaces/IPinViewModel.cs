@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2015 ParticleNET
+   Copyright 2016 ParticleNET
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -15,13 +15,8 @@
 */
 using Particle.Common.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.UI.Xaml.Input;
 
 namespace Particle.Common.Interfaces
 {
@@ -115,6 +110,13 @@ namespace Particle.Common.Interfaces
 		/// The value.
 		/// </value>
 		short Value { get; set; }
+		/// <summary>
+		/// Gets the pin value.
+		/// </summary>
+		/// <value>
+		/// The pin value.
+		/// </value>
+		IPinValue PinValue { get; }
 		/// <summary>
 		/// Gets or sets a value indicating whether this instance is on the right.
 		/// </summary>

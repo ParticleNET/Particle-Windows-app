@@ -127,6 +127,18 @@ namespace Particle.Common.Design
 			set;
 		}
 
+		public IPinValue PinValue
+		{
+			get
+			{
+				return new PinValueModel
+				{
+					Value = Value,
+					Mode = Mode
+				};
+			}
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }

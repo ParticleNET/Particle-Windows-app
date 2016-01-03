@@ -63,6 +63,7 @@
     <Compile Include="Converters\ParticleDeviceTypeConverter.cs" />
     <Compile Include="Converters\PinBorderColorConverter.cs" />
     <Compile Include="Converters\PinModeConverter.cs" />
+    <Compile Include="Converters\PinValueConverter.cs" />
     <Compile Include="Converters\ProgresBarVisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityNotConverter.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Extentions.cs" />
     <Compile Include="Interfaces\IDevicesListViewModel.cs" />
     <Compile Include="Interfaces\ILoginViewModel.cs" />
+    <Compile Include="Interfaces\IPinValue.cs" />
     <Compile Include="Interfaces\IPinViewModel.cs" />
     <Compile Include="Interfaces\IRegisterViewModel.cs" />
     <Compile Include="Interfaces\ITinkerRowViewModel.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Models\BooleanToNumber.cs" />
     <Compile Include="Models\MessageButtonModel.cs" />
     <Compile Include="Models\ParticleDeviceWrapper.cs" />
+    <Compile Include="Models\PinValueModel.cs" />
     <Compile Include="PinMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MM.cs" />

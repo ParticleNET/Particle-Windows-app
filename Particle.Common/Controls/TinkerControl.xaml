@@ -43,10 +43,11 @@
 						<Grid>
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition />
+								<ColumnDefinition Width="20" />
 								<ColumnDefinition />
 							</Grid.ColumnDefinitions>
 							<controls:PinControl Grid.Column="0" DataContext="{Binding Left}" />
-							<controls:PinControl Grid.Column="1" DataContext="{Binding Right}" />
+							<controls:PinControl Grid.Column="2" DataContext="{Binding Right}" />
 						</Grid>
 					</DataTemplate>
 				</ListView.ItemTemplate>

@@ -152,6 +152,7 @@ namespace Particle.Common.ViewModel
 						ShowSelect = false;
 					}
 				}
+				RaisePropertyChanged(nameof(PinValue));
 			}
 		}
 
@@ -330,6 +331,18 @@ namespace Particle.Common.ViewModel
 			set
 			{
 				Set(nameof(Value), ref _value, value);
+				base.RaisePropertyChanged(nameof(PinValue));
+			}
+		}
+
+		public IPinValue PinValue
+		{
+			get
+			{
+				return new PinValueModel{
+					Value = Value,
+					Mode = Mode
+				};
 			}
 		}
 

@@ -19,5 +19,6 @@
 	<converts:NotNullConverter x:Key="NotNullConverter" />
 	<converts:MaximumConverter x:Key="MaximumConverter" />
 	<converts:ProgresBarVisibilityConverter x:Key="ProgresBarVisibilityConverter" />
+	<converts:PinValueConverter x:Key="PinValueConverter" />
 
 </ResourceDictionary>
