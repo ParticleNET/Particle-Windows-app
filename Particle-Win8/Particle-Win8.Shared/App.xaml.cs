@@ -32,9 +32,6 @@ namespace Particle_Win8
 #if WINDOWS_PHONE_APP
 		private TransitionCollection transitions;
 #endif
-#if WINDOWS_APP
-		private static AppMessagesHandler messageHandler;
-#endif
 
 		/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
@@ -108,16 +105,7 @@ namespace Particle_Win8
 					throw new Exception("Failed to create initial page");
 				}
 			}
-
-#if WINDOWS_APP
-			if (messageHandler == null)
-			{
-				messageHandler = new AppMessagesHandler();
-				messageHandler.SetupMessageHandlers();
-			}
-#endif
-
-
+			
 			// Ensure the current window is active
 			Window.Current.Activate();
 		}

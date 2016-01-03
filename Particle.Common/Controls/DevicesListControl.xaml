@@ -65,7 +65,7 @@
 						<Button Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderThickness="0">
 							<Button.Flyout>
 								<MenuFlyout>
-									<MenuFlyoutItem Text="Rename..." />
+									<MenuFlyoutItem Text="Rename..." Command="{Binding RenameCommand}" />
 									<MenuFlyoutItem Text="Copy Device Id to clipboard" />
 									<MenuFlyoutItem Text="Re-flash Tinker" />
 									<MenuFlyoutItem Text="Unclaim" />

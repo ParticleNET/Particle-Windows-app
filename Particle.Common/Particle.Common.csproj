@@ -84,6 +84,7 @@
     <Compile Include="Interfaces\ITinkerRowViewModel.cs" />
     <Compile Include="Interfaces\ITinkerViewModel.cs" />
     <Compile Include="Messages\DialogMessage.cs" />
+    <Compile Include="Messages\InputDialogMessage.cs" />
     <Compile Include="Messages\LoggedInMessage.cs" />
     <Compile Include="Messages\ModeDialogMessage.cs" />
     <Compile Include="Messages\RefreshDevicesMessage.cs" />

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.Command;
+using Particle.Common.Messages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Particle.Common.Models
 {
@@ -31,8 +34,6 @@ namespace Particle.Common.Models
 				FirePropertyChanged(nameof(HasTinker));
 			}
 		}
-
-		private bool isRefreshing;
 
 		public bool IsRefreshing
 		{
@@ -99,6 +100,57 @@ namespace Particle.Common.Models
 				}
 
 				return false;
+			}
+		}
+
+		private async void renameSuccess(String button, String newName)
+		{
+			if(String.Compare(button, MM.M.GetString("Rename_Button")) == 0)
+			{
+				if (String.IsNullOrWhiteSpace(newName))
+				{
+					GalaSoft.MvvmLight.Messaging.Messenger.Default.Send(new DialogMessage()
+					{
+						Description = MM.M.GetString("Rename_Device_InvalidNewName")
+					});
+				}
+				else
+				{
+					var result = await Device.RenameAsync(newName);
+					if (result.Success)
+					{
+						await Device.RefreshAsync();
+					}
+					else
+					{
+						GalaSoft.MvvmLight.Messaging.Messenger.Default.Send(new DialogMessage()
+						{
+							Description = result.Error
+						});
+					}
+				}
+			}
+		}
+
+		private ICommand renameCommand;
+		public ICommand RenameCommand
+		{
+			get
+			{
+				return renameCommand ?? (renameCommand = new RelayCommand(() =>
+				{
+					GalaSoft.MvvmLight.Messaging.Messenger.Default.Send(new InputDialogMessage()
+					{
+						Title = MM.M.GetString("Rename_Device_Title"),
+						Description = MM.M.GetString("Rename_Device_Description"),
+						Buttons = new String[]
+						{
+							MM.M.GetString("Rename_Button"),
+							MM.M.GetString("Cancel_Button")
+						},
+						CallBack = renameSuccess
+					});
+				}));
 			}
 		}
 

@@ -41,6 +41,54 @@ namespace Particle_Win8
 					checkInternetAccess();
 				});
 			};
+			GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<InputDialogMessage>(this, inputDialogMessageReceiver);
+
+			GalaSoft.MvvmLight.Messaging.Messenger.Default.Register<DialogMessage>(this, dialogMessageReceiver);
+		}
+
+		private async void inputDialogMessageReceiver(InputDialogMessage dm)
+		{
+			InputDialog.InputText = "";
+			String result = "";
+			if (dm.Buttons != null)
+			{
+				result = await InputDialog.ShowAsync(dm.Title ?? "", dm.Description ?? "", dm.Buttons);
+			}
+			else
+			{
+				result = await InputDialog.ShowAsync(dm.Title ?? "", dm.Description ?? "");
+			}
+			if(dm.CallBack != null)
+			{
+				dm.CallBack(result, InputDialog.InputText);
+			}
+		}
+
+		private async void dialogMessageReceiver(DialogMessage dm)
+		{
+			MessageDialog dialog = null;
+			if (dm.Description != null && dm.Title != null)
+			{
+				dialog = new MessageDialog(dm.Description, dm.Title);
+			}
+			else
+			{
+				dialog = new MessageDialog(dm.Description ?? "");
+			}
+
+			if (dm.Buttons != null && dm.Buttons.Count > 0)
+			{
+				foreach (var b in dm.Buttons)
+				{
+					dialog.Commands.Add(new UICommand(b.Text) { Id = b.Id });
+				}
+			}
+
+			var result = await dialog.ShowAsync();
+			if (dm.CallBack != null)
+			{
+				dm.CallBack(Convert.ToInt32(result.Id));
+			}
 		}
 
 		private async void checkInternetAccess()
