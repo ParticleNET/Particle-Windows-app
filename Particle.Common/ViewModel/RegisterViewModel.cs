@@ -1,4 +1,19 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿/*
+   Copyright 2016 Sannel Software, L.L.C.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using GalaSoft.MvvmLight.Command;
 using Particle.Common.Interfaces;
 using Particle.Common.Messages;
 using System;
@@ -12,12 +27,24 @@ namespace Particle.Common.ViewModel
 {
 	public class RegisterViewModel : LoginViewModel, IRegisterViewModel
 	{
+		/// <summary>
+		/// The verify password for checking against
+		/// </summary>
+		/// <value>
+		/// The verify password.
+		/// </value>
 		public string VerifyPassword
 		{
 			get;
 			set;
 		}
-		
+
+		/// <summary>
+		/// Gets the command.
+		/// </summary>
+		/// <value>
+		/// The command.
+		/// </value>
 		public override ICommand Command
 		{
 			get
@@ -29,7 +56,11 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
-		private void register()
+		/// <summary>
+		/// Determines whether form is valid.
+		/// </summary>
+		/// <returns></returns>
+		private bool isFormValid()
 		{
 			List<String> errors = new List<string>();
 			if (String.IsNullOrWhiteSpace(Username) || !Username.Contains("@"))
@@ -57,6 +88,16 @@ namespace Particle.Common.ViewModel
 					Title = "Error",
 					Description = String.Join(Environment.NewLine, errors)
 				});
+				return false;
+			}
+			return true;
+		}
+
+		private void register()
+		{
+			if (isFormValid())
+			{
+
 			}
 		}
 	}
