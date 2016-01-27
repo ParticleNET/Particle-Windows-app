@@ -76,9 +76,9 @@
 								</MenuFlyout>
 							</Button.Flyout>
 							<StackPanel>
-								<Border Background="{ThemeResource ButtonBorderThemeBrush}" Height="10" Width="10" BorderThickness="0,0,0,3" CornerRadius="25" HorizontalAlignment="Center" />
-								<Border Background="{ThemeResource ButtonBorderThemeBrush}" Height="10" Width="10" BorderThickness="0,0,0,3" CornerRadius="25" HorizontalAlignment="Center" />
-								<Border Background="{ThemeResource ButtonBorderThemeBrush}" Height="10" Width="10" BorderThickness="0,0,0,3" CornerRadius="25" HorizontalAlignment="Center" />
+								<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+								<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+								<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
 							</StackPanel>
 						</Button>
 					</Grid>

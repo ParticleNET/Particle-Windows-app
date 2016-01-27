@@ -40,23 +40,6 @@ namespace Particle.Common.ViewModel
 		}
 
 		/// <summary>
-		/// Gets the command.
-		/// </summary>
-		/// <value>
-		/// The command.
-		/// </value>
-		public override ICommand Command
-		{
-			get
-			{
-				return command ?? (command = new RelayCommand(()=>
-				{
-					register();
-				})) ;
-			}
-		}
-
-		/// <summary>
 		/// Determines whether form is valid.
 		/// </summary>
 		/// <returns></returns>
@@ -93,12 +76,27 @@ namespace Particle.Common.ViewModel
 			return true;
 		}
 
-		private void register()
+		protected override async Task<bool> loginAsync()
 		{
 			if (isFormValid())
 			{
-
+				
+				var result = await ViewModelLocator.Cloud.SignupWithUserAsync(Username, Password);
+				if (result.Success)
+				{
+					return await base.loginAsync();
+				}
+				else
+				{
+					ViewModelLocator.Messenger.Send<DialogMessage>(new DialogMessage()
+					{
+						Title = result.Error ?? "",
+						Description = result.ErrorDescription ?? ""
+					});
+					return false;
+				}
 			}
+			return false;
 		}
 	}
 }

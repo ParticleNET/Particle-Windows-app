@@ -44,7 +44,7 @@
 			<TextBlock Text="Creating account..." Style="{StaticResource BodyTextBlockStyle}" />
 			<ProgressRing IsActive="{Binding IsAuthenticating}" />
 		</StackPanel>
-		<Button Grid.ColumnSpan="2" Grid.Row="5" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding Command}" HorizontalAlignment="Center">LOG IN</Button>
+		<Button Grid.ColumnSpan="2" Grid.Row="5" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding Command}" HorizontalAlignment="Center">Register</Button>
 		<HyperlinkButton Grid.ColumnSpan="2" Grid.Row="6" HorizontalAlignment="Center" Tapped="HyperlinkButton_Tapped">I already have an account</HyperlinkButton>
 
 		<RichTextBlock Grid.ColumnSpan="2" Grid.Row="7" HorizontalAlignment="Center" Style="{StaticResource BodyRichTextBlockStyle}">

@@ -32,7 +32,8 @@ namespace Particle_Win8
 		public MainPage()
 		{
 			this.InitializeComponent();
-			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
+			ViewModelLocator.Messenger.Register<LoggedInMessage>(this,(a)=> { checkLoggedIn(); });
+			ViewModelLocator.Messenger.Register<LoggedOutMessage>(this,(a)=> { checkLoggedIn(); });
 			Window.Current.SizeChanged += Current_SizeChanged;
 			Unloaded += MainPage_Unloaded;
 			NetworkInformation.NetworkStatusChanged += async (s) =>
@@ -168,28 +169,28 @@ namespace Particle_Win8
 			Window.Current.SizeChanged -= Current_SizeChanged;
 		}
 
-		private void loggedIn(LoggedInMessage message)
+		private void checkLoggedIn()
 		{
-			LoginPopup.IsOpen = false;
-			TinkerContainer.Visibility = Visibility.Visible;
-			checkSize();
+			if (ViewModelLocator.Cloud.IsAuthenticated)
+			{
+				LoginPopup.IsOpen = false;
+				TinkerContainer.Visibility = Visibility.Visible;
+				LogoutControl.Visibility = Visibility.Visible;
+				checkSize();
+			}
+			else
+			{
+				LoginPopup.IsOpen = true;
+				TinkerContainer.Visibility = Visibility.Collapsed;
+				LogoutControl.Visibility = Visibility.Collapsed;
+			}
 		}
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
 			checkInternetAccess();
-			if (!ViewModelLocator.Cloud.IsAuthenticated)
-			{
-				LoginPopup.IsOpen = true;
-				TinkerContainer.Visibility = Visibility.Collapsed;
-			}
-			else
-			{
-				LoginPopup.IsOpen = false;
-				TinkerContainer.Visibility = Visibility.Visible;
-				checkSize();
-			}
+			checkLoggedIn();
 		}
 	}
 }

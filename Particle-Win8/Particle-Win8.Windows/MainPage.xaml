@@ -23,10 +23,17 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition />
 		</Grid.RowDefinitions>
-		<StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" Margin="24">
-			<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
-			<TextBlock Text="Particle" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
-		</StackPanel>
+		<Grid VerticalAlignment="Center">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="auto" />
+			</Grid.ColumnDefinitions>
+			<StackPanel Grid.Column="0" Orientation="Horizontal" Margin="24">
+				<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
+				<TextBlock Text="Particle" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
+			</StackPanel>
+			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" />
+		</Grid>
 		<Popup x:Name="LoginPopup" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450" IsOpen="False">
 			<localControls:LoginControl HorizontalAlignment="Center" Width="450" />
 		</Popup>

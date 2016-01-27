@@ -27,6 +27,17 @@ namespace Particle.Common.ViewModel
 {
 	public class LoginViewModel : GalaSoft.MvvmLight.ViewModelBase, ILoginViewModel
 	{
+		public LoginViewModel()
+		{
+			ViewModelLocator.Messenger.Register<LogoutViewModel>(this, (i) => { Load(); });
+		}
+
+		~LoginViewModel()
+		{
+			ViewModelLocator.Messenger.Unregister<LoginViewModel>(this);
+		}
+
+
 		private String username;
 		/// <summary>
 		/// The username to attempt to login with
@@ -133,11 +144,23 @@ namespace Particle.Common.ViewModel
 			}			
 		}
 
+		protected AppSettings SavePresists()
+		{
+			var settings = AppSettings.Current;
+			settings.Username = username;
+			if (RememberPassword)
+			{
+				settings.Password = password;
+			}
+			settings.RememberPassword = rememberPassword;
+			return settings;
+		}
+
 		/// <summary>
 		/// Attempts to Login to the cloud
 		/// </summary>
 		/// <returns></returns>
-		private async Task<bool> loginAsync()
+		protected virtual async Task<bool> loginAsync()
 		{
 			var errors = new List<String>();
 			if (String.IsNullOrWhiteSpace(Username) || !Username.Contains("@"))
@@ -158,13 +181,7 @@ namespace Particle.Common.ViewModel
 				});
 				return false;
 			}
-			var settings = AppSettings.Current;
-			settings.Username = username;
-			if (RememberPassword)
-			{
-				settings.Password = password;
-			}
-			settings.RememberPassword = rememberPassword;
+			var settings = SavePresists();
 
 			var result = await ViewModelLocator.Cloud.LoginWithUserAsync(username, password);
 			if(result.Success)
