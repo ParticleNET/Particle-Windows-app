@@ -200,6 +200,11 @@ namespace Particle.Common.ViewModel
 							switch (option)
 							{
 								case 1:
+									if (value.FlashTinkerCommand.CanExecute(true))
+									{
+										value.FlashTinkerCommand.Execute(true);
+									}
+									setSelectedDevice(null);
 									break;
 								case 2:
 									setSelectedDevice(null);
