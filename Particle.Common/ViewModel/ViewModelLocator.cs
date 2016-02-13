@@ -3,8 +3,10 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 using Particle.Common.Interfaces;
+using Particle.Common.Messages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,8 +37,45 @@ namespace Particle.Common.ViewModel
 				SimpleIoc.Default.Register<ILogoutViewModel, LogoutViewModel>();
 			}
 			cloud = new ParticleCloud();
-			//SimpleIoc.Default.Register<MainViewModel>();
+			Messenger.Register<LoggedInMessage>(cloud, loggedIn);
+			//Messenger.Register<LoggedOutMessage>(cloud, loggedOut);
 		}
+
+		private static ParticleEventManager yourEvents;
+
+		private static void loggedIn(LoggedInMessage mes)
+		{
+			if(yourEvents != null)
+			{
+				loggedOut(new LoggedOutMessage()); // loggedOut will clean up the previous instance
+			}
+			if(cloud.IsAuthenticated)
+			{
+				var accessToken = cloud.AccessToken;
+				yourEvents = new ParticleEventManager(cloud.YourEventUri, accessToken);
+				yourEvents.Events += YourEvents_Events;
+				Task.Run(() => yourEvents.Start());
+			}
+		}
+
+		private static void YourEvents_Events(object sender, WebEventArgs e)
+		{
+			Messenger.Send(new YourWebEventMessage(e));
+			Debug.WriteLine($"{e.Event} at {DateTime.Now}");
+		}
+
+		private static void loggedOut(LoggedOutMessage mes)
+		{
+			var y = yourEvents;
+			yourEvents = null;
+			if (y != null)
+			{
+				y.Events -= YourEvents_Events; // clean up the listener
+				y.Stop();
+				y = null;
+			}
+		}
+		
 
 		public static ILoginViewModel LoginViewModel
 		{
