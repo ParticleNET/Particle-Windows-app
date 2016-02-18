@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="SannelSoftwareLLC.ParticleTinker" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="1.1.0.0" />
+  <Identity Name="SannelSoftwareLLC.ParticleTinker" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="0.4.3.2" />
   <Properties>
     <DisplayName>Particle Tinker</DisplayName>
     <PublisherDisplayName>Sannel Software LLC</PublisherDisplayName>
