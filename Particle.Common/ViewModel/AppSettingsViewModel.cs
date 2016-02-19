@@ -47,76 +47,18 @@ namespace Particle.Common.ViewModel
 				reader.ReadBytes(b);
 				id = Encoding.UTF8.GetString(b, 0, b.Length);
 			}
-			generateKey(id, Package.Current.Id.PublisherId, 1000);
 		}
 
 		#region encryption/decryption
-		/* Special thanks to Frank at http://www.franksworld.com/2013/06/12/how-to-encrypt-settings-in-windows-8-apps/ for the encryption and decription portion of this */
-
-		private IBuffer keyMaterial;
-		private IBuffer iv;
-
-		private void generateKey(string password, string salt, uint iterationCount)
-		{
-
-			// Setup KDF parameters for the desired salt and iteration count
-			IBuffer saltBuffer = CryptographicBuffer.ConvertStringToBinary(salt, BinaryStringEncoding.Utf8);
-			KeyDerivationParameters kdfParameters = KeyDerivationParameters.BuildForPbkdf2(saltBuffer, iterationCount);
-
-			// Get a KDF provider for PBKDF2, and store the source password in a Cryptographic Key
-			KeyDerivationAlgorithmProvider kdf = KeyDerivationAlgorithmProvider.OpenAlgorithm(KeyDerivationAlgorithmNames.Pbkdf2Sha256);
-			IBuffer passwordBuffer = CryptographicBuffer.ConvertStringToBinary(password, BinaryStringEncoding.Utf8);
-			CryptographicKey passwordSourceKey = kdf.CreateKey(passwordBuffer);
-
-			// Generate key material from the source password, salt, and iteration count.  Only call DeriveKeyMaterial once,
-			// since calling it twice will generate the same data for the key and IV.
-			int keySize = 256 / 8;
-			int ivSize = 128 / 8;
-			uint totalDataNeeded = (uint)(keySize + ivSize);
-			IBuffer keyAndIv = CryptographicEngine.DeriveKeyMaterial(passwordSourceKey, kdfParameters, totalDataNeeded);
-
-			// Split the derived bytes into a seperate key and IV
-			byte[] keyMaterialBytes = keyAndIv.ToArray();
-			keyMaterial = WindowsRuntimeBuffer.Create(keyMaterialBytes, 0, keySize, keySize);
-			iv = WindowsRuntimeBuffer.Create(keyMaterialBytes, keySize, ivSize, ivSize);
-
-		}
 
 		private String encrypt(String text)
 		{
-			IBuffer clearTextBuffer = CryptographicBuffer.ConvertStringToBinary(text, BinaryStringEncoding.Utf8);
-
-			// Setup an AES key, using AES in CBC mode and applying PKCS#7 padding on the input
-			SymmetricKeyAlgorithmProvider aesProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
-			CryptographicKey aesKey = aesProvider.CreateSymmetricKey(keyMaterial);
-
-			// Encrypt the data and convert it to a Base64 string
-			IBuffer encrypted = CryptographicEngine.Encrypt(aesKey, clearTextBuffer, iv);
-			string ciphertextString = CryptographicBuffer.EncodeToBase64String(encrypted);
-
-			return ciphertextString;
+			return text;
 		}
 
 		private String decrypt(String text)
 		{
-			try
-			{
-				// Setup an AES key, using AES in CBC mode and applying PKCS#7 padding on the input
-				SymmetricKeyAlgorithmProvider aesProvider = SymmetricKeyAlgorithmProvider.OpenAlgorithm(SymmetricAlgorithmNames.AesCbcPkcs7);
-				CryptographicKey aesKey = aesProvider.CreateSymmetricKey(keyMaterial);
-
-				// Convert the base64 input to an IBuffer for decryption
-				IBuffer ciphertextBuffer = CryptographicBuffer.DecodeFromBase64String(text);
-
-				// Decrypt the data and convert it back to a string
-				IBuffer decryptedBuffer = CryptographicEngine.Decrypt(aesKey, ciphertextBuffer, iv);
-				byte[] decryptedArray = decryptedBuffer.ToArray();
-				string clearText = Encoding.UTF8.GetString(decryptedArray, 0, decryptedArray.Length);
-
-				return clearText;
-			}
-			catch { }
-			return String.Empty;
+			return text;
 		}
 		#endregion
 
