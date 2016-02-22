@@ -32,6 +32,8 @@ namespace Particle.Common.ViewModel
 				return logout ?? (logout = new RelayCommand(() =>
 				{
 					ViewModelLocator.Cloud.Logout();
+					AppSettings.Current.RememberPassword = false;
+					AppSettings.Current.DeleteStoredPassword();
 					AppSettings.Current.AutoLogin = false;
 					ViewModelLocator.Messenger.Send(new LoggedOutMessage());
 				}));

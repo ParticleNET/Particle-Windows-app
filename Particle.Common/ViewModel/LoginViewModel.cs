@@ -29,7 +29,10 @@ namespace Particle.Common.ViewModel
 	{
 		public LoginViewModel()
 		{
-			ViewModelLocator.Messenger.Register<LogoutViewModel>(this, (i) => { Load(); });
+			ViewModelLocator.Messenger.Register<LogoutViewModel>(this, (i) => 
+			{
+				Load(true);
+			});
 		}
 
 		~LoginViewModel()
@@ -78,20 +81,22 @@ namespace Particle.Common.ViewModel
 			set { Set(nameof(IsAuthenticating),ref isAuthenticating, value); }
 		}
 
-		protected RelayCommand command;
+		protected RelayCommand<bool> command;
 		public virtual ICommand Command
 		{
 			get
 			{
-				return command ?? (command = new RelayCommand(async () =>
+				return command ?? (command =
+					new RelayCommand<bool>(async (isAuto) =>
 				{
 					IsAuthenticating = true;
-					if(await loginAsync() && ViewModelLocator.Cloud.IsAuthenticated)
+					if (await loginAsync(isAuto) && ViewModelLocator.Cloud.IsAuthenticated)
 					{
 						ViewModelLocator.Messenger.Send<LoggedInMessage>(new LoggedInMessage());
 					}
 					IsAuthenticating = false;
-				}));
+				})
+				);
 			}
 		}
 
@@ -132,14 +137,21 @@ namespace Particle.Common.ViewModel
 		/// <summary>
 		/// Loads values from the store
 		/// </summary>
-		public void Load()
+		public void Load(bool isLogout = false)
 		{
 			var settings = AppSettings.Current;
 			Username = settings.Username;
 			RememberPassword = settings.RememberPassword;
 			if (RememberPassword)
 			{
-				Password = settings.Password;
+				if (!isLogout)
+				{
+					Password = settings.GetStoredPassword();
+				}
+				else
+				{
+					Password = "";
+				}
 				AutoLogin = settings.AutoLogin;
 			}			
 		}
@@ -150,7 +162,7 @@ namespace Particle.Common.ViewModel
 			settings.Username = username;
 			if (RememberPassword)
 			{
-				settings.Password = password;
+				settings.StorePassword(password);
 			}
 			settings.RememberPassword = rememberPassword;
 			return settings;
@@ -160,7 +172,7 @@ namespace Particle.Common.ViewModel
 		/// Attempts to Login to the cloud
 		/// </summary>
 		/// <returns></returns>
-		protected virtual async Task<bool> loginAsync()
+		protected virtual async Task<bool> loginAsync(bool isAutologin)
 		{
 			var errors = new List<String>();
 			if (String.IsNullOrWhiteSpace(Username) || !Username.Contains("@"))
@@ -181,12 +193,23 @@ namespace Particle.Common.ViewModel
 				});
 				return false;
 			}
-			var settings = SavePresists();
+			AppSettings settings;
+			if (!isAutologin)
+			{
+				settings = SavePresists();
+			}
+			else
+			{
+				settings = AppSettings.Current;
+			}
 
 			var result = await ViewModelLocator.Cloud.LoginWithUserAsync(username, password);
 			if(result.Success)
 			{
-				settings.AutoLogin = autoLogin;
+				if (!isAutologin)
+				{
+					settings.AutoLogin = autoLogin;
+				}
 				return true;
 			}
 			else

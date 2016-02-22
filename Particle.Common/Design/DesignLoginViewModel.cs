@@ -87,7 +87,7 @@ namespace Particle.Common.Design
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		public void Load()
+		public void Load(bool isLogout = false)
 		{
 		}
 	}

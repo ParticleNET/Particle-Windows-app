@@ -76,7 +76,7 @@ namespace Particle.Common.ViewModel
 			return true;
 		}
 
-		protected override async Task<bool> loginAsync()
+		protected override async Task<bool> loginAsync(bool isAutoLogin)
 		{
 			if (isFormValid())
 			{
@@ -84,7 +84,7 @@ namespace Particle.Common.ViewModel
 				var result = await ViewModelLocator.Cloud.SignupWithUserAsync(Username, Password);
 				if (result.Success)
 				{
-					return await base.loginAsync();
+					return await base.loginAsync(isAutoLogin);
 				}
 				else
 				{

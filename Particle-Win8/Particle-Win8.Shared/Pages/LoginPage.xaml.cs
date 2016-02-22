@@ -46,9 +46,9 @@ namespace Particle_Win8.Pages
 			{
 				if (viewModel.ShouldAutoLogin)
 				{
-					if (viewModel.Command.CanExecute(null))
+					if (viewModel.Command.CanExecute(true))
 					{
-						viewModel.Command.Execute(null);
+						viewModel.Command.Execute(true);
 					}
 				}
 			}

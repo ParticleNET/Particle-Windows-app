@@ -22,6 +22,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
+using Windows.Security.Credentials;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 using Windows.Storage;
@@ -31,6 +32,7 @@ namespace Particle.Common.ViewModel
 {
 	public class AppSettings : INotifyPropertyChanged
 	{
+		private const String RESOURCE = "particle.io";
 		private ApplicationDataContainer settings;
 
 		public static AppSettings Current { get; } = new AppSettings();
@@ -48,19 +50,6 @@ namespace Particle.Common.ViewModel
 				id = Encoding.UTF8.GetString(b, 0, b.Length);
 			}
 		}
-
-		#region encryption/decryption
-
-		private String encrypt(String text)
-		{
-			return text;
-		}
-
-		private String decrypt(String text)
-		{
-			return text;
-		}
-		#endregion
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -137,7 +126,7 @@ namespace Particle.Common.ViewModel
 			String s = settings.Values[key] as String;
 			if (s != null)
 			{
-				return decrypt(s);
+				return s;
 			}
 
 			return def;
@@ -151,23 +140,11 @@ namespace Particle.Common.ViewModel
 			}
 			else
 			{
-				settings.Values[key] = encrypt(value);
+				settings.Values[key] = value;
 			}
 		}
 
 		public String Username
-		{
-			get
-			{
-				return getString();
-			}
-			set
-			{
-				setString(value);
-			}
-		}
-
-		public String Password
 		{
 			get
 			{
@@ -188,6 +165,47 @@ namespace Particle.Common.ViewModel
 			set
 			{
 				setBoolean(value);
+			}
+		}
+
+		public void StorePassword(String password)
+		{
+			try
+			{
+				var passwordVault = new Windows.Security.Credentials.PasswordVault();
+				passwordVault.Add(new Windows.Security.Credentials.PasswordCredential(RESOURCE, Username, password));
+			}
+			catch { }
+		}
+
+		public void DeleteStoredPassword()
+		{
+			try
+			{
+				var passwordVault = new PasswordVault();
+				var list = passwordVault.FindAllByResource(RESOURCE);
+				foreach (var item in list)
+				{
+					if (String.Compare(item.UserName, Username, StringComparison.CurrentCultureIgnoreCase) == 0)
+					{
+						passwordVault.Remove(item);
+					}
+				}
+			}
+			catch { }
+		}
+
+		public string GetStoredPassword()
+		{
+			try
+			{
+				var passwordValut = new Windows.Security.Credentials.PasswordVault();
+				var creds = passwordValut.Retrieve(RESOURCE, Username);
+				return creds.Password;
+			}
+			catch
+			{
+				return null;
 			}
 		}
 

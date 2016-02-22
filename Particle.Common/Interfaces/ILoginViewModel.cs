@@ -53,7 +53,7 @@ namespace Particle.Common.Interfaces
 		/// <summary>
 		/// Loads the stored data into the view
 		/// </summary>
-		void Load();
+		void Load(bool isLogout=false);
 		/// <summary>
 		/// Represents the ICommand for the login action
 		/// </summary>
