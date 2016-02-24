@@ -133,6 +133,17 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		public static void Suspending()
+		{
+			AppSettings.Current.StoredDeviceId = DevicesListViewModel.SelectedDevice?.Device?.Id;
+		}
+
+		public static void Resuming()
+		{
+			DevicesListViewModel.ResumeDeviceId = AppSettings.Current.StoredDeviceId;
+			AppSettings.Current.StoredDeviceId = null;
+		}
+
 		public static bool SupportsClipboard { get; set; }
 	}
 }

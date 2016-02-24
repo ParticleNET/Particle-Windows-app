@@ -32,6 +32,7 @@ namespace Particle_Win8
 		{
 			this.InitializeComponent();
 			this.Suspending += this.OnSuspending;
+			this.Resuming += this.OnResuming;
 #if WINDOWS_PHONE_APP
 			HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 			ViewModelLocator.SupportsClipboard = false;
@@ -146,7 +147,20 @@ namespace Particle_Win8
 			var deferral = e.SuspendingOperation.GetDeferral();
 
 			// TODO: Save application state and stop any background activity
+			ViewModelLocator.Suspending();
 			deferral.Complete();
 		}
+
+
+		/// <summary>
+		/// Called when [resuming].
+		/// </summary>
+		/// <param name="sender">The sender.</param>
+		/// <param name="e">The e.</param>
+		private void OnResuming(object sender, object e)
+		{
+			ViewModelLocator.Resuming();
+		}
+
 	}
 }

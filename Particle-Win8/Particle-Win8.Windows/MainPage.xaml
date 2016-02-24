@@ -30,7 +30,8 @@
 			</Grid.ColumnDefinitions>
 			<StackPanel Grid.Column="0" Orientation="Horizontal" Margin="24">
 				<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
-				<TextBlock Text="Particle" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
+				<TextBlock Text="Particle Tinker" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
+				<TextBlock Text="By ParticleNET" VerticalAlignment="Center" Margin="24,0,0,0" Style="{StaticResource SubtitleTextBlockStyle}" />
 			</StackPanel>
 			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" />
 		</Grid>

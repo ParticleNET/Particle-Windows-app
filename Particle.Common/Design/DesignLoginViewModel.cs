@@ -85,7 +85,10 @@ namespace Particle.Common.Design
 			}
 		}
 
+		//This is a design class so ignore the Property not being used warning
+#pragma warning disable CS0067
 		public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0067
 
 		public void Load(bool isLogout = false)
 		{

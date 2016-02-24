@@ -74,12 +74,22 @@ product_id: 0
 			}
 		}
 
+		public string ResumeDeviceId
+		{
+			get;
+
+			set;
+		}
+
 		public ParticleDeviceWrapper SelectedDevice
 		{
 			get;
 			set;
 		}
-
+		
+		//This is a design class so ignore the Property not being used warning
+#pragma warning disable CS0067
 		public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0067
 	}
 }

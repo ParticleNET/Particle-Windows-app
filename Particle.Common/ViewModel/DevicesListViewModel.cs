@@ -43,6 +43,20 @@ namespace Particle.Common.ViewModel
 			});
 		}
 
+		private String resumeDeviceId;
+
+		public String ResumeDeviceId
+		{
+			get
+			{
+				return resumeDeviceId;
+			}
+			set
+			{
+				Set(nameof(ResumeDeviceId), ref resumeDeviceId, value);
+			}
+		}
+
 		private async void refreshDevices(Messages.RefreshDevicesMessage message)
 		{
 			IsRefreshing = true;
@@ -91,6 +105,14 @@ namespace Particle.Common.ViewModel
 
 				IsRefreshing = false;
 				await Task.WhenAll(tasks);
+				if (!String.IsNullOrWhiteSpace(ResumeDeviceId))
+				{
+					var dev = devices.FirstOrDefault(i => i.Device?.Id == ResumeDeviceId);
+					if (dev != null)
+					{
+						setSelectedDevice(dev);
+					}
+				}
 			}
 			else
 			{

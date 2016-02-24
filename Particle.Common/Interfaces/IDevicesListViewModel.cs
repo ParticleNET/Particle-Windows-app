@@ -35,6 +35,13 @@ namespace Particle.Common.Interfaces
 		/// </value>
 		bool IsRefreshing { get; }
 		/// <summary>
+		/// Gets or sets the resume device identifier.
+		/// </summary>
+		/// <value>
+		/// The resume device identifier.
+		/// </value>
+		String ResumeDeviceId { get; set; }
+		/// <summary>
 		/// Gets the devices.
 		/// </summary>
 		/// <value>

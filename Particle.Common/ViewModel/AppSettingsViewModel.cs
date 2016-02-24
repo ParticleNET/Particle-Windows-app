@@ -168,6 +168,24 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		/// <summary>
+		/// Gets or sets the stored device identifier.
+		/// </summary>
+		/// <value>
+		/// The stored device identifier.
+		/// </value>
+		public String StoredDeviceId
+		{
+			get
+			{
+				return getString();
+			}
+			set
+			{
+				setString(value);
+			}
+		}
+
 		public void StorePassword(String password)
 		{
 			try
