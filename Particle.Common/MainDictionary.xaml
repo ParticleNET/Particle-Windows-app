@@ -20,5 +20,6 @@
 	<converts:MaximumConverter x:Key="MaximumConverter" />
 	<converts:ProgresBarVisibilityConverter x:Key="ProgresBarVisibilityConverter" />
 	<converts:PinValueConverter x:Key="PinValueConverter" />
+	<converts:StatusTextConverter x:Key="StatusTextConverter" />
 
 </ResourceDictionary>

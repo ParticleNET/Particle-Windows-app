@@ -72,6 +72,7 @@
     <Compile Include="Converters\PinModeConverter.cs" />
     <Compile Include="Converters\PinValueConverter.cs" />
     <Compile Include="Converters\ProgresBarVisibilityConverter.cs" />
+    <Compile Include="Converters\StatusTextConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityNotConverter.cs" />
     <Compile Include="Converters\VisibilityNotNullConverter.cs" />

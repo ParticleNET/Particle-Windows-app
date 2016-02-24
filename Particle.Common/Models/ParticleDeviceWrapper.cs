@@ -1,4 +1,19 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿/*
+   Copyright 2016 ParticleNET
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using GalaSoft.MvvmLight.Command;
 using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
@@ -16,7 +31,8 @@ namespace Particle.Common.Models
 		Offline,
 		Connected,
 		Tinker,
-		Flashing
+		Flashing,
+		Failed
 	}
 	public class ParticleDeviceWrapper : Particle.ParticleBase
 	{
@@ -26,6 +42,64 @@ namespace Particle.Common.Models
 		{
 			Device = device;
 			device.PropertyChanged += Device_PropertyChanged;
+			ViewModelLocator.Messenger.Register<YourWebEventMessage>(this, (a) =>
+			{
+				var args = a.EventArgs;
+				if(args != null)
+				{
+					if(args.Data != null && args.Data.Length > 0)
+					{
+						var d1 = args.Data[0];
+						if(String.Compare(d1.CoreId, Device?.Id) == 0)
+						{
+							deviceEvent(args.Event, d1);
+						}
+					}
+				}
+			});
+		}
+
+		~ParticleDeviceWrapper()
+		{
+			ViewModelLocator.Messenger.Unregister<YourWebEventMessage>(this);
+		}
+
+		private async void deviceEvent(String even, ParticleEventData data)
+		{
+			if(even.StartsWith("spark/"))
+			{
+				switch (even)
+				{
+					case "spark/flash/status":
+						switch (data.Data?.Trim())
+						{
+							case "started":
+								Status = DeviceStatus.Flashing;
+								break;
+
+							case "failed":
+								Status = DeviceStatus.Failed;
+								break;
+							default:
+								break;
+						}
+						break;
+
+					case "spark/status":
+						switch (data.Data?.Trim())
+						{
+							case "online":
+								await Device.RefreshAsync();
+								break;
+							default:
+								break;
+						}
+						break;
+
+					default:
+						break;
+				}
+			}
 		}
 
 		private void Device_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -34,6 +108,28 @@ namespace Particle.Common.Models
 			{
 				FirePropertyChanged(nameof(IsRefreshing));
 				FirePropertyChanged(nameof(HasTinker));
+				if (!Device.IsRefreshing)
+				{
+					if (Device.Connected)
+					{
+						if (HasTinker)
+						{
+							Status = DeviceStatus.Tinker;
+						}
+						else
+						{
+							Status = DeviceStatus.Connected;
+						}
+					}
+					else
+					{
+						Status = DeviceStatus.Offline;
+					}
+				}
+				else
+				{
+					Status = DeviceStatus.Offline;
+				}
 			}
 		}
 
