@@ -21,5 +21,6 @@
 	<converts:ProgresBarVisibilityConverter x:Key="ProgresBarVisibilityConverter" />
 	<converts:PinValueConverter x:Key="PinValueConverter" />
 	<converts:StatusTextConverter x:Key="StatusTextConverter" />
+	<converts:StatusColorConverter x:Key="StatusColorConverter" />
 
 </ResourceDictionary>

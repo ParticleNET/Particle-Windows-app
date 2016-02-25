@@ -72,6 +72,7 @@
     <Compile Include="Converters\PinModeConverter.cs" />
     <Compile Include="Converters\PinValueConverter.cs" />
     <Compile Include="Converters\ProgresBarVisibilityConverter.cs" />
+    <Compile Include="Converters\StatusColorConverter.cs" />
     <Compile Include="Converters\StatusTextConverter.cs" />
     <Compile Include="Converters\VisibilityConverter.cs" />
     <Compile Include="Converters\VisibilityNotConverter.cs" />
@@ -136,8 +137,8 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Particle, Version=0.8.5.13, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ParticleNET.ParticleSDK.0.8.5-beta-0013\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
+    <Reference Include="Particle, Version=0.8.5.14, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ParticleNET.ParticleSDK.0.8.5-beta-0014\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

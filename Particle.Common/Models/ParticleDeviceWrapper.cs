@@ -283,36 +283,26 @@ namespace Particle.Common.Models
 		private async void flashTinker()
 		{
 			Status = DeviceStatus.Flashing;
-			var result = await Device.FlashKnownAppAsync("tinker");
-			if (result.Success)
+			switch (Device?.DeviceType)
 			{
-				DispatcherTimer timer = new DispatcherTimer();
-				timer.Interval = TimeSpan.FromMilliseconds(500);
-				timer.Tick += async (s, a) =>
-				{
-					if (HasTinker)
+				case ParticleDeviceType.Electron:
+				case ParticleDeviceType.Photon: // From what i see in the android app its better to flash the binary
+					var pr = await Device.FlashExampleAppAsync("56214d636666d9ece3000006");
+					if(!pr.Success)
 					{
-						Status = DeviceStatus.Tinker;
-						timer.Stop();
+
 					}
-					else
+					break;
+
+				case ParticleDeviceType.Core: // From what i see in the android app this works for Core only
+				default:
+					var result = await Device.FlashKnownAppAsync("tinker");
+					if (!result.Success)
 					{
-						if (!IsRefreshing)
-						{
-							var r = await Device.RefreshAsync();
-							if (r.Success)
-							{
-								if (HasTinker)
-								{
-									Status = DeviceStatus.Tinker;
-									timer.Stop();
-								}
-							}
-						}
 					}
-				};
-				timer.Start();
+					break;
 			}
+			
 		}
 
 		private ICommand flashTinkerCommand;

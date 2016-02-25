@@ -76,7 +76,12 @@ namespace Particle.Common.ViewModel
 		private static void YourEvents_Events(object sender, WebEventArgs e)
 		{
 			Messenger.Send(new YourWebEventMessage(e));
-			Debug.WriteLine($"{e.Event} at {DateTime.Now}");
+#if DEBUG
+			if (e.Data != null && e.Data.Length > 0)
+			{
+				Debug.WriteLine($"{e.Event} at {DateTime.Now} data {e.Data[0]}");
+			}
+#endif
 		}
 
 		private static void loggedOut(LoggedOutMessage mes)

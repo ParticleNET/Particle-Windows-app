@@ -57,6 +57,11 @@ namespace Particle.Common.ViewModel
 							case ParticleDeviceType.Photon:
 								setupPhotonPins();
 								break;
+
+							case ParticleDeviceType.Electron:
+								setupPhotonPins();
+								break;
+
 							case ParticleDeviceType.Core:
 							default:
 								setupCorePins();
@@ -372,7 +377,7 @@ namespace Particle.Common.ViewModel
 			});
 			RaisePropertyChanged(nameof(PinRows));
 		}
-
+		
 		private IList<ITinkerRowViewModel> pinRows;
 
 		public IEnumerable<ITinkerRowViewModel> PinRows

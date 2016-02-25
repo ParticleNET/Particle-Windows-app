@@ -53,13 +53,8 @@
 						<TextBlock Grid.ColumnSpan="2" Text="{Binding Device.Name}" />
 						<TextBlock Grid.Row="1" Text="{Binding Device.DeviceType, Converter={StaticResource ParticleDeviceTypeConverter}}" />
 						<TextBlock Text="{Binding Status, Converter={StaticResource StatusTextConverter}}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" />
-						<Border Grid.Row="1" Grid.Column="3" Background="Red" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0" Visibility="{Binding Device.Connected, Converter={StaticResource VisibilityNotConverter}}">
-
+						<Border Grid.Row="1" Grid.Column="3" Background="{Binding Status, Converter={StaticResource StatusColorConverter}}" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0">
 						</Border>
-						<Grid Grid.Row="1" Grid.Column="3" Width="20" Height="20" Margin="24,0,0,0" Visibility="{Binding Device.Connected,Converter={StaticResource VisibilityConverter}}">
-							<Border Background="Yellow" Width="20" Height="20" CornerRadius="100" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityNotConverter}}" />
-							<Border Background="Green" Width="20" Height="20" CornerRadius="100" Visibility="{Binding HasTinker,Converter={StaticResource VisibilityConverter}}"/>
-						</Grid>
 						<TextBlock Grid.ColumnSpan="4" Grid.Row="2" Text="{Binding Device.Id}" />
 						<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Grid.Row="4" Grid.ColumnSpan="4" />
 						<Button Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderThickness="0">

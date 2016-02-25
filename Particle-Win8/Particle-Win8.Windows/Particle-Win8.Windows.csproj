@@ -15,10 +15,12 @@
     <FileAlignment>512</FileAlignment>
     <SynthesizeLinkMetadata>true</SynthesizeLinkMetadata>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Particle-Win8.Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>226F7A83099290CE523AA89D67677CD2F085F123</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>Particle-Win8.Windows_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>F623D954295D7885678FC420576B0050D0DA207E</PackageCertificateThumbprint>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -154,8 +156,8 @@
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Particle, Version=0.8.5.13, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.5-beta-0013\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
+    <Reference Include="Particle, Version=0.8.5.14, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.5-beta-0014\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
