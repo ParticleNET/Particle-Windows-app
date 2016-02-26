@@ -53,7 +53,7 @@ namespace Particle.Common.ViewModel
 			}
 			cloud = new ParticleCloud();
 			Messenger.Register<LoggedInMessage>(cloud, loggedIn);
-			//Messenger.Register<LoggedOutMessage>(cloud, loggedOut);
+			Messenger.Register<LoggedOutMessage>(cloud, loggedOut);
 		}
 
 		private static ParticleEventManager yourEvents;
@@ -67,9 +67,11 @@ namespace Particle.Common.ViewModel
 			if(cloud.IsAuthenticated)
 			{
 				var accessToken = cloud.AccessToken;
-				yourEvents = new ParticleEventManager(cloud.YourEventUri, accessToken);
+				UriBuilder builder = new UriBuilder(cloud.YourEventUri);
+				builder.Path = $"{builder.Path}/spark";
+				yourEvents = new ParticleEventManager(builder.Uri, accessToken);
 				yourEvents.Events += YourEvents_Events;
-				Task.Run(() => yourEvents.Start());
+				Task.Run(() => yourEvents.Start()); // With out the Task.Run the app freezes up not sure why
 			}
 		}
 
