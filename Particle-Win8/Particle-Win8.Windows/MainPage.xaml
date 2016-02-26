@@ -33,7 +33,7 @@
 				<TextBlock Text="Particle Tinker" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
 				<TextBlock Text="By ParticleNET" VerticalAlignment="Center" Margin="24,0,0,0" Style="{StaticResource SubtitleTextBlockStyle}" />
 			</StackPanel>
-			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" />
+			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,24,0" />
 		</Grid>
 		<Popup x:Name="LoginPopup" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450" IsOpen="False">
 			<localControls:LoginControl HorizontalAlignment="Center" Width="450" />
@@ -53,10 +53,10 @@
 		</Grid>
 		<toolkit:CustomAppBar x:Name="DeviceAppBar" Grid.ColumnSpan="2" Grid.Row="3" DataContext="{Binding TinkerViewModel.Device, Source={StaticResource Locator}}" CanOpen="{Binding TinkerViewModel.Device, Source={StaticResource Locator}, Converter={StaticResource NotNullConverter}}">
 			<StackPanel Orientation="Horizontal">
-				<AppBarButton Label="Rename" Command="{Binding RenameCommand}"></AppBarButton>
-				<AppBarButton Label="Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}"></AppBarButton>
-				<AppBarButton Label="Re-flash Tinker" Command="{Binding FlashTinkerCommand}"></AppBarButton>
-				<AppBarButton Label="Unclaim" ></AppBarButton>
+				<AppBarButton Label="Rename" Command="{Binding RenameCommand}" Icon="Edit"></AppBarButton>
+				<AppBarButton Label="Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Icon="Copy"></AppBarButton>
+				<AppBarButton Label="Re-flash Tinker" Command="{Binding FlashTinkerCommand}" Icon="Go"></AppBarButton>
+				<AppBarButton Label="Unclaim" Icon="Delete"></AppBarButton>
 			</StackPanel>
 		</toolkit:CustomAppBar>
 
