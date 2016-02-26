@@ -34,6 +34,9 @@ namespace Particle.Common.Converters
 
 				case ParticleDeviceType.Photon:
 					return MM.M.GetString("Photon");
+
+				case ParticleDeviceType.Electron:
+					return MM.M.GetString("Electron");
 			}
 
 			return "Unknown";
