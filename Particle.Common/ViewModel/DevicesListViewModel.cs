@@ -173,6 +173,11 @@ namespace Particle.Common.ViewModel
 			{
 				if (selectedDevice != value)
 				{
+					if(value == null)
+					{
+						setSelectedDevice(null);
+						return;
+					}
 					if (!value.Device.Connected)
 					{
 						DialogMessage dm = new DialogMessage();

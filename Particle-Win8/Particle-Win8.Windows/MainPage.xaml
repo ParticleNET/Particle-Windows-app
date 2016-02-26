@@ -28,12 +28,11 @@
 				<ColumnDefinition />
 				<ColumnDefinition Width="auto" />
 			</Grid.ColumnDefinitions>
-			<StackPanel Grid.Column="0" Orientation="Horizontal" Margin="24">
-				<Image Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" />
-				<TextBlock Text="Particle Tinker" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="24,0,0,0" />
-				<TextBlock Text="By ParticleNET" VerticalAlignment="Center" Margin="24,0,0,0" Style="{StaticResource SubtitleTextBlockStyle}" />
+			<StackPanel x:Name="Header" Grid.Column="0" Orientation="Horizontal" Margin="24,24,0,24">
+				<Image x:Name="LogoImage" Source="Assets/ScreenLogo.png" Stretch="UniformToFill" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,24,0" />
+				<TextBlock Text="Particle Tinker" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Center" Margin="0,0,24,0" />
 			</StackPanel>
-			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,24,0" />
+			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" Margin="0,24,24,24" />
 		</Grid>
 		<Popup x:Name="LoginPopup" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450" IsOpen="False">
 			<localControls:LoginControl HorizontalAlignment="Center" Width="450" />
@@ -56,11 +55,17 @@
 				<AppBarButton Label="Rename" Command="{Binding RenameCommand}" Icon="Edit"></AppBarButton>
 				<AppBarButton Label="Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Icon="Copy"></AppBarButton>
 				<AppBarButton Label="Re-flash Tinker" Command="{Binding FlashTinkerCommand}" Icon="Go"></AppBarButton>
-				<AppBarButton Label="Unclaim" Icon="Delete"></AppBarButton>
+				<AppBarButton Label="Unclaim" Icon="Delete" Command="{Binding UnclaimDeviceCommand}"></AppBarButton>
 			</StackPanel>
 		</toolkit:CustomAppBar>
 
-		<toolkit:InputDialog x:Name="InputDialog" />
+		<toolkit:InputDialog x:Name="InputDialog" Background="Black" MinWidth="500">
+			<toolkit:InputDialog.ButtonStyle>
+				<Style TargetType="Button">
+					<Setter Property="Background" Value="Black" />
+				</Style>
+			</toolkit:InputDialog.ButtonStyle>
+		</toolkit:InputDialog>
 	</Grid>
-	
+
 </Page>

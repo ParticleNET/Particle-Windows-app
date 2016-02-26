@@ -155,11 +155,17 @@ namespace Particle_Win8
 				{
 					DevicesDropDown.Visibility = Visibility.Visible;
 					DevicesList.Visibility = Visibility.Collapsed;
+					Header.Orientation = Orientation.Vertical;
+					LogoutControl.VerticalAlignment = VerticalAlignment.Top;
+					LogoImage.Margin = new Thickness(0, 0, 0, 24);
 				}
 				else
 				{
 					DevicesDropDown.Visibility = Visibility.Collapsed;
 					DevicesList.Visibility = Visibility.Visible;
+					Header.Orientation = Orientation.Horizontal;
+					LogoutControl.VerticalAlignment = VerticalAlignment.Center;
+					LogoImage.Margin = new Thickness(0, 0, 24, 0);
 				}
 			}
 		}
