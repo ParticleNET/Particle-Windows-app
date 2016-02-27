@@ -60,10 +60,10 @@
 						<Button Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderThickness="0">
 							<Button.Flyout>
 								<MenuFlyout>
-									<MenuFlyoutItem Text="Rename..." Command="{Binding RenameCommand}" />
-									<MenuFlyoutItem Text="Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
-									<MenuFlyoutItem Text="Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
-									<MenuFlyoutItem Text="Unclaim" Command="{Binding UnclaimDeviceCommand}" />
+									<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />
+									<MenuFlyoutItem x:Uid="Menu_CopyDeviceId" Text="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
+									<MenuFlyoutItem x:Uid="Menu_ReflashTinker" Text="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
+									<MenuFlyoutItem x:Uid="Menu_Unclaim" Text="Unclaim" Command="{Binding UnclaimDeviceCommand}" />
 								</MenuFlyout>
 							</Button.Flyout>
 							<StackPanel>

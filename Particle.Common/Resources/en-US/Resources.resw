@@ -195,6 +195,22 @@
   <data name="Low" xml:space="preserve">
     <value>Low</value>
   </data>
+  <data name="Menu_CopyDeviceId.Text" xml:space="preserve">
+    <value>Copy Device Id to clipboard</value>
+    <comment>Menu copy device id to clipboard text</comment>
+  </data>
+  <data name="Menu_ReflashTinker.Text" xml:space="preserve">
+    <value>Re-flash Tinker</value>
+    <comment>Menu Re-Flash Tinker text</comment>
+  </data>
+  <data name="Menu_Rename.Text" xml:space="preserve">
+    <value>Rename...</value>
+    <comment>Menu rename text</comment>
+  </data>
+  <data name="Menu_Unclaim.Text" xml:space="preserve">
+    <value>Unclaim</value>
+    <comment>Menu Unclaim text</comment>
+  </data>
   <data name="MustBeAValidEmailAddress" xml:space="preserve">
     <value>Email must be a valid email address</value>
   </data>
