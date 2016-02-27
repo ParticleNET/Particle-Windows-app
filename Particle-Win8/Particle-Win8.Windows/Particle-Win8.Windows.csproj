@@ -119,11 +119,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <PRIResource Include="..\..\Particle.Common\Resources\en-US\Resources.resw">
-      <Link>Resources\en-US\Resources.resw</Link>
-    </PRIResource>
     <None Include="packages.config" />
     <None Include="Particle-Win8.Windows_TemporaryKey.pfx" />
+    <PRIResource Include="Resources\en-US\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-100.png" />
@@ -175,12 +173,6 @@
       <HintPath>..\..\packages\WinRTXamlToolkit.Windows.1.8.1.0\lib\netcore451\WinRTXamlToolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Particle.Common\Particle.Common.csproj">
-      <Project>{6be787b5-1e56-4e23-b048-594bf8d43890}</Project>
-      <Name>Particle.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

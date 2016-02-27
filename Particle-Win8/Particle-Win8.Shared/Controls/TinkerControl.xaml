@@ -12,7 +12,7 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///Particle.Common/MainDictionary.xaml" />
+				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
 				<ResourceDictionary
 			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
 				<ResourceDictionary

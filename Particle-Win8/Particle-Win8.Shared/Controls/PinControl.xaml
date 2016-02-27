@@ -13,7 +13,7 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///Particle.Common/MainDictionary.xaml" />
+				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
 				<ResourceDictionary>
 					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="2" FalseValue="0" />
 					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="2" />

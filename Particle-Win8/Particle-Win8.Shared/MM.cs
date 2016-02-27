@@ -31,7 +31,8 @@ namespace Particle.Common
 
 		public MM()
 		{
-			loader = loader ?? ResourceLoader.GetForCurrentView("Particle.Common/Resources"); // if this has already been loaded use that one
+			
+			loader = loader ?? ResourceLoader.GetForCurrentView("Resources"); // if this has already been loaded use that one
 		}
 
 		public String this[String key]
