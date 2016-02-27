@@ -15,7 +15,7 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Page.Resources>
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid Margin="0,24,0,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
 			<ColumnDefinition />
@@ -32,9 +32,9 @@
 		</Grid.RowDefinitions>
 		<TextBlock Grid.ColumnSpan="2" Grid.Row="0" Text="Create Particle Account" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
 		<StackPanel Grid.ColumnSpan="2" Grid.Row="1">
-			<toolkit:WatermarkTextBox Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" Margin="0"/>
+			<toolkit:WatermarkTextBox Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" Margin="0,12"/>
 			<toolkit:WatermarkPasswordBox Margin="0" Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="password" />
-			<toolkit:WatermarkPasswordBox Margin="0" Password="{Binding VerifyPassword, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="verify password" />
+			<toolkit:WatermarkPasswordBox Margin="0,12" Password="{Binding VerifyPassword, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="verify password" />
 		</StackPanel>
 		<TextBlock Grid.Column="0" Grid.Row="2" Text="Remember Password" VerticalAlignment="Center" />
 		<ToggleSwitch Grid.Column="1" Grid.Row="2" IsOn="{Binding RememberPassword, Mode=TwoWay}" HorizontalContentAlignment="Right" HorizontalAlignment="Right" />

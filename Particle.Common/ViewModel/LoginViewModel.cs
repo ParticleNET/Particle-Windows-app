@@ -134,6 +134,25 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		private ICommand forgotPasswordCommand;
+
+		/// <summary>
+		/// Gets the forgot password command.
+		/// </summary>
+		/// <value>
+		/// The forgot password command.
+		/// </value>
+		public ICommand ForgotPasswordCommand
+		{
+			get
+			{
+				return forgotPasswordCommand ?? (forgotPasswordCommand = new RelayCommand(async () =>
+				{
+					await Windows.System.Launcher.LaunchUriAsync(new Uri("https://build.particle.io/forgot-password"));
+				}));
+			}
+		}
+
 		/// <summary>
 		/// Loads values from the store
 		/// </summary>

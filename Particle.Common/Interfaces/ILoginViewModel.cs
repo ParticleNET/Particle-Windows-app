@@ -59,6 +59,13 @@ namespace Particle.Common.Interfaces
 		/// </summary>
 		ICommand Command { get; }
 		/// <summary>
+		/// Gets the forgot password command.
+		/// </summary>
+		/// <value>
+		/// The forgot password command.
+		/// </value>
+		ICommand ForgotPasswordCommand { get; }
+		/// <summary>
 		/// Gets a value indicating whether we should automatically login
 		/// </summary>
 		/// <value>
