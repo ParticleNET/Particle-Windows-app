@@ -17,30 +17,30 @@
 	</Page.Resources>
 	<Grid Margin="0,24,0,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<StackPanel>
-			<TextBlock Text="Particle Login" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
-			<toolkit:WatermarkTextBox Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="email" InputScope="EmailSmtpAddress" Margin="0,12" />
-			<toolkit:WatermarkPasswordBox Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="password" >
+			<TextBlock x:Uid="Login_Header" Text="1 Particle Login" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
+			<toolkit:WatermarkTextBox x:Uid="Login_Username" Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="2 email" InputScope="EmailSmtpAddress" Margin="0,12" />
+			<toolkit:WatermarkPasswordBox x:Uid="Login_Password" Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="3 password" >
 			</toolkit:WatermarkPasswordBox>
 
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<TextBlock Text="Remember Password" VerticalAlignment="Center" />
+				<TextBlock x:Uid="Login_RemeberPassword" Text="4 Remember Password" VerticalAlignment="Center" />
 
 				<ToggleSwitch IsOn="{Binding RememberPassword, Mode=TwoWay}">
 				</ToggleSwitch>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<TextBlock Text="Auto Login" VerticalAlignment="Center" />
+				<TextBlock x:Uid="Login_AutoLogin" Text="5 Auto Login" VerticalAlignment="Center" />
 
 				<ToggleSwitch IsOn="{Binding AutoLogin, Mode=TwoWay}">
 				</ToggleSwitch>
 			</StackPanel>
 			<StackPanel x:Name="AuthenticatingContainer" Visibility="{Binding IsAuthenticating, Converter={StaticResource VisibilityConverter}}" Orientation="Horizontal" Margin="0,12" HorizontalAlignment="Center">
-				<TextBlock Text="Logging in..." Style="{StaticResource BodyTextBlockStyle}" />
+				<TextBlock x:Uid="Login_LoggingIn" Text="6 Logging in..." Style="{StaticResource BodyTextBlockStyle}" />
 				<ProgressRing IsActive="True" />
 			</StackPanel>
-			<Button x:Name="LoginAction" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding Command}" HorizontalAlignment="Center">LOG IN</Button>
-			<HyperlinkButton x:Name="RegisterAction" HorizontalAlignment="Center" Click="RegisterAction_Click">I don't have an account</HyperlinkButton>
-			<HyperlinkButton x:Name="ForgotPasswordAction" Command="{Binding ForgotPasswordCommand}" HorizontalAlignment="Center">I forgot my password</HyperlinkButton>
+			<Button x:Name="LoginAction" x:Uid="Login_LoginAction" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Command="{Binding Command}" HorizontalAlignment="Center">7 LOG IN</Button>
+			<HyperlinkButton x:Name="RegisterAction" x:Uid="Login_DontHaveAccount" HorizontalAlignment="Center" Click="RegisterAction_Click">8 I don't have an account</HyperlinkButton>
+			<HyperlinkButton x:Name="ForgotPasswordAction" x:Uid="Login_ForgotPassword" Command="{Binding ForgotPasswordCommand}" HorizontalAlignment="Center">9 I forgot my password</HyperlinkButton>
 		</StackPanel>
 	</Grid>
 </Page>

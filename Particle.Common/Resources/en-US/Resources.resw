@@ -192,6 +192,42 @@
   <data name="Invalid_Device_Id" xml:space="preserve">
     <value>Invalid Device Id</value>
   </data>
+  <data name="Login_AutoLogin.Text" xml:space="preserve">
+    <value>Auto Login</value>
+    <comment>Login-&gt;Form-&gt;Auto Login text</comment>
+  </data>
+  <data name="Login_DontHaveAccount.Content" xml:space="preserve">
+    <value>I don't have an account</value>
+    <comment>Login-&gt;Form-&gt;Dont Have Account Link text</comment>
+  </data>
+  <data name="Login_ForgotPassword.Content" xml:space="preserve">
+    <value>I forgot my password</value>
+    <comment>Login-&gt;Form-&gt;Forgot Password Link text</comment>
+  </data>
+  <data name="Login_Header.Text" xml:space="preserve">
+    <value>Particle Login</value>
+    <comment>Login-&gt;Header</comment>
+  </data>
+  <data name="Login_LoggingIn.Text" xml:space="preserve">
+    <value>Logging in...</value>
+    <comment>Login-&gt;Form-&gt;Logging In text</comment>
+  </data>
+  <data name="Login_LoginAction.Content" xml:space="preserve">
+    <value>Login</value>
+    <comment>Login-&gt;Form-&gt;Loggin Button text</comment>
+  </data>
+  <data name="Login_Password.Watermark" xml:space="preserve">
+    <value>password</value>
+    <comment>Login-&gt;Form-&gt;Password</comment>
+  </data>
+  <data name="Login_RemeberPassword.Text" xml:space="preserve">
+    <value>Remember Password</value>
+    <comment>Login-&gt;Form-&gt;Remember Pasword text</comment>
+  </data>
+  <data name="Login_Username.WatermarkText" xml:space="preserve">
+    <value>email</value>
+    <comment>Login-&gt;Form-&gt;Username</comment>
+  </data>
   <data name="Low" xml:space="preserve">
     <value>Low</value>
   </data>
@@ -237,7 +273,7 @@
   </data>
   <data name="Register_Agreement_PP_b.Text" xml:space="preserve">
     <value>Privacy Policy.</value>
-    <comment>Register-&gt;Form-Agreement PP b</comment>
+    <comment>Register-&gt;Form-&gt;Agreement PP b</comment>
   </data>
   <data name="Register_Agreement_TOS_a.NavigateUri" xml:space="preserve">
     <value>https://www.particle.io/tos</value>
