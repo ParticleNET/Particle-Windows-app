@@ -223,6 +223,66 @@
   <data name="Photon" xml:space="preserve">
     <value>Photon</value>
   </data>
+  <data name="Register_Agreement_Part1.Text" xml:space="preserve">
+    <value>By clicking Register you are indicating that you have read and agreed to the</value>
+    <comment>Register-&gt;Form-&gt;Agreement Part 1</comment>
+  </data>
+  <data name="Register_Agreement_Part2.Text" xml:space="preserve">
+    <value>and</value>
+    <comment>Register-&gt;Form-&gt;Agreement Part 2</comment>
+  </data>
+  <data name="Register_Agreement_PP_a.NavigateUri" xml:space="preserve">
+    <value>https://www.particle.io/privacy</value>
+    <comment>Register-&gt;Form-&gt;Agreement PP a</comment>
+  </data>
+  <data name="Register_Agreement_PP_b.Text" xml:space="preserve">
+    <value>Privacy Policy.</value>
+    <comment>Register-&gt;Form-Agreement PP b</comment>
+  </data>
+  <data name="Register_Agreement_TOS_a.NavigateUri" xml:space="preserve">
+    <value>https://www.particle.io/tos</value>
+    <comment>Register-&gt;Form-&gt;Agreement TOC a</comment>
+  </data>
+  <data name="Register_Agreement_TOS_b.Text" xml:space="preserve">
+    <value>Terms of Service</value>
+    <comment>Register-&gt;Form-&gt;Argreement TOC b</comment>
+  </data>
+  <data name="Register_AlreadyHaveAccount.Content" xml:space="preserve">
+    <value>I already have an account</value>
+    <comment>Register-&gt;Form-&gt;I Already Have an Account link</comment>
+  </data>
+  <data name="Register_AutoLogin.Text" xml:space="preserve">
+    <value>Auto Login</value>
+    <comment>Register-&gt;Form-&gt;Auto Login text</comment>
+  </data>
+  <data name="Register_CreateParticleAccount.Text" xml:space="preserve">
+    <value>Create Particle Account</value>
+    <comment>Register-&gt;Header-&gt;Create account text</comment>
+  </data>
+  <data name="Register_CreatingAccount.Text" xml:space="preserve">
+    <value>Creating account...</value>
+    <comment>Register-&gt;Form-&gt;Creating Account text</comment>
+  </data>
+  <data name="Register_Email.WatermarkText" xml:space="preserve">
+    <value>email</value>
+    <comment>Register-&gt;Form-&gt;Email watermark</comment>
+  </data>
+  <data name="Register_Password.Watermark" xml:space="preserve">
+    <value>password</value>
+    <comment>Register-&gt;Form-&gt;Password watermark</comment>
+  </data>
+  <data name="Register_Register.Content" xml:space="preserve">
+    <value>Register</value>
+    <comment>Register-&gt;Form-&gt;Register button</comment>
+  </data>
+  <data name="Register_RememberPassword.Text" xml:space="preserve">
+    <value>Remember Password</value>
+    <comment>Register-&gt;Form-&gt;Remember Password text</comment>
+  </data>
+  <data name="Register_VerifyPassword.Watermark" xml:space="preserve">
+    <value>verify password</value>
+    <comment>Register-&gt;Form-&gt;Verify Password watermark</comment>
+  </data>
   <data name="Rename_Button" xml:space="preserve">
     <value>Rename</value>
   </data>

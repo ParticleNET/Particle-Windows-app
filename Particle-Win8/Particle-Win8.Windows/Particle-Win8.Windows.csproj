@@ -119,6 +119,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <PRIResource Include="..\..\Particle.Common\Resources\en-US\Resources.resw">
+      <Link>Resources\en-US\Resources.resw</Link>
+    </PRIResource>
     <None Include="packages.config" />
     <None Include="Particle-Win8.Windows_TemporaryKey.pfx" />
   </ItemGroup>
