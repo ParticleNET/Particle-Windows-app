@@ -318,5 +318,17 @@ namespace Particle.Common.ViewModel
 				}));
 			}
 		}
+
+		private ICommand addElectronCommand;
+		public ICommand AddElectronCommand
+		{
+			get
+			{
+				return addElectronCommand ?? (addElectronCommand = new RelayCommand(async () =>
+				{
+					await Windows.System.Launcher.LaunchUriAsync(new Uri("https://setup.particle.io/"));
+				}));
+			}
+		}
 	}
 }

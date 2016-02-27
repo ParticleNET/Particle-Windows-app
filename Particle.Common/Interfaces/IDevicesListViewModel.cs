@@ -62,5 +62,20 @@ namespace Particle.Common.Interfaces
 		/// The command to call to Refresh the devices
 		/// </value>
 		ICommand RefreshCommand { get; }
+
+		/// <summary>
+		/// Gets the add device command.
+		/// </summary>
+		/// <value>
+		/// The add device command.
+		/// </value>
+		ICommand AddDeviceCommand { get; }
+		/// <summary>
+		/// Gets the add electron command.
+		/// </summary>
+		/// <value>
+		/// The add electron command.
+		/// </value>
+		ICommand AddElectronCommand { get; }
 	}
 }

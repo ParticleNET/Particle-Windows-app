@@ -30,6 +30,22 @@ namespace Particle.Common.Design
 {
 	public class DesignDevicesListViewModel : IDevicesListViewModel
 	{
+		public ICommand AddDeviceCommand
+		{
+			get
+			{
+				return new RelayCommand(() => { });
+			}
+		}
+
+		public ICommand AddElectronCommand
+		{
+			get
+			{
+				return new RelayCommand(() => { });
+			}
+		}
+
 		public ObservableCollection<ParticleDeviceWrapper> Devices
 		{
 			get;

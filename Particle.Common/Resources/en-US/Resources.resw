@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddAction.Content" xml:space="preserve">
+    <value>Add</value>
+    <comment>DeviceList-&gt;Add Button</comment>
+  </data>
+  <data name="AddAction_AddElectron.Text" xml:space="preserve">
+    <value>Add Electron</value>
+    <comment>DeviceList-&gt;Add Button-&gt;Add Electron</comment>
+  </data>
+  <data name="AddAction_AddWithDeviceId.Text" xml:space="preserve">
+    <value>Add with Device Id</value>
+    <comment>DeviceList-&gt;Add Button-&gt;Add With Device Id</comment>
+  </data>
   <data name="Add_Device_Button" xml:space="preserve">
     <value>Add Device</value>
   </data>
