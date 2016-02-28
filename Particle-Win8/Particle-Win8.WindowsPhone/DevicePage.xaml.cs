@@ -33,12 +33,14 @@ namespace Particle_Win8
 		{
 			base.OnNavigatedTo(e);
 			ViewModelLocator.Messenger.Register<DialogMessage>(this, (mes) => { Dialog.ShowMessageDialog(mes); });
+			ViewModelLocator.Messenger.Register<InputDialogMessage>(this, (mes) => { MainPage.InputDialogMessageReceiver(InputDialog, mes); });
 		}
 
 		protected override void OnNavigatedFrom(NavigationEventArgs e)
 		{
 			base.OnNavigatedFrom(e);
 			ViewModelLocator.Messenger.Unregister<DialogMessage>(this);
+			ViewModelLocator.Messenger.Unregister<InputDialogMessage>(this);
 		}
 	}
 }

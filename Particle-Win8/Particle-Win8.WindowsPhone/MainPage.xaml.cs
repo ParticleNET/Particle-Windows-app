@@ -1,5 +1,6 @@
 ﻿using Particle.Common.Messages;
 using Particle.Common.ViewModel;
+using Particle_Win8.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +18,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Async;
+using WinRTXamlToolkit.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,7 +34,7 @@ namespace Particle_Win8
 		{
 			this.InitializeComponent();
 
-			this.NavigationCacheMode = NavigationCacheMode.Required;
+			//this.NavigationCacheMode = NavigationCacheMode.Required;
 			Window.Current.Activated += Current_Activated;
 			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
 		}
@@ -41,21 +44,26 @@ namespace Particle_Win8
 			LoginDialog.Hide();
 		}
 
-		private async void inputDialogMessageReceiver(InputDialogMessage dm)
+
+
+		public static  async void InputDialogMessageReceiver(InputDialog id,InputDialogMessage dm)
 		{
-			InputDialog.InputText = "";
-			String result = "";
-			if (dm.Buttons != null)
+			using (await MDialog.ALocker.LockAsync())
 			{
-				result = await InputDialog.ShowAsync(dm.Title ?? "", dm.Description ?? "", dm.Buttons);
-			}
-			else
-			{
-				result = await InputDialog.ShowAsync(dm.Title ?? "", dm.Description ?? "");
-			}
-			if (dm.CallBack != null)
-			{
-				dm.CallBack(result, InputDialog.InputText);
+				id.InputText = "";
+				String result = "";
+				if (dm.Buttons != null)
+				{
+					result = await id.ShowAsync(dm.Title ?? "", dm.Description ?? "", dm.Buttons);
+				}
+				else
+				{
+					result = await id.ShowAsync(dm.Title ?? "", dm.Description ?? "");
+				}
+				if (dm.CallBack != null)
+				{
+					dm.CallBack(result, id.InputText);
+				}
 			}
 		}
 
@@ -78,7 +86,7 @@ namespace Particle_Win8
 		{
 			base.OnNavigatedTo(e);
 			ViewModelLocator.Messenger.Register<DialogMessage>(this, (mes)=> { Dialog.ShowMessageDialog(mes); });
-			ViewModelLocator.Messenger.Register<InputDialogMessage>(this, inputDialogMessageReceiver);
+			ViewModelLocator.Messenger.Register<InputDialogMessage>(this,(mes) => { InputDialogMessageReceiver(InputDialog, mes); });
 			ViewModelLocator.Messenger.Register<CopyToClipboardMessage>(this, copyToClipboardReceiver);
 			ViewModelLocator.DevicesListViewModel.PropertyChanged += DevicesListViewModel_PropertyChanged;
 		}

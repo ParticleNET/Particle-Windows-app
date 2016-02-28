@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Async;
 
 // The Content Dialog item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -26,6 +27,8 @@ namespace Particle_Win8.Controls
 		{
 			this.InitializeComponent();
 		}
+
+		public readonly static AsyncLock ALocker = new AsyncLock();
 
 		private Action<int> callback;
 
@@ -67,7 +70,11 @@ namespace Particle_Win8.Controls
 				callback = message.CallBack;
 			}
 
-			await ShowAsync();
+
+			using (await ALocker.LockAsync())
+			{
+				await ShowAsync();
+			}
 		}
 
 		private void Button_Tapped(object sender, TappedRoutedEventArgs e)

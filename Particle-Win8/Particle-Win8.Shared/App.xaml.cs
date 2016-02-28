@@ -1,17 +1,33 @@
-﻿using Particle;
+﻿/*
+   Copyright 2016 ParticleNET
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using Particle;
 using Particle.Common;
 using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 #if WINDOWS_PHONE_APP
 using Windows.Phone.UI.Input;
+#else
+using Windows.UI.ApplicationSettings;
 #endif
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
@@ -73,6 +89,7 @@ namespace Particle_Win8
 #endif
 
 			Frame rootFrame = Window.Current.Content as Frame;
+			
 			ParticleCloud.SyncContext = System.Threading.SynchronizationContext.Current;
 
 			// Do not repeat app initialization when the Window already has content,
@@ -142,10 +159,13 @@ namespace Particle_Win8
 		{
 			base.OnWindowCreated(args);
 
+#if !WINDOWS_PHONE_APP
 			var settings = SettingsPane.GetForCurrentView();
 			settings.CommandsRequested += Settings_CommandsRequested;
+#endif
 		}
 
+#if !WINDOWS_PHONE_APP
 		private void Settings_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
 		{
 			args.Request.ApplicationCommands.Add(new SettingsCommand("ReportBug", MM.M.GetString("Settings_ReportBug"), (a) =>
@@ -183,7 +203,7 @@ namespace Particle_Win8
 				await Windows.System.Launcher.LaunchUriAsync(new Uri("https://raw.githubusercontent.com/ParticleNET/Particle-Windows-app/master/LICENSE"));
 			}));
 		}
-
+#endif
 		/// <summary>
 		/// Invoked when application execution is being suspended.  Application state is saved
 		/// without knowing whether the application will be terminated or resumed with the contents
