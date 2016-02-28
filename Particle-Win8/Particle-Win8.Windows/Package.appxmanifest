@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-  <Identity Name="ParticleTinker" Publisher="CN=ParticleNET" Version="0.4.3.2" />
+  <Identity Name="ParticleTinker" Publisher="CN=ParticleNET" Version="1.1.0.0" />
   <Properties>
     <DisplayName>Particle Tinker</DisplayName>
     <PublisherDisplayName>ParticleNET</PublisherDisplayName>
