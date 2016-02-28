@@ -1,8 +1,11 @@
 ﻿using Particle;
+using Particle.Common;
+using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
@@ -116,7 +119,7 @@ namespace Particle_Win8
 					throw new Exception("Failed to create initial page");
 				}
 			}
-			
+
 			// Ensure the current window is active
 			Window.Current.Activate();
 		}
@@ -134,6 +137,52 @@ namespace Particle_Win8
 			rootFrame.Navigated -= this.RootFrame_FirstNavigated;
 		}
 #endif
+
+		protected override void OnWindowCreated(WindowCreatedEventArgs args)
+		{
+			base.OnWindowCreated(args);
+
+			var settings = SettingsPane.GetForCurrentView();
+			settings.CommandsRequested += Settings_CommandsRequested;
+		}
+
+		private void Settings_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+		{
+			args.Request.ApplicationCommands.Add(new SettingsCommand("ReportBug", MM.M.GetString("Settings_ReportBug"), (a) =>
+			{
+				DialogMessage message = new DialogMessage();
+				message.Title = MM.M.GetString("RAB_Dialog_Title");
+				message.Description = MM.M.GetString("RAB_Dialog_Description");
+				message.Buttons = new System.Collections.Generic.List<Particle.Common.Models.MessageButtonModel>() {
+					new Particle.Common.Models.MessageButtonModel()
+					{
+						Id = 1,
+						Text = MM.M.GetString("RAB_Dialog_GoToGithub")
+					},
+					new Particle.Common.Models.MessageButtonModel()
+					{
+						Id = 2,
+						Text = MM.M.GetString("Cancel_Button")
+					}
+				};
+				message.CallBack = async (id) =>
+				{
+					if (id == 1)
+					{
+						await Windows.System.Launcher.LaunchUriAsync(new Uri("https://github.com/ParticleNET/Particle-Windows-app/issues"));
+					}
+				};
+				ViewModelLocator.Messenger.Send(message);
+			}));
+			args.Request.ApplicationCommands.Add(new SettingsCommand("Store", MM.M.GetString("Settings_Store"), async (a) =>
+			{
+				await Windows.System.Launcher.LaunchUriAsync(new Uri("https://store.particle.io/"));
+			}));
+			args.Request.ApplicationCommands.Add(new SettingsCommand("License", MM.M.GetString("Settings_License"), async (a) =>
+			{
+				await Windows.System.Launcher.LaunchUriAsync(new Uri("https://raw.githubusercontent.com/ParticleNET/Particle-Windows-app/master/LICENSE"));
+			}));
+		}
 
 		/// <summary>
 		/// Invoked when application execution is being suspended.  Application state is saved

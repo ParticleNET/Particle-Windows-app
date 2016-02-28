@@ -16,5 +16,5 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding Logout}">Logout</Button>
+	<Button x:Uid="Logout_LogoutAction" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding Logout}">Logout</Button>
 </UserControl>

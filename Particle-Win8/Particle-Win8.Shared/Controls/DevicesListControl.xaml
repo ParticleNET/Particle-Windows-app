@@ -76,12 +76,12 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-		<Button Command="{Binding RefreshCommand}" Grid.Row="2" HorizontalAlignment="Stretch">Refresh</Button>
+		<Button x:Uid="DeviceList_Refresh" Command="{Binding RefreshCommand}" Grid.Row="2" HorizontalAlignment="Stretch">4 Refresh</Button>
 		<Button x:Uid="DeviceList_AddAction" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Content="1 Add">
 			<Button.Flyout>
 				<MenuFlyout>
-					<MenuFlyoutItem x:Uid="AddAction_AddWithDeviceId" Command="{Binding AddDeviceCommand}" Text="1 Add with Device Id" />
-					<MenuFlyoutItem x:Uid="AddAction_AddElectron" Command="{Binding AddElectronCommand}" Text="2 Add Electron" />
+					<MenuFlyoutItem x:Uid="DeviceList_AddAction_AddWithDeviceId" Command="{Binding AddDeviceCommand}" Text="2 Add with Device Id" />
+					<MenuFlyoutItem x:Uid="DeviceList_AddAction_AddElectron" Command="{Binding AddElectronCommand}" Text="3 Add Electron" />
 				</MenuFlyout>
 			</Button.Flyout>
 		</Button>

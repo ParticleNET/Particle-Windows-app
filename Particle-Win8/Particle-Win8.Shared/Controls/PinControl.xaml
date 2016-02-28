@@ -18,10 +18,10 @@
 					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="2" FalseValue="0" />
 					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="2" />
 					<MenuFlyout x:Name="ButtonFlyout">
-						<MenuFlyoutItem Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes, ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}">analogRead</MenuFlyoutItem>
-						<MenuFlyoutItem Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}">analogWrite</MenuFlyoutItem>
-						<MenuFlyoutItem Command="{Binding DigitalRead}">digitalRead</MenuFlyoutItem>
-						<MenuFlyoutItem Command="{Binding DigitalWrite}">digitalWrite</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_AnalogRead" Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes, ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}">1 analogRead</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_AnalogWrite" Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}">2 analogWrite</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_DigitalRead" Command="{Binding DigitalRead}">3 digitalRead</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_DigitalWrite" Command="{Binding DigitalWrite}">4 digitalWrite</MenuFlyoutItem>
 					</MenuFlyout>
 				</ResourceDictionary>
 			</ResourceDictionary.MergedDictionaries>

@@ -281,10 +281,46 @@ namespace Particle.Common.ViewModel
 					var result = await ViewModelLocator.Cloud.ClaimDeviceAsync(text);
 					if (result.Success)
 					{
-						if (RefreshCommand.CanExecute(null))
+						var idm = new InputDialogMessage();
+						idm.Title = MM.M.GetString("NameDevice_Dialog_Title");
+						idm.Description = MM.M.GetString("NameDevice_Dialog_Description");
+						idm.Buttons = new String[]
 						{
-							RefreshCommand.Execute(null);
-						}
+							MM.M.GetString("NameDevice_Dialog_Button")
+						};
+
+						idm.CallBack = async (act, resp) =>
+						{
+							if (String.IsNullOrWhiteSpace(resp))
+							{
+								ViewModelLocator.Messenger.Send(new DialogMessage
+								{
+									Description = MM.M.GetString("NameDevice_Dialog_Error"),
+									CallBack = (i)=>
+									{
+										ViewModelLocator.Messenger.Send(idm);
+									}
+								});
+							}
+							else
+							{
+								var devices = await ViewModelLocator.Cloud.GetDevicesAsync();
+								if(devices.Success)
+								{
+									var d = devices?.Data.FirstOrDefault(i => String.Compare(i.Id, text) == 0);
+									if(d != null)
+									{
+										await d.RenameAsync(resp);
+									}
+								}
+								if (RefreshCommand.CanExecute(null))
+								{
+									RefreshCommand.Execute(null);
+								}
+							}
+						};
+						ViewModelLocator.Messenger.Send(idm);
+						
 					}
 					else
 					{
