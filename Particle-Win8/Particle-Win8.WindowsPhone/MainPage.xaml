@@ -1,14 +1,19 @@
 ﻿<Page
-    x:Class="Particle_Win8.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Particle_Win8"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	x:Class="Particle_Win8.MainPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Particle_Win8.Controls"
+	xmlns:controls="using:Particle.Common.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-    </Grid>
+	<Grid>
+		<controls:DevicesListControl />
+		<local:AuthDialog x:Name="LoginDialog" Closing="LoginDialog_Closing" />
+		<local:MDialog x:Name="Dialog" />
+		<toolkit:InputDialog x:Name="InputDialog" />
+	</Grid>
 </Page>

@@ -1,41 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-
-  <Identity Name="69fc944b-a1c6-4a17-a1a7-2a154b2b66b8"
-            Publisher="CN=holts"
-            Version="1.0.0.0" />
-
+  <Identity Name="ParticleTinker" Publisher="CN=ParticleNET" Version="1.1.0.0" />
   <Properties>
-    <DisplayName>Particle-Win8.Windows</DisplayName>
-    <PublisherDisplayName>holts</PublisherDisplayName>
+    <DisplayName>Particle Tinker</DisplayName>
+    <PublisherDisplayName>ParticleNET</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
-
   <Prerequisites>
     <OSMinVersion>6.3.0</OSMinVersion>
     <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
   </Prerequisites>
-
   <Resources>
-    <Resource Language="x-generate"/>
+    <Resource Language="x-generate" />
   </Resources>
-
   <Applications>
-    <Application Id="App"
-        Executable="$targetnametoken$.exe"
-        EntryPoint="Particle_Win8.Windows.App">
-        <m2:VisualElements
-            DisplayName="Particle-Win8.Windows"
-            Square150x150Logo="Assets\Logo.png"
-            Square30x30Logo="Assets\SmallLogo.png"
-            Description="Particle-Win8.Windows"
-            ForegroundText="light"
-            BackgroundColor="#464646">
-            <m2:SplashScreen Image="Assets\SplashScreen.png" />
-        </m2:VisualElements>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Particle_Win8.Windows.App">
+      <m2:VisualElements DisplayName="Particle Tinker" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png" Description="Get connected and start building your Internet of Things project right away with Particle Tinker(by ParticleNET), the companion app to the Core, Photon, and Electron. The tiny but powerful Wi-Fi development boards from the team at Particle (Particle was formerly known as Spark)" ForegroundText="light" BackgroundColor="#0a81be">
+        <m2:DefaultTile ShortName="Particle Tinker">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+        <m2:ApplicationView MinWidth="width320" />
+      </m2:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <m2:DeviceCapability Name="usb">
+      <m2:Device Id="vidpid:2B04 C006">
+        <m2:Function Type="name:vendorSpecific" />
+      </m2:Device>
+    </m2:DeviceCapability>
   </Capabilities>
 </Package>

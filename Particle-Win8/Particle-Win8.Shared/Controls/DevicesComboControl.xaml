@@ -1,0 +1,85 @@
+﻿<UserControl
+	x:Class="Particle.Common.Controls.DevicesComboControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Particle.Common.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}"
+	mc:Ignorable="d"
+	d:DesignHeight="300"
+	d:DesignWidth="400">
+
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
+				<ResourceDictionary>
+					<local:ComboBoxItemTemplateSelector x:Key="TemplateSelector">
+						<local:ComboBoxItemTemplateSelector.SelectedTemplate>
+							<DataTemplate>
+								<Grid Margin="12">
+									<Grid.RowDefinitions>
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="Auto" />
+									</Grid.ColumnDefinitions>
+									<TextBlock Text="{Binding Device.Name}" />
+									<TextBlock Text="{Binding Status, Converter={StaticResource StatusTextConverter}}" Grid.Column="1" HorizontalAlignment="Right" />
+									<Border Grid.Column="3" Background="{Binding Status, Converter={StaticResource StatusColorConverter}}" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0">
+									</Border>
+									<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Grid.Row="4" Grid.ColumnSpan="4" />
+								</Grid>
+							</DataTemplate>
+						</local:ComboBoxItemTemplateSelector.SelectedTemplate>
+						<local:ComboBoxItemTemplateSelector.DropDownTemplate>
+							<DataTemplate>
+								<Grid Margin="12">
+									<Grid.RowDefinitions>
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+										<RowDefinition />
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition />
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="Auto" />
+										<ColumnDefinition Width="Auto" />
+									</Grid.ColumnDefinitions>
+									<TextBlock Grid.ColumnSpan="2" Text="{Binding Device.Name}" />
+									<TextBlock Grid.Row="1" Text="{Binding Device.DeviceType, Converter={StaticResource ParticleDeviceTypeConverter}}" />
+									<TextBlock Text="{Binding Status, Converter={StaticResource StatusTextConverter}}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" />
+									<Border Grid.Row="1" Grid.Column="3" Background="{Binding Status, Converter={StaticResource StatusColorConverter}}" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0">
+									</Border>
+									<TextBlock Grid.ColumnSpan="4" Grid.Row="2" Text="{Binding Device.Id}" />
+									<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Grid.Row="4" Grid.ColumnSpan="4" />
+								</Grid>
+							</DataTemplate>
+						</local:ComboBoxItemTemplateSelector.DropDownTemplate>
+					</local:ComboBoxItemTemplateSelector>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	<Grid>
+		<ComboBox x:Name="DropDownList" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" ItemTemplateSelector="{StaticResource TemplateSelector}">
+			<ComboBox.ItemContainerStyle>
+				<Style TargetType="ComboBoxItem">
+					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+				</Style>
+			</ComboBox.ItemContainerStyle>
+		</ComboBox>
+		<Border Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Background="#BF000000">
+			<StackPanel>
+				<TextBlock Text="Refreshing" Style="{StaticResource SubheaderTextBlockStyle}" />
+				<ProgressRing IsActive="{Binding IsRefreshing}" />
+			</StackPanel>
+		</Border>
+	</Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿<UserControl
+	x:Class="Particle.Common.Controls.PinControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Particle.Common.Controls"
+	xmlns:model="using:Particle.Common.Models"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:common="using:Particle.Common"
+	mc:Ignorable="d"
+	d:DesignHeight="300"
+	d:DesignWidth="400" DataContextChanged="UserControl_DataContextChanged">
+	<UserControl.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
+				<ResourceDictionary>
+					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="2" FalseValue="0" />
+					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="2" />
+					<MenuFlyout x:Name="ButtonFlyout">
+						<MenuFlyoutItem x:Uid="Menu_AnalogRead" Command="{Binding AnalogRead}" Visibility="{Binding SupportedModes, ConverterParameter=AnalogRead, Converter={StaticResource PinModeConverter}}">1 analogRead</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_AnalogWrite" Command="{Binding AnalogWrite}" Visibility="{Binding SupportedModes,      ConverterParameter=AnalogWrite, Converter={StaticResource PinModeConverter}}">2 analogWrite</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_DigitalRead" Command="{Binding DigitalRead}">3 digitalRead</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="Menu_DigitalWrite" Command="{Binding DigitalWrite}">4 digitalWrite</MenuFlyoutItem>
+					</MenuFlyout>
+				</ResourceDictionary>
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</UserControl.Resources>
+	<Grid>
+		<Button x:Name="PinAction" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding Refresh}" Visibility="{Binding ShowAnalogSelect, Converter={StaticResource VisibilityNotConverter}}" Holding="Button_Holding" RightTapped="Button_RightTapped" DoubleTapped="Button_DoubleTapped" Padding="4" >
+			<Grid >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto" />
+					<ColumnDefinition Width="1*" />
+					<ColumnDefinition Width="auto" />
+				</Grid.ColumnDefinitions>
+				<Border Margin="0,12" CornerRadius="50" Padding="6" BorderBrush="{Binding Path=Mode,Converter={StaticResource PinBorderColorConverter}}" BorderThickness="3" Grid.Column="{Binding IsRight, Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource ButtonLeftRight}}" VerticalAlignment="Center">
+					<TextBlock Text="{Binding PinDisplayName}" />
+				</Border>
+				<ProgressBar Grid.Column="1" Margin="6,12" Minimum="0" Value="{Binding Value}" Maximum="{Binding Mode, Converter={StaticResource MaximumConverter}}" Visibility="{Binding Mode, Converter={StaticResource ProgresBarVisibilityConverter}}" />
+				<TextBlock Margin="0,12" Grid.Column="{Binding IsRight,Converter={StaticResource BooleanNumberConverter}, ConverterParameter={StaticResource TextRightLeft}}" Text="{Binding PinValue, Converter={StaticResource PinValueConverter}}" VerticalAlignment="Center" />
+			</Grid>
+		</Button>
+		<Grid Visibility="{Binding ShowAnalogSelect, Converter={StaticResource VisibilityConverter}}" Height="77">
+			<Slider Grid.Column="1" Margin="0,12" Maximum="255" Minimum="0" IntermediateValue="1" Value="{Binding Value, Mode=TwoWay}" PointerCaptureLost="Slider_PointerCaptureLost" VerticalAlignment="Center" />
+		</Grid>
+	</Grid>
+</UserControl>

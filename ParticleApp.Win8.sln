@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Particle-Win8", "Particle-Win8", "{229832C4-A063-4CD6-B3DA-34251C905E0B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Particle-Win8.Shared", "Particle-Win8\Particle-Win8.Shared\Particle-Win8.Shared.shproj", "{4FCBC878-6FA3-40E6-8F54-206E28376570}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Particle-Win8.Windows", "Particle-Win8\Particle-Win8.Windows\Particle-Win8.Windows.csproj", "{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCC9763D-4EEC-43D5-8895-CF5E9A3AD18F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Particle-Win8\Particle-Win8.Shared\Particle-Win8.Shared.projitems*{31f2313c-f90c-4ba1-af22-28ff5efd5c5e}*SharedItemsImports = 4
+		Particle-Win8\Particle-Win8.Shared\Particle-Win8.Shared.projitems*{4fcbc878-6fa3-40e6-8f54-206e28376570}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|ARM.ActiveCfg = Debug|ARM
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|ARM.Build.0 = Debug|ARM
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|ARM.Deploy.0 = Debug|ARM
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|x64.ActiveCfg = Debug|x64
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|x64.Build.0 = Debug|x64
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|x64.Deploy.0 = Debug|x64
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|x86.ActiveCfg = Debug|x86
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|x86.Build.0 = Debug|x86
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Debug|x86.Deploy.0 = Debug|x86
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|ARM.ActiveCfg = Release|ARM
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|ARM.Build.0 = Release|ARM
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|ARM.Deploy.0 = Release|ARM
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x64.ActiveCfg = Release|x64
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x64.Build.0 = Release|x64
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x64.Deploy.0 = Release|x64
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x86.ActiveCfg = Release|x86
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x86.Build.0 = Release|x86
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4FCBC878-6FA3-40E6-8F54-206E28376570} = {229832C4-A063-4CD6-B3DA-34251C905E0B}
+		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E} = {229832C4-A063-4CD6-B3DA-34251C905E0B}
+	EndGlobalSection
+EndGlobal

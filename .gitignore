@@ -7,6 +7,9 @@
 *.userosscache
 *.sln.docstates
 
+# Windows StoreAssociation
+Package.StoreAssociation.xml
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -21,6 +24,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+tools/
 
 # Visual Studo 2015 cache/options directory
 .vs/

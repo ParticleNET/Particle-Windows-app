@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,5 +15,128 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ComboBoxItemTemplateSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DevicesComboControl.xaml.cs">
+      <DependentUpon>DevicesComboControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\DevicesListControl.xaml.cs">
+      <DependentUpon>DevicesListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\LoginControl.xaml.cs">
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\LogoutControl.xaml.cs">
+      <DependentUpon>LogoutControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\PinControl.xaml.cs">
+      <DependentUpon>PinControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\TinkerControl.xaml.cs">
+      <DependentUpon>TinkerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\AlignmentConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BooleanNumberConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\MaximumConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NotBooleanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\NotNullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ParticleDeviceTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PinBorderColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PinModeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\PinValueConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ProgresBarVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StatusColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StatusTextConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityNotConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityNotNullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignDevicesListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignLoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignLogoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignParticleDevice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignPinViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignRegisterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignTinkerRowViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignTinkerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extentions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDevicesListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILogoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPinValue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPinViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IRegisterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITinkerRowViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ITinkerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\CopyToClipboardMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\DialogMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\InputDialogMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\LoggedInMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\LoggedOutMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\ModeDialogMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\RefreshDevicesMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\SelectedDeviceMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Messages\YourWebEventMessage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BooleanToNumber.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MessageButtonModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ParticleDeviceWrapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PinValueModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)PinMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AppSettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DevicesListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LogoutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\PinViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\RegisterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TinkerRowViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TinkerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLocator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\DevicesComboControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\DevicesListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\LoginControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\LogoutControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\PinControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\TinkerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)MainDictionary.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)packages.config" />
   </ItemGroup>
 </Project>
