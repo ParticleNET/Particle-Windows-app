@@ -13,10 +13,6 @@
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
-				<ResourceDictionary
-			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
-				<ResourceDictionary
-			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkTextBox/WatermarkTextBox.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<Style x:Key="TinkerItemContainer" TargetType="ListViewItem">
 				<Setter Property="Template">
@@ -65,11 +61,5 @@
 				</Path>
 			</Grid>
 		</ScrollViewer>
-		<StackPanel Grid.Row="1" Orientation="Horizontal" DataContext="{Binding Device}">
-			<AppBarButton x:Uid="Tinker_Menu_Rename" Label="1 Rename" Command="{Binding RenameCommand}" Icon="Edit"></AppBarButton>
-			<AppBarButton x:Uid="Tinker_Menu_CopyDeviceId" Label="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Icon="Copy"></AppBarButton>
-			<AppBarButton x:Uid="Tinker_Menu_ReFlashTinker" Label="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" Icon="Go"></AppBarButton>
-			<AppBarButton x:Uid="Tinker_Menu_Unclaim" Label="4 Unclaim" Icon="Delete" Command="{Binding UnclaimDeviceCommand}"></AppBarButton>
-		</StackPanel>
 	</Grid>
 </UserControl>

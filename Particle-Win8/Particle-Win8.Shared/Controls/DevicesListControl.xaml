@@ -76,15 +76,6 @@
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
-		<Button x:Uid="DeviceList_Refresh" Command="{Binding RefreshCommand}" Grid.Row="2" HorizontalAlignment="Stretch">4 Refresh</Button>
-		<Button x:Uid="DeviceList_AddAction" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Content="1 Add">
-			<Button.Flyout>
-				<MenuFlyout>
-					<MenuFlyoutItem x:Uid="DeviceList_AddAction_AddWithDeviceId" Command="{Binding AddDeviceCommand}" Text="2 Add with Device Id" />
-					<MenuFlyoutItem x:Uid="DeviceList_AddAction_AddElectron" Command="{Binding AddElectronCommand}" Text="3 Add Electron" />
-				</MenuFlyout>
-			</Button.Flyout>
-		</Button>
 		<Border Grid.ColumnSpan="2" Grid.RowSpan="3" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Background="#BF000000">
 			<StackPanel>
 				<TextBlock Text="Refreshing" Style="{StaticResource SubheaderTextBlockStyle}" />
