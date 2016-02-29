@@ -55,6 +55,15 @@ namespace Particle_Win8
 #if WINDOWS_PHONE_APP
 			HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 			ViewModelLocator.SupportsClipboard = false;
+#if DEBUG
+			this.UnhandledException += (s, a) =>
+			{
+				if (System.Diagnostics.Debugger.IsAttached)
+				{
+					System.Diagnostics.Debugger.Break();
+				}
+			};
+#endif
 #else
 			ViewModelLocator.SupportsClipboard = true;
 #endif

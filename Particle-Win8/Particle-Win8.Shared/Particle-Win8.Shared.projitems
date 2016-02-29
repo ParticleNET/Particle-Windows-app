@@ -49,6 +49,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityNotConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityNotNullConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignCommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignDevicesListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignLoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignLogoutViewModel.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignTinkerRowViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignTinkerViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extentions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDevicesListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILogoutViewModel.cs" />
@@ -88,6 +90,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PinMode.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AppSettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\CommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DevicesListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LogoutViewModel.cs" />

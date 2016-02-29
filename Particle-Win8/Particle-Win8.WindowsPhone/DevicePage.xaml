@@ -20,4 +20,18 @@
 		<local:MDialog x:Name="Dialog" Grid.RowSpan="2" />
 		<toolkit:InputDialog x:Name="InputDialog" Grid.RowSpan="2" />
 	</Grid>
+
+	<Page.BottomAppBar>
+		<CommandBar>
+			<CommandBar.SecondaryCommands>
+			<AppBarButton x:Uid="Tinker_Menu_Rename" Label="1 Rename" Command="{Binding Device.RenameCommand}" Icon="Edit"></AppBarButton>
+			<AppBarButton x:Uid="Tinker_Menu_ReFlashTinker" Label="3 Re-flash Tinker" Command="{Binding Device.FlashTinkerCommand}" Icon="Go"></AppBarButton>
+			
+				<AppBarButton x:Uid="Tinker_Menu_Unclaim" Label="4 Unclaim" Icon="Delete" Command="{Binding Device.UnclaimDeviceCommand}"></AppBarButton>
+				<AppBarButton x:Uid="AppBar_ReportABug" Command="{Binding CommandViewModel.ReportBugCommand, Source={StaticResource Locator}}" Label="1 Report a Bug" />
+				<AppBarButton x:Uid="AppBar_ParticleStore" Command="{Binding CommandViewModel.ParticleStoreCommand, Source={StaticResource Locator}}" Label="2 Particle Store"/>
+				<AppBarButton x:Uid="AppBar_License" Command="{Binding CommandViewModel.LicenseCommand, Source={StaticResource Locator}}" Label="3 License" />
+			</CommandBar.SecondaryCommands>
+		</CommandBar>
+	</Page.BottomAppBar>
 </Page>

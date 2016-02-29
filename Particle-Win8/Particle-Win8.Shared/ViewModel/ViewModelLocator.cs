@@ -42,6 +42,7 @@ namespace Particle.Common.ViewModel
 				SimpleIoc.Default.Register<IDevicesListViewModel, Design.DesignDevicesListViewModel>();
 				SimpleIoc.Default.Register<ITinkerViewModel, Design.DesignTinkerViewModel>();
 				SimpleIoc.Default.Register<ILogoutViewModel, Design.DesignLogoutViewModel>();
+				SimpleIoc.Default.Register<ICommandsViewModel, Design.DesignCommandsViewModel>();
 			}
 			else
 			{
@@ -50,6 +51,7 @@ namespace Particle.Common.ViewModel
 				SimpleIoc.Default.Register<IDevicesListViewModel, DevicesListViewModel>();
 				SimpleIoc.Default.Register<ITinkerViewModel, TinkerViewModel>();
 				SimpleIoc.Default.Register<ILogoutViewModel, LogoutViewModel>();
+				SimpleIoc.Default.Register<ICommandsViewModel, CommandsViewModel>();
 			}
 			cloud = new ParticleCloud();
 			Messenger.Register<LoggedInMessage>(cloud, loggedIn);
@@ -95,6 +97,14 @@ namespace Particle.Common.ViewModel
 				y.Events -= YourEvents_Events; // clean up the listener
 				y.Stop();
 				y = null;
+			}
+		}
+
+		public static ICommandsViewModel CommandViewModel
+		{
+			get
+			{
+				return SimpleIoc.Default.GetInstance<ICommandsViewModel>();
 			}
 		}
 		

@@ -8,6 +8,7 @@
 	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
+	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}"
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Grid>
@@ -16,4 +17,22 @@
 		<local:MDialog x:Name="Dialog" />
 		<toolkit:InputDialog x:Name="InputDialog" />
 	</Grid>
+	<Page.BottomAppBar>
+		<CommandBar>
+			<AppBarButton x:Uid="AppBar_AddDevice" Label="5 Add Device" Icon="Add">
+				<AppBarButton.Flyout>
+					<MenuFlyout>
+						<MenuFlyoutItem x:Uid="AppBar_AddDevice_AddWithId" Command="{Binding AddDeviceCommand}">5 Add with Device Id</MenuFlyoutItem>
+						<MenuFlyoutItem x:Uid="AppBar_AddDevice_AddElectron" Command="{Binding AddElectronCommand}">5 Add Electron</MenuFlyoutItem>
+					</MenuFlyout>
+				</AppBarButton.Flyout>
+			</AppBarButton>
+			<AppBarButton x:Uid="AppBar_Refresh" Label="6 Refresh" Icon="Refresh" Command="{Binding RefreshCommand}" />
+			<CommandBar.SecondaryCommands>
+				<AppBarButton x:Uid="AppBar_ReportABug" Command="{Binding CommandViewModel.ReportBugCommand, Source={StaticResource Locator}}" Label="1 Report a Bug" />
+				<AppBarButton x:Uid="AppBar_ParticleStore" Command="{Binding CommandViewModel.ParticleStoreCommand, Source={StaticResource Locator}}" Label="2 Particle Store"/>
+				<AppBarButton x:Uid="AppBar_License" Command="{Binding CommandViewModel.LicenseCommand, Source={StaticResource Locator}}" Label="3 License" />
+			</CommandBar.SecondaryCommands>
+		</CommandBar>
+	</Page.BottomAppBar>
 </Page>

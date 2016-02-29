@@ -452,4 +452,16 @@ Id: {1}</value>
     <value>Refresh</value>
     <comment>AppBar-&gt;Refresh text</comment>
   </data>
+  <data name="AppBar_License.Label" xml:space="preserve">
+    <value>License</value>
+    <comment>AppBar-&gt;License</comment>
+  </data>
+  <data name="AppBar_ParticleStore.Label" xml:space="preserve">
+    <value>Particle Store</value>
+    <comment>AppBar-&gt;Particle Store text</comment>
+  </data>
+  <data name="AppBar_ReportABug.Label" xml:space="preserve">
+    <value>Report a Bug</value>
+    <comment>AppBar-&gt;Report a Bug text</comment>
+  </data>
 </root>
