@@ -160,8 +160,8 @@
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Particle, Version=0.8.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.7\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
+    <Reference Include="Particle, Version=0.8.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.14\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
