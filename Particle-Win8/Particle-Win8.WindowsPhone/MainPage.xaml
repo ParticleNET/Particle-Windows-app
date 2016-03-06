@@ -15,7 +15,7 @@
 		<controls:DevicesListControl />
 		<local:AuthDialog x:Name="LoginDialog" Closing="LoginDialog_Closing" />
 		<local:MDialog x:Name="Dialog" />
-		<toolkit:InputDialog x:Name="InputDialog" />
+		<local:InDialog x:Name="InputDialog" />
 	</Grid>
 	<Page.BottomAppBar>
 		<CommandBar>

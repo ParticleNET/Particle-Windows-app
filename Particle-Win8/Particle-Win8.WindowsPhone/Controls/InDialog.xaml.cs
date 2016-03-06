@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage.Pickers.Provider;
@@ -30,86 +29,78 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using WinRTXamlToolkit.Async;
 
 // The Content Dialog item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace Particle_Win8.Controls
 {
-	public sealed partial class MDialog : ContentDialog
+	public sealed partial class InDialog : ContentDialog
 	{
-		public MDialog()
+		public InDialog()
 		{
 			this.InitializeComponent();
 		}
 
-		public readonly static AsyncLock ALocker = new AsyncLock();
-
-		private Action<int> callback;
-
-		public async void ShowMessageDialog(DialogMessage message)
+		public async void ShowInputDialog(InputDialogMessage message)
 		{
-			using (await ALocker.LockAsync())
+			using(var loc = await MDialog.ALocker.LockAsync())
 			{
-				callback = null;
-				if (message.Description != null && message.Title != null)
+				InputBox.Text = String.Empty;
+				if (!String.IsNullOrWhiteSpace(message.Title))
 				{
 					Title = message.Title;
-					Body.Text = message.Description;
 				}
 				else
 				{
 					Title = "";
-					Body.Text = message.Description;
 				}
 
-				LinkContainer.Children.Clear();
-				if (message.Buttons != null && message.Buttons.Count > 0)
+				if (!String.IsNullOrWhiteSpace(message.Description))
 				{
-					IsPrimaryButtonEnabled = false;
-					foreach (var b in message.Buttons)
-					{
-						HyperlinkButton button = new HyperlinkButton();
-						button.Content = b.Text;
-						button.Tag = b.Id;
-						button.Tapped += Button_Tapped;
-						LinkContainer.Children.Add(button);
-					}
+					Description.Text = message.Description;
 				}
 				else
 				{
-					IsPrimaryButtonEnabled = true;
-					PrimaryButtonText = "Ok";
+					Description.Text = "";
 				}
 
-				if (message.CallBack != null)
+				if (message.Buttons?.Length == 1)
 				{
-					callback = message.CallBack;
+					IsSecondaryButtonEnabled = false;
+					PrimaryButtonText = message.Buttons[0];
+				}
+				else if(message.Buttons?.Length > 1)
+				{
+					IsSecondaryButtonEnabled = true;
+					PrimaryButtonText = message.Buttons[0];
+					SecondaryButtonText = message.Buttons[1];
 				}
 
-
-
-				await ShowAsync();
+				var result = await ShowAsync();
+				if(message.CallBack != null)
+				{
+					if(result == ContentDialogResult.Primary)
+					{
+						message.CallBack(PrimaryButtonText, InputBox.Text);
+					}
+					else if(result == ContentDialogResult.Secondary)
+					{
+						message.CallBack(SecondaryButtonText, InputBox.Text);
+					}
+					else
+					{
+						message.CallBack(null, InputBox.Text);
+					}
+				}
 			}
-		}
-
-		private void Button_Tapped(object sender, TappedRoutedEventArgs e)
-		{
-			HyperlinkButton button = sender as HyperlinkButton;
-			int id = (int)button.Tag;
-			if (callback != null)
-			{
-				callback(id);
-			}
-			Hide();
 		}
 
 		private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
 		{
-			if (callback != null)
-			{
-				callback(0);
-			}
+		}
+
+		private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+		{
 		}
 	}
 }
