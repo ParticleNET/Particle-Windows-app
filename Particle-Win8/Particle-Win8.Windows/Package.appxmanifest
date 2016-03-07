@@ -28,10 +28,10 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
-    <m2:DeviceCapability Name="usb">
+    <!--<m2:DeviceCapability Name="usb">
       <m2:Device Id="vidpid:2B04 C006">
         <m2:Function Type="name:vendorSpecific" />
       </m2:Device>
-    </m2:DeviceCapability>
+    </m2:DeviceCapability>-->
   </Capabilities>
 </Package>
