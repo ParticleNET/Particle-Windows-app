@@ -8,8 +8,7 @@
 	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
-	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}">
 
 	<Grid>
 		<controls:DevicesListControl />
