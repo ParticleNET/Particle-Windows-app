@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="SannelSoftwareLLC.ParticleTinker" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="1.1.0.0" />
+  <Identity Name="SannelSoftwareLLC.ParticleTinker" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="1.1.0.1" />
   <mp:PhoneIdentity PhoneProductId="b2e91560-8848-4ac2-a800-7c38f5ed7d3e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Particle Tinker</DisplayName>

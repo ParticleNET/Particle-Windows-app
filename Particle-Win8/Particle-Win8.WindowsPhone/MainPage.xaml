@@ -24,21 +24,6 @@
 		<local:AuthDialog x:Name="LoginDialog" Closing="LoginDialog_Closing" />
 		<local:MDialog x:Name="Dialog" />
 		<local:InDialog x:Name="InputDialog" />
-		<Button  Margin="24,0,0,0" Padding="0" BorderThickness="0"  VerticalAlignment="Center" MinWidth="0" MinHeight="0" Style="{StaticResource MenuButon}">
-			<Button.Flyout>
-				<MenuFlyout>
-					<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />
-					<MenuFlyoutItem x:Uid="Menu_CopyDeviceId" Text="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
-					<MenuFlyoutItem x:Uid="Menu_ReflashTinker" Text="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
-					<MenuFlyoutItem x:Uid="Menu_Unclaim" Text="Unclaim" Command="{Binding UnclaimDeviceCommand}" />
-				</MenuFlyout>
-			</Button.Flyout>
-			<StackPanel>
-				<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
-				<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
-				<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0" />
-			</StackPanel>
-		</Button>
 	</Grid>
 	<Page.BottomAppBar>
 		<CommandBar>

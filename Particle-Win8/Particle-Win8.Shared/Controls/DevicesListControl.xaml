@@ -48,7 +48,7 @@
 								<TextBlock Text="{Binding Status, Converter={StaticResource StatusTextConverter}}"  VerticalAlignment="Center" />
 								<Border Background="{Binding Status, Converter={StaticResource StatusColorConverter}}" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0"  VerticalAlignment="Center">
 								</Border>
-								<Button  Margin="24,0,0,0" Padding="0" BorderThickness="0"  VerticalAlignment="Center" MinWidth="0" MinHeight="0"  Style="{StaticResource MenuButon}">
+								<Button  Padding="24,0,12,0" BorderThickness="0"  VerticalAlignment="Center" MinWidth="0" MinHeight="0"  Style="{StaticResource MenuButon}">
 									<Button.Flyout>
 										<MenuFlyout>
 											<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Particle_Win8" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Particle_Win8" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d">
 	<Thickness x:Key="PhoneBorderThickness">2.5</Thickness>
 	<FontFamily x:Key="PhoneFontFamilyNormal">Segoe WP</FontFamily>
 	<FontWeight x:Key="PhoneButtonFontWeight">Semibold</FontWeight>
@@ -35,4 +35,7 @@
 		</Setter>
 	</Style>
 
+	<Style TargetType="HyperlinkButton">
+		<Setter Property="Foreground" Value="{ThemeResource PhoneAccentBrush}" />
+	</Style>
 </ResourceDictionary>

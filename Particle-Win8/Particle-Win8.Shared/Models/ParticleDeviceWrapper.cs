@@ -371,6 +371,7 @@ namespace Particle.Common.Models
 								var result = await Device.UnclaimAsync();
 								if(result.Success)
 								{
+									ViewModelLocator.DevicesListViewModel.SelectedDevice = null;
 									var refresh = ViewModelLocator.DevicesListViewModel.RefreshCommand;
 									if (refresh.CanExecute(null))
 									{
