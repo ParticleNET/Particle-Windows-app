@@ -140,6 +140,16 @@
     <Content Include="Assets\StoreLogo.scale-180.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="..\Particle-Win8.WindowsPhone\MainDictionary.xaml">
+      <Link>MainDictionary.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,8 +176,9 @@
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Particle, Version=0.8.14.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.14\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
+    <Reference Include="Particle, Version=0.8.16.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.16\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
