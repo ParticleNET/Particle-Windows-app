@@ -26,6 +26,7 @@ using Particle.Common.Models;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Particle.Common.Messages;
+using WinRTXamlToolkit.Async;
 
 namespace Particle.Common.ViewModel
 {
@@ -57,68 +58,77 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		private readonly static AsyncLock refreshLocker = new AsyncLock();
+
 		private async void refreshDevices(Messages.RefreshDevicesMessage message)
 		{
-			IsRefreshing = true;
-			var de = await ViewModelLocator.Cloud.GetDevicesAsync();
-			if (de.Success)
+			using (var loc = await refreshLocker.LockAsync())
 			{
-				List<Task> tasks = new List<Task>();
-				var dict = new Dictionary<String, bool>();
-				foreach(var dd in devices)
+				IsRefreshing = true;
+				var de = await ViewModelLocator.Cloud.GetDevicesAsync();
+				if (de.Success)
 				{
-					dict[dd.Device.Id] = false;
-				}
-
-				foreach (var d in de.Data)
-				{
-					var current = devices.FirstOrDefault(i => String.Compare(i.Device.Id, d.Id) == 0);
-					if (current == null)
+					List<Task> tasks = new List<Task>();
+					var dict = new Dictionary<String, bool>();
+					foreach (var dd in devices)
 					{
-						ParticleCloud.SyncContext.InvokeIfRequired(() =>
+						dict[dd.Device.Id] = false;
+					}
+
+					foreach (var d in de.Data)
+					{
+						if (d?.Id == null)
 						{
-							devices.Add(new ParticleDeviceWrapper(d));
-						});
-						if (d.Connected)
+							continue; // Some how we got a device without an id so go to next device.
+						}
+						var current = devices.FirstOrDefault(i => String.Compare(i.Device.Id, d.Id) == 0);
+						if (current == null)
 						{
-							tasks.Add(d.RefreshAsync());
+							ParticleCloud.SyncContext.InvokeIfRequired(() =>
+							{
+								devices.Add(new ParticleDeviceWrapper(d));
+							});
+							if (d.Connected)
+							{
+								tasks.Add(d.RefreshAsync());
+							}
+						}
+						else
+						{
+							dict[current.Device.Id] = true;
+							tasks.Add(current.Device.RefreshAsync());
 						}
 					}
-					else
-					{
-						dict[current.Device.Id] = true;
-						tasks.Add(current.Device.RefreshAsync());
-					}
-				}
 
-				foreach (var toRemove in dict.Where(i => i.Value == false))
-				{
-					var item = devices.FirstOrDefault(i => String.Compare(i.Device.Id, toRemove.Key) == 0);
-					if (item != null)
+					foreach (var toRemove in dict.Where(i => i.Value == false))
 					{
-						ParticleCloud.SyncContext.InvokeIfRequired(() =>
+						var item = devices.FirstOrDefault(i => String.Compare(i.Device.Id, toRemove.Key) == 0);
+						if (item != null)
 						{
-							devices.Remove(item);
-						});
+							ParticleCloud.SyncContext.InvokeIfRequired(() =>
+							{
+								devices.Remove(item);
+							});
+						}
 					}
-				}
 
-				IsRefreshing = false;
-				await Task.WhenAll(tasks);
-				if (!String.IsNullOrWhiteSpace(ResumeDeviceId))
-				{
-					var dev = devices.FirstOrDefault(i => i.Device?.Id == ResumeDeviceId);
-					if (dev != null)
+					IsRefreshing = false;
+					await Task.WhenAll(tasks);
+					if (!String.IsNullOrWhiteSpace(ResumeDeviceId))
 					{
-						setSelectedDevice(dev);
+						var dev = devices.FirstOrDefault(i => i.Device?.Id == ResumeDeviceId);
+						if (dev != null)
+						{
+							setSelectedDevice(dev);
+						}
 					}
 				}
+				else
+				{
+					de.SendDialogMessage();
+				}
+				IsRefreshing = false;
 			}
-			else
-			{
-				de.SendDialogMessage();
-			}
-			IsRefreshing = false;
 		}
 
 		/// <summary>

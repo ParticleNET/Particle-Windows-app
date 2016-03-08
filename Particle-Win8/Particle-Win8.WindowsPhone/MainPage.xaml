@@ -10,11 +10,35 @@
 	mc:Ignorable="d"
 	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}">
 
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
+				<ResourceDictionary Source="ms-appx:///AppStyle.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Page.Resources>
+
 	<Grid>
 		<controls:DevicesListControl />
 		<local:AuthDialog x:Name="LoginDialog" Closing="LoginDialog_Closing" />
 		<local:MDialog x:Name="Dialog" />
 		<local:InDialog x:Name="InputDialog" />
+		<Button  Margin="24,0,0,0" Padding="0" BorderThickness="0"  VerticalAlignment="Center" MinWidth="0" MinHeight="0" Style="{StaticResource MenuButon}">
+			<Button.Flyout>
+				<MenuFlyout>
+					<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />
+					<MenuFlyoutItem x:Uid="Menu_CopyDeviceId" Text="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
+					<MenuFlyoutItem x:Uid="Menu_ReflashTinker" Text="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
+					<MenuFlyoutItem x:Uid="Menu_Unclaim" Text="Unclaim" Command="{Binding UnclaimDeviceCommand}" />
+				</MenuFlyout>
+			</Button.Flyout>
+			<StackPanel>
+				<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+				<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+				<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0" />
+			</StackPanel>
+		</Button>
 	</Grid>
 	<Page.BottomAppBar>
 		<CommandBar>
@@ -26,7 +50,7 @@
 					</MenuFlyout>
 				</AppBarButton.Flyout>
 			</AppBarButton>
-			<AppBarButton x:Uid="AppBar_Refresh" Label="6 Refresh" Icon="Refresh" Command="{Binding RefreshCommand}" />
+			<AppBarButton x:Uid="AppBar_Refresh" Label="6 Refresh" Icon="Refresh" IsEnabled="{Binding IsRefreshing, Converter={StaticResource NotBooleanConverter}}" Command="{Binding RefreshCommand}" />
 			<CommandBar.SecondaryCommands>
 				<AppBarButton x:Uid="AppBar_ReportABug" Command="{Binding CommandViewModel.ReportBugCommand, Source={StaticResource Locator}}" Label="1 Report a Bug" />
 				<AppBarButton x:Uid="AppBar_ParticleStore" Command="{Binding CommandViewModel.ParticleStoreCommand, Source={StaticResource Locator}}" Label="2 Particle Store"/>

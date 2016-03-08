@@ -36,7 +36,39 @@
 			</ListView.ItemContainerStyle>
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<Grid Margin="12">
+					<StackPanel Margin="12">
+						<TextBlock Text="{Binding Device.Name}" />
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="Auto" />
+								<ColumnDefinition />
+							</Grid.ColumnDefinitions>
+							<TextBlock Grid.Column="0" Text="{Binding Device.DeviceType, Converter={StaticResource ParticleDeviceTypeConverter}}"  VerticalAlignment="Center" />
+							<StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+								<TextBlock Text="{Binding Status, Converter={StaticResource StatusTextConverter}}"  VerticalAlignment="Center" />
+								<Border Background="{Binding Status, Converter={StaticResource StatusColorConverter}}" Height="20" Width="20" CornerRadius="100" BorderThickness="0" Margin="24,0,0,0"  VerticalAlignment="Center">
+								</Border>
+								<Button  Margin="24,0,0,0" Padding="0" BorderThickness="0"  VerticalAlignment="Center" MinWidth="0" MinHeight="0"  Style="{StaticResource MenuButon}">
+									<Button.Flyout>
+										<MenuFlyout>
+											<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />
+											<MenuFlyoutItem x:Uid="Menu_CopyDeviceId" Text="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
+											<MenuFlyoutItem x:Uid="Menu_ReflashTinker" Text="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
+											<MenuFlyoutItem x:Uid="Menu_Unclaim" Text="Unclaim" Command="{Binding UnclaimDeviceCommand}" />
+										</MenuFlyout>
+									</Button.Flyout>
+									<StackPanel>
+										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0" />
+									</StackPanel>
+								</Button>
+							</StackPanel>
+						</Grid>
+						<TextBlock Text="{Binding Device.Id}" />
+						<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" />
+					</StackPanel>
+					<!--<Grid Margin="12">
 						<Grid.RowDefinitions>
 							<RowDefinition />
 							<RowDefinition />
@@ -57,7 +89,7 @@
 						</Border>
 						<TextBlock Grid.ColumnSpan="4" Grid.Row="2" Text="{Binding Device.Id}" />
 						<ProgressBar IsIndeterminate="True" Visibility="{Binding IsRefreshing, Converter={StaticResource VisibilityConverter}}" Grid.Row="4" Grid.ColumnSpan="4" />
-						<Button Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderThickness="0">
+						<Button Grid.Column="5" Padding="0" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderThickness="0">
 							<Button.Flyout>
 								<MenuFlyout>
 									<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />
@@ -72,7 +104,7 @@
 								<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
 							</StackPanel>
 						</Button>
-					</Grid>
+					</Grid>-->
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>
