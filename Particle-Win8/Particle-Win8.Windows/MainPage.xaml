@@ -52,7 +52,7 @@
 			<controls:DevicesListControl x:Name="DevicesList" Width="400" Margin="24" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" />
 			<controls:TinkerControl x:Name="TinkerControl" Grid.Row="1" Grid.Column="1" />
 		</Grid>
-		<StackPanel Grid.Row="2" Background="Black" Orientation="Horizontal">
+		<StackPanel x:Name="BottomAppBar" Grid.Row="2" Background="Black" Orientation="Horizontal">
 			<StackPanel Orientation="Horizontal" DataContext="{Binding DevicesListViewModel}">
 				<AppBarButton x:Uid="AppBar_AddDevice" Label="5 Add Device" Icon="Add">
 					<AppBarButton.Flyout>
