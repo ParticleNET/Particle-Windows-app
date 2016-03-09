@@ -36,6 +36,7 @@ namespace Particle_Win8
 			ViewModelLocator.DevicesListViewModel.PropertyChanged += DevicesListViewModel_PropertyChanged;
 			ViewModelLocator.Messenger.Register<DialogMessage>(this, (mes) => { Dialog.ShowMessageDialog(mes); });
 			ViewModelLocator.Messenger.Register<InputDialogMessage>(this, (mes) => { InputDialog.ShowInputDialog(mes); });
+			App.CheckInternetAccess();
 		}
 
 		private void DevicesListViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

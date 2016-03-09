@@ -92,9 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\AuthDialog.xaml.cs">
-      <DependentUpon>AuthDialog.xaml</DependentUpon>
+    <Compile Include="AuthPage.xaml.cs">
+      <DependentUpon>AuthPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BasePage.cs" />
     <Compile Include="Controls\InDialog.xaml.cs">
       <DependentUpon>InDialog.xaml</DependentUpon>
     </Compile>
@@ -125,7 +126,7 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\AuthDialog.xaml">
+    <Page Include="AuthPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -177,8 +178,8 @@
       <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Particle, Version=0.8.15.28, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.15-beta-0028\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
+    <Reference Include="Particle, Version=0.8.17.32, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ParticleNET.ParticleSDK.0.8.17-beta-0032\lib\portable-net45+wp80+win8+wpa81\Particle.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>

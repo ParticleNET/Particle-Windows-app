@@ -89,6 +89,7 @@
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PinMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StreamEventManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AppSettingsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\CommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DevicesListViewModel.cs" />

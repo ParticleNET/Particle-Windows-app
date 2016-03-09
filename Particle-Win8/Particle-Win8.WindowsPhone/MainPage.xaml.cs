@@ -13,6 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using Particle.Common;
 using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using Particle_Win8.Controls;
@@ -25,6 +26,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -50,13 +52,6 @@ namespace Particle_Win8
 			this.InitializeComponent();
 
 			//this.NavigationCacheMode = NavigationCacheMode.Required;
-			Window.Current.Activated += Current_Activated;
-			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, loggedIn);
-		}
-
-		private void loggedIn(LoggedInMessage message)
-		{
-			LoginDialog.Hide();
 		}
 		
 		private void copyToClipboardReceiver(CopyToClipboardMessage message)
@@ -77,6 +72,13 @@ namespace Particle_Win8
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
+			if (!ViewModelLocator.DevicesListViewModel.IsRefreshing)
+			{
+				if (ViewModelLocator.DevicesListViewModel.RefreshCommand.CanExecute(null))
+				{
+					ViewModelLocator.DevicesListViewModel.RefreshCommand.Execute(null);
+				}
+			}
 			if(ViewModelLocator.DevicesListViewModel.SelectedDevice != null)
 			{
 				ViewModelLocator.DevicesListViewModel.SelectedDevice = null;
@@ -84,7 +86,13 @@ namespace Particle_Win8
 			ViewModelLocator.Messenger.Register<DialogMessage>(this, (mes)=> { Dialog.ShowMessageDialog(mes); });
 			ViewModelLocator.Messenger.Register<InputDialogMessage>(this,(mes) => { InputDialog.ShowInputDialog(mes); });
 			ViewModelLocator.Messenger.Register<CopyToClipboardMessage>(this, copyToClipboardReceiver);
+			ViewModelLocator.Messenger.Register<LoggedOutMessage>(this, (mes) => 
+			{
+				Frame.Navigate(typeof(AuthPage));
+				Frame.BackStack.Clear();
+			});
 			ViewModelLocator.DevicesListViewModel.PropertyChanged += DevicesListViewModel_PropertyChanged;
+			App.CheckInternetAccess();
 		}
 
 		private void DevicesListViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -98,32 +106,16 @@ namespace Particle_Win8
 			}
 		}
 
+		
+
 		protected override void OnNavigatedFrom(NavigationEventArgs e)
 		{
 			base.OnNavigatedFrom(e);
 			ViewModelLocator.Messenger.Unregister<DialogMessage>(this);
 			ViewModelLocator.Messenger.Unregister<InputDialogMessage>(this);
 			ViewModelLocator.Messenger.Unregister<CopyToClipboardMessage>(this);
+			ViewModelLocator.Messenger.Unregister<LoggedOutMessage>(this);
 			ViewModelLocator.DevicesListViewModel.PropertyChanged -= DevicesListViewModel_PropertyChanged;
-		}
-
-		private async void Current_Activated(object sender, Windows.UI.Core.WindowActivatedEventArgs e)
-		{
-			if (!ViewModelLocator.Cloud.IsAuthenticated)
-			{
-				if (!LoginDialog.IsOpen)
-				{
-					await LoginDialog.ShowAsync();
-				}
-			}
-		}
-
-		private void LoginDialog_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
-		{
-			if (!ViewModelLocator.Cloud.IsAuthenticated)
-			{
-				Application.Current.Exit();
-			}
 		}
 	}
 }

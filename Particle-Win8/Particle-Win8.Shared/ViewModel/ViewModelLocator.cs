@@ -19,6 +19,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 using Particle.Common.Interfaces;
 using Particle.Common.Messages;
+using Particle_Win8;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -58,7 +59,7 @@ namespace Particle.Common.ViewModel
 			Messenger.Register<LoggedOutMessage>(cloud, loggedOut);
 		}
 
-		private static ParticleEventManager yourEvents;
+		private static StreamEventManager yourEvents;
 
 		private static void loggedIn(LoggedInMessage mes)
 		{
@@ -71,8 +72,14 @@ namespace Particle.Common.ViewModel
 				var accessToken = cloud.AccessToken;
 				UriBuilder builder = new UriBuilder(cloud.YourEventUri);
 				builder.Path = $"{builder.Path}/spark";
-				yourEvents = new ParticleEventManager(builder.Uri, accessToken);
+				yourEvents = new StreamEventManager(builder.Uri, accessToken);
 				yourEvents.Events += YourEvents_Events;
+#if DEBUG
+				yourEvents.Error += (a) =>
+				{
+					Debug.WriteLine($"Error: {a}");
+				};
+#endif
 				Task.Run(() => yourEvents.Start()); // With out the Task.Run the app freezes up not sure why
 			}
 		}

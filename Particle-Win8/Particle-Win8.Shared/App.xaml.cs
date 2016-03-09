@@ -24,6 +24,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Windows.Networking.Connectivity;
 #if WINDOWS_PHONE_APP
 using Windows.Phone.UI.Input;
 #else
@@ -135,7 +136,11 @@ namespace Particle_Win8
 
 				rootFrame.ContentTransitions = null;
 				rootFrame.Navigated += this.RootFrame_FirstNavigated;
-#endif
+				if (!rootFrame.Navigate(typeof(AuthPage), e.Arguments))
+				{
+					throw new Exception("Failed to create initial page");
+				}
+#else
 
 				// When the navigation stack isn't restored navigate to the first page,
 				// configuring the new page by passing required information as a navigation
@@ -144,10 +149,19 @@ namespace Particle_Win8
 				{
 					throw new Exception("Failed to create initial page");
 				}
+#endif
 			}
 
 			// Ensure the current window is active
 			Window.Current.Activate();
+
+			NetworkInformation.NetworkStatusChanged += async (s) =>
+			{
+				await rootFrame.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+				{
+					CheckInternetAccess();
+				});
+			};
 		}
 
 #if WINDOWS_PHONE_APP
@@ -238,6 +252,47 @@ namespace Particle_Win8
 		private void OnResuming(object sender, object e)
 		{
 			ViewModelLocator.Resuming();
+		}
+
+		/// <summary>
+		/// Checks the Internet access.
+		/// </summary>
+		public static void CheckInternetAccess()
+		{
+			var profile = NetworkInformation.GetInternetConnectionProfile();
+			if (profile != null)
+			{
+				var state = profile.GetNetworkConnectivityLevel();
+				switch (state)
+				{
+					case NetworkConnectivityLevel.None:
+						DialogMessage dm = new DialogMessage();
+						dm.Description = MM.M.GetString("Network_NoConnectivity");
+						ViewModelLocator.Messenger.Send(dm);
+						break;
+
+					case NetworkConnectivityLevel.ConstrainedInternetAccess:
+						DialogMessage dm1 = new DialogMessage();
+						dm1.Description = MM.M.GetString("Network_ConstrainedInternetAccess");
+						ViewModelLocator.Messenger.Send(dm1);
+						break;
+
+					case NetworkConnectivityLevel.LocalAccess:
+						DialogMessage dm2 = new DialogMessage();
+						dm2.Description = MM.M.GetString("Network_LocalAccess");
+						ViewModelLocator.Messenger.Send(dm2);
+						break;
+
+					default:
+						break;
+				}
+			}
+			else
+			{
+				DialogMessage d = new DialogMessage();
+				d.Description = MM.M.GetString("Network_NoConnectivity");
+				ViewModelLocator.Messenger.Send(d);
+			}
 		}
 
 	}

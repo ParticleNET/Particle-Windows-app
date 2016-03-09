@@ -29,17 +29,16 @@ namespace Particle.Common.ViewModel
 	{
 		public LoginViewModel()
 		{
-			ViewModelLocator.Messenger.Register<LogoutViewModel>(this, (i) => 
-			{
-				Load(true);
-			});
+			AppSettings.Current.PropertyChanged += Current_PropertyChanged;
 		}
 
-		~LoginViewModel()
+		private void Current_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			ViewModelLocator.Messenger.Unregister<LoginViewModel>(this);
+			if(String.Compare(e.PropertyName, nameof(AppSettings.Current.AutoLogin)) == 0)
+			{
+				RaisePropertyChanged(nameof(AutoLogin));
+			}
 		}
-
 
 		private String username;
 		/// <summary>
@@ -100,7 +99,6 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
-		private bool autoLogin;
 		/// <summary>
 		/// Should we auto login when the app starts
 		/// </summary>
@@ -111,11 +109,11 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return autoLogin;
+				return AppSettings.Current.AutoLogin;
 			}
 			set
 			{
-				Set(nameof(AutoLogin), ref autoLogin, value);
+				AppSettings.Current.AutoLogin = value;
 			}
 		}
 
@@ -225,14 +223,11 @@ namespace Particle.Common.ViewModel
 			var result = await ViewModelLocator.Cloud.LoginWithUserAsync(username, password);
 			if(result.Success)
 			{
-				if (!isAutologin)
-				{
-					settings.AutoLogin = autoLogin;
-				}
 				return true;
 			}
 			else
 			{
+				AutoLogin = false;
 				ViewModelLocator.Messenger.Send<DialogMessage>(new DialogMessage()
 				{
 					Title = result.Error ?? "",

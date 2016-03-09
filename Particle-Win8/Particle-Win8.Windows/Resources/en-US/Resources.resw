@@ -464,4 +464,8 @@ Id: {1}</value>
     <value>Report a Bug</value>
     <comment>AppBar-&gt;Report a Bug text</comment>
   </data>
+  <data name="AppBar_Logout.Label" xml:space="preserve">
+    <value>Logout</value>
+    <comment>AppBar-&gt;Logout-&gt;Label</comment>
+  </data>
 </root>
