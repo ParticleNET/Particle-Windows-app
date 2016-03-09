@@ -16,10 +16,10 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Particle_Win8.WindowsPhone.App">
-      <m3:VisualElements DisplayName="Particle Tinker" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Particle-Win8.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
-        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+      <m3:VisualElements DisplayName="Particle Tinker" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Get connected and start building your Internet of Things project right away with Particle Tinker(by ParticleNET), the companion app to the Core, Photon, and Electron. The tiny but powerful Wi-Fi development boards from the team at Particle (Particle was formerly known as Spark)" ForegroundText="light" BackgroundColor="transparent">
+        <m3:DefaultTile Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
-        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+        <m3:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#0a81be" />
         <m3:InitialRotationPreference>
           <m3:Rotation Preference="portrait" />
         </m3:InitialRotationPreference>

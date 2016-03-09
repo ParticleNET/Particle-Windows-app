@@ -302,6 +302,7 @@ namespace Particle.Common.Models
 					}
 					break;
 			}
+			ViewModelLocator.DevicesListViewModel.SelectedDevice = null;
 			
 		}
 
