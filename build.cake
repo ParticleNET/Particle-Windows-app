@@ -1,6 +1,6 @@
 var target = Argument("target", "Default");
-var solutionFiles = GetFiles("ParticleApp.Win8.sln");
-var projectFolders = GetDirectories("Particle-Win8\\Particle-Win8.Windows");
+var solutionFiles = GetFiles("ParticleApp.W*.sln");
+var projectFolders = GetDirectories("Particle-Win8\\Particle-Win8.Window*");
 var globalPackageDirectory = MakeAbsolute(Directory("AppPackages"));
 var outputDirectory = Directory("Build");
 var buildVersion = "0.4.3.2";

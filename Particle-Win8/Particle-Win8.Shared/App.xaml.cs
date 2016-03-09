@@ -1,17 +1,34 @@
-﻿using Particle;
+﻿/*
+   Copyright 2016 ParticleNET
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using Particle;
 using Particle.Common;
 using Particle.Common.Messages;
 using Particle.Common.ViewModel;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.UI.ApplicationSettings;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using Windows.Networking.Connectivity;
 #if WINDOWS_PHONE_APP
 using Windows.Phone.UI.Input;
+#else
+using Windows.UI.ApplicationSettings;
 #endif
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
@@ -39,6 +56,15 @@ namespace Particle_Win8
 #if WINDOWS_PHONE_APP
 			HardwareButtons.BackPressed += HardwareButtons_BackPressed;
 			ViewModelLocator.SupportsClipboard = false;
+#if DEBUG
+			this.UnhandledException += (s, a) =>
+			{
+				if (System.Diagnostics.Debugger.IsAttached)
+				{
+					System.Diagnostics.Debugger.Break();
+				}
+			};
+#endif
 #else
 			ViewModelLocator.SupportsClipboard = true;
 #endif
@@ -73,6 +99,7 @@ namespace Particle_Win8
 #endif
 
 			Frame rootFrame = Window.Current.Content as Frame;
+			
 			ParticleCloud.SyncContext = System.Threading.SynchronizationContext.Current;
 
 			// Do not repeat app initialization when the Window already has content,
@@ -109,7 +136,11 @@ namespace Particle_Win8
 
 				rootFrame.ContentTransitions = null;
 				rootFrame.Navigated += this.RootFrame_FirstNavigated;
-#endif
+				if (!rootFrame.Navigate(typeof(AuthPage), e.Arguments))
+				{
+					throw new Exception("Failed to create initial page");
+				}
+#else
 
 				// When the navigation stack isn't restored navigate to the first page,
 				// configuring the new page by passing required information as a navigation
@@ -118,10 +149,19 @@ namespace Particle_Win8
 				{
 					throw new Exception("Failed to create initial page");
 				}
+#endif
 			}
 
 			// Ensure the current window is active
 			Window.Current.Activate();
+
+			NetworkInformation.NetworkStatusChanged += async (s) =>
+			{
+				await rootFrame.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
+				{
+					CheckInternetAccess();
+				});
+			};
 		}
 
 #if WINDOWS_PHONE_APP
@@ -142,10 +182,13 @@ namespace Particle_Win8
 		{
 			base.OnWindowCreated(args);
 
+#if !WINDOWS_PHONE_APP
 			var settings = SettingsPane.GetForCurrentView();
 			settings.CommandsRequested += Settings_CommandsRequested;
+#endif
 		}
 
+#if !WINDOWS_PHONE_APP
 		private void Settings_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
 		{
 			args.Request.ApplicationCommands.Add(new SettingsCommand("ReportBug", MM.M.GetString("Settings_ReportBug"), (a) =>
@@ -183,7 +226,7 @@ namespace Particle_Win8
 				await Windows.System.Launcher.LaunchUriAsync(new Uri("https://raw.githubusercontent.com/ParticleNET/Particle-Windows-app/master/LICENSE"));
 			}));
 		}
-
+#endif
 		/// <summary>
 		/// Invoked when application execution is being suspended.  Application state is saved
 		/// without knowing whether the application will be terminated or resumed with the contents
@@ -209,6 +252,47 @@ namespace Particle_Win8
 		private void OnResuming(object sender, object e)
 		{
 			ViewModelLocator.Resuming();
+		}
+
+		/// <summary>
+		/// Checks the Internet access.
+		/// </summary>
+		public static void CheckInternetAccess()
+		{
+			var profile = NetworkInformation.GetInternetConnectionProfile();
+			if (profile != null)
+			{
+				var state = profile.GetNetworkConnectivityLevel();
+				switch (state)
+				{
+					case NetworkConnectivityLevel.None:
+						DialogMessage dm = new DialogMessage();
+						dm.Description = MM.M.GetString("Network_NoConnectivity");
+						ViewModelLocator.Messenger.Send(dm);
+						break;
+
+					case NetworkConnectivityLevel.ConstrainedInternetAccess:
+						DialogMessage dm1 = new DialogMessage();
+						dm1.Description = MM.M.GetString("Network_ConstrainedInternetAccess");
+						ViewModelLocator.Messenger.Send(dm1);
+						break;
+
+					case NetworkConnectivityLevel.LocalAccess:
+						DialogMessage dm2 = new DialogMessage();
+						dm2.Description = MM.M.GetString("Network_LocalAccess");
+						ViewModelLocator.Messenger.Send(dm2);
+						break;
+
+					default:
+						break;
+				}
+			}
+			else
+			{
+				DialogMessage d = new DialogMessage();
+				d.Description = MM.M.GetString("Network_NoConnectivity");
+				ViewModelLocator.Messenger.Send(d);
+			}
 		}
 
 	}

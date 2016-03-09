@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
   <Identity Name="ParticleTinker" Publisher="CN=ParticleNET" Version="1.1.0.0" />
   <Properties>
@@ -28,10 +28,10 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
-    <m2:DeviceCapability Name="usb">
+    <!--<m2:DeviceCapability Name="usb">
       <m2:Device Id="vidpid:2B04 C006">
         <m2:Function Type="name:vendorSpecific" />
       </m2:Device>
-    </m2:DeviceCapability>
+    </m2:DeviceCapability>-->
   </Capabilities>
 </Package>

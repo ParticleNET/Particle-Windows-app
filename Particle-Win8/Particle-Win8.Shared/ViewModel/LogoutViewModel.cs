@@ -18,6 +18,7 @@ using GalaSoft.MvvmLight.Command;
 using Particle.Common.Interfaces;
 using Particle.Common.Messages;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Particle.Common.ViewModel

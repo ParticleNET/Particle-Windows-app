@@ -19,6 +19,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
 using Particle.Common.Interfaces;
 using Particle.Common.Messages;
+using Particle_Win8;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -42,6 +43,7 @@ namespace Particle.Common.ViewModel
 				SimpleIoc.Default.Register<IDevicesListViewModel, Design.DesignDevicesListViewModel>();
 				SimpleIoc.Default.Register<ITinkerViewModel, Design.DesignTinkerViewModel>();
 				SimpleIoc.Default.Register<ILogoutViewModel, Design.DesignLogoutViewModel>();
+				SimpleIoc.Default.Register<ICommandsViewModel, Design.DesignCommandsViewModel>();
 			}
 			else
 			{
@@ -50,13 +52,14 @@ namespace Particle.Common.ViewModel
 				SimpleIoc.Default.Register<IDevicesListViewModel, DevicesListViewModel>();
 				SimpleIoc.Default.Register<ITinkerViewModel, TinkerViewModel>();
 				SimpleIoc.Default.Register<ILogoutViewModel, LogoutViewModel>();
+				SimpleIoc.Default.Register<ICommandsViewModel, CommandsViewModel>();
 			}
 			cloud = new ParticleCloud();
 			Messenger.Register<LoggedInMessage>(cloud, loggedIn);
 			Messenger.Register<LoggedOutMessage>(cloud, loggedOut);
 		}
 
-		private static ParticleEventManager yourEvents;
+		private static StreamEventManager yourEvents;
 
 		private static void loggedIn(LoggedInMessage mes)
 		{
@@ -69,8 +72,14 @@ namespace Particle.Common.ViewModel
 				var accessToken = cloud.AccessToken;
 				UriBuilder builder = new UriBuilder(cloud.YourEventUri);
 				builder.Path = $"{builder.Path}/spark";
-				yourEvents = new ParticleEventManager(builder.Uri, accessToken);
+				yourEvents = new StreamEventManager(builder.Uri, accessToken);
 				yourEvents.Events += YourEvents_Events;
+#if DEBUG
+				yourEvents.Error += (a) =>
+				{
+					Debug.WriteLine($"Error: {a}");
+				};
+#endif
 				Task.Run(() => yourEvents.Start()); // With out the Task.Run the app freezes up not sure why
 			}
 		}
@@ -95,6 +104,14 @@ namespace Particle.Common.ViewModel
 				y.Events -= YourEvents_Events; // clean up the listener
 				y.Stop();
 				y = null;
+			}
+		}
+
+		public static ICommandsViewModel CommandViewModel
+		{
+			get
+			{
+				return SimpleIoc.Default.GetInstance<ICommandsViewModel>();
 			}
 		}
 		

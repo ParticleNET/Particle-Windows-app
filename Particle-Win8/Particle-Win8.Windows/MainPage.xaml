@@ -22,6 +22,7 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 		<Grid VerticalAlignment="Center">
 			<Grid.ColumnDefinitions>
@@ -41,15 +42,35 @@
 			<Grid.RowDefinitions>
 				<RowDefinition Height="auto" />
 				<RowDefinition />
+				<RowDefinition Height="auto" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="auto" />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
 			<controls:DevicesComboControl x:Name="DevicesDropDown" Margin="24" Grid.ColumnSpan="2" Visibility="Collapsed" />
-			<controls:DevicesListControl x:Name="DevicesList" Width="400" Margin="24" Grid.Row="1" Grid.Column="0" />
+			<controls:DevicesListControl x:Name="DevicesList" Width="400" Margin="24" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" />
 			<controls:TinkerControl x:Name="TinkerControl" Grid.Row="1" Grid.Column="1" />
 		</Grid>
+		<StackPanel x:Name="BottomAppBar" Grid.Row="2" Background="Black" Orientation="Horizontal">
+			<StackPanel Orientation="Horizontal" DataContext="{Binding DevicesListViewModel}">
+				<AppBarButton x:Uid="AppBar_AddDevice" Label="5 Add Device" Icon="Add">
+					<AppBarButton.Flyout>
+						<MenuFlyout>
+							<MenuFlyoutItem x:Uid="AppBar_AddDevice_AddWithId" Command="{Binding AddDeviceCommand}">5 Add with Device Id</MenuFlyoutItem>
+							<MenuFlyoutItem x:Uid="AppBar_AddDevice_AddElectron" Command="{Binding AddElectronCommand}">5 Add Electron</MenuFlyoutItem>
+						</MenuFlyout>
+					</AppBarButton.Flyout>
+				</AppBarButton>
+				<AppBarButton x:Uid="AppBar_Refresh" Label="6 Refresh" Icon="Refresh" Command="{Binding RefreshCommand}" />
+			</StackPanel>
+			<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" DataContext="{Binding TinkerViewModel}" Visibility="{Binding Device, Converter={StaticResource VisibilityNotNullConverter}}">
+				<AppBarButton x:Uid="Tinker_Menu_Rename" Label="1 Rename" Command="{Binding Device.RenameCommand}" Icon="Edit"></AppBarButton>
+				<AppBarButton x:Uid="Tinker_Menu_CopyDeviceId" Label="2 Copy Device Id to clipboard" Command="{Binding Device.CopyDeviceIdCommand}" Icon="Copy"></AppBarButton>
+				<AppBarButton x:Uid="Tinker_Menu_ReFlashTinker" Label="3 Re-flash Tinker" Command="{Binding Device.FlashTinkerCommand}" Icon="Go"></AppBarButton>
+				<AppBarButton x:Uid="Tinker_Menu_Unclaim" Label="4 Unclaim" Icon="Delete" Command="{Binding Device.UnclaimDeviceCommand}"></AppBarButton>
+			</StackPanel>
+		</StackPanel>
 
 		<toolkit:InputDialog x:Name="InputDialog" Background="Black" MinWidth="500">
 			<toolkit:InputDialog.ButtonStyle>

@@ -346,7 +346,7 @@ Id: {1}</value>
   </data>
   <data name="DeviceList_Refresh.Content" xml:space="preserve">
     <value>Refresh</value>
-    <comment>Device List-&gt;Refresh text</comment>
+    <comment>DeviceList-&gt;Refresh text</comment>
   </data>
   <data name="Logout_LogoutAction.Content" xml:space="preserve">
     <value>Logout</value>
@@ -435,5 +435,37 @@ Id: {1}</value>
   <data name="Settings_Store" xml:space="preserve">
     <value>Particle Store</value>
     <comment>Settings-&gt;Store</comment>
+  </data>
+  <data name="AppBar_AddDevice.Label" xml:space="preserve">
+    <value>Add</value>
+    <comment>AppBar-&gt;Add Device text</comment>
+  </data>
+  <data name="AppBar_AddDevice_AddElectron.Text" xml:space="preserve">
+    <value>Add Electron</value>
+    <comment>AppBar-&gt;Add Device-&gt;Add Electron</comment>
+  </data>
+  <data name="AppBar_AddDevice_AddWithId.Text" xml:space="preserve">
+    <value>Add with Device Id</value>
+    <comment>AppBar-&gt;Add Device-&gt;Add with Device Id</comment>
+  </data>
+  <data name="AppBar_Refresh.Label" xml:space="preserve">
+    <value>Refresh</value>
+    <comment>AppBar-&gt;Refresh text</comment>
+  </data>
+  <data name="AppBar_License.Label" xml:space="preserve">
+    <value>License</value>
+    <comment>AppBar-&gt;License</comment>
+  </data>
+  <data name="AppBar_ParticleStore.Label" xml:space="preserve">
+    <value>Particle Store</value>
+    <comment>AppBar-&gt;Particle Store text</comment>
+  </data>
+  <data name="AppBar_ReportABug.Label" xml:space="preserve">
+    <value>Report a Bug</value>
+    <comment>AppBar-&gt;Report a Bug text</comment>
+  </data>
+  <data name="AppBar_Logout.Label" xml:space="preserve">
+    <value>Logout</value>
+    <comment>AppBar-&gt;Logout-&gt;Label</comment>
   </data>
 </root>

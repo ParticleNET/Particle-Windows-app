@@ -13,10 +13,6 @@
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
-				<ResourceDictionary
-			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkPasswordBox/WatermarkPasswordBox.xaml" />
-				<ResourceDictionary
-			Source="ms-appx:///WinRTXamlToolkit/Controls/WatermarkTextBox/WatermarkTextBox.xaml" />
 			</ResourceDictionary.MergedDictionaries>
 			<Style x:Key="TinkerItemContainer" TargetType="ListViewItem">
 				<Setter Property="Template">
@@ -37,39 +33,35 @@
 			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
 		<ScrollViewer>
-			<Grid VerticalAlignment="Top">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="auto" />
-					<RowDefinition Height="auto" />
-					<RowDefinition Height="auto" />
-				</Grid.RowDefinitions>
-				<Border Background="#99000000" Width="320">
-					<ListView ItemsSource="{Binding PinRows}" SelectionMode="None" ItemContainerStyle="{StaticResource TinkerItemContainer}" Margin="0">
-						<ListView.ItemTemplate>
-							<DataTemplate>
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition />
-										<ColumnDefinition Width="20" />
-										<ColumnDefinition />
-									</Grid.ColumnDefinitions>
-									<controls:PinControl Grid.Column="0" DataContext="{Binding Left}" />
-									<controls:PinControl Grid.Column="2" DataContext="{Binding Right}" />
-								</Grid>
-							</DataTemplate>
-						</ListView.ItemTemplate>
-					</ListView>
-				</Border>
-				<Path Grid.Row="1" Width="320" Fill="#99000000" Data="M 0,0 L 320,0 L 305,20 L 15,20 L 0,0">
+			<Border Padding="0,12">
+				<Grid VerticalAlignment="Top">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="auto" />
+						<RowDefinition Height="auto" />
+						<RowDefinition Height="auto" />
+					</Grid.RowDefinitions>
+					<Border Background="#440a81be" Width="320">
+						<ListView ItemsSource="{Binding PinRows}" SelectionMode="None" ItemContainerStyle="{StaticResource TinkerItemContainer}" Margin="0">
+							<ListView.ItemTemplate>
+								<DataTemplate>
+									<Grid>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition />
+											<ColumnDefinition Width="20" />
+											<ColumnDefinition />
+										</Grid.ColumnDefinitions>
+										<controls:PinControl Grid.Column="0" DataContext="{Binding Left}" />
+										<controls:PinControl Grid.Column="2" DataContext="{Binding Right}" />
+									</Grid>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</Border>
+					<Path Grid.Row="1" Width="320" Fill="#440a81be" Data="M 0,0 L 320,0 L 305,20 L 15,20 L 0,0">
 
-				</Path>
-			</Grid>
+					</Path>
+				</Grid>
+			</Border>
 		</ScrollViewer>
-		<StackPanel Grid.Row="1" Orientation="Horizontal" DataContext="{Binding Device}">
-			<AppBarButton x:Uid="Tinker_Menu_Rename" Label="1 Rename" Command="{Binding RenameCommand}" Icon="Edit"></AppBarButton>
-			<AppBarButton x:Uid="Tinker_Menu_CopyDeviceId" Label="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Icon="Copy"></AppBarButton>
-			<AppBarButton x:Uid="Tinker_Menu_ReFlashTinker" Label="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" Icon="Go"></AppBarButton>
-			<AppBarButton x:Uid="Tinker_Menu_Unclaim" Label="4 Unclaim" Icon="Delete" Command="{Binding UnclaimDeviceCommand}"></AppBarButton>
-		</StackPanel>
 	</Grid>
 </UserControl>

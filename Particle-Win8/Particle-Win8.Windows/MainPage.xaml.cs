@@ -200,6 +200,7 @@ namespace Particle_Win8
 				LoginPopup.IsOpen = false;
 				TinkerContainer.Visibility = Visibility.Visible;
 				LogoutControl.Visibility = Visibility.Visible;
+				BottomAppBar.Visibility = Visibility.Visible;
 				checkSize();
 			}
 			else
@@ -207,6 +208,7 @@ namespace Particle_Win8
 				LoginPopup.IsOpen = true;
 				TinkerContainer.Visibility = Visibility.Collapsed;
 				LogoutControl.Visibility = Visibility.Collapsed;
+				BottomAppBar.Visibility = Visibility.Collapsed;
 			}
 		}
 

@@ -15,25 +15,33 @@
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>
 	</Page.Resources>
-	<Grid Margin="0,24,0,0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<StackPanel>
+	<Grid Margin="0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<StackPanel Margin="12">
 			<TextBlock x:Uid="Login_Header" Text="1 Particle Login" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />
 			<toolkit:WatermarkTextBox x:Uid="Login_Username" Grid.Row="1" Text="{Binding Username, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" WatermarkText="2 email" InputScope="EmailSmtpAddress" Margin="0,12" />
 			<toolkit:WatermarkPasswordBox x:Uid="Login_Password" Password="{Binding Password, Mode=TwoWay}" IsEnabled="{Binding IsAuthenticating,Converter={StaticResource NotBooleanConverter}}" Watermark="3 password" >
 			</toolkit:WatermarkPasswordBox>
 
-			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<TextBlock x:Uid="Login_RemeberPassword" Text="4 Remember Password" VerticalAlignment="Center" />
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<TextBlock x:Uid="Login_RemeberPassword" Text="4 Remember Password" VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" TextWrapping="WrapWholeWords" />
 
-				<ToggleSwitch IsOn="{Binding RememberPassword, Mode=TwoWay}">
+				<ToggleSwitch IsOn="{Binding RememberPassword, Mode=TwoWay}" HorizontalAlignment="Right" Grid.Column="1" FontFamily="Global User Interface">
 				</ToggleSwitch>
-			</StackPanel>
-			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<TextBlock x:Uid="Login_AutoLogin" Text="5 Auto Login" VerticalAlignment="Center" />
+			</Grid>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition />
+				</Grid.ColumnDefinitions>
+				<TextBlock x:Uid="Login_AutoLogin" Grid.Column="0" Text="5 Auto Login" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" />
 
-				<ToggleSwitch IsOn="{Binding AutoLogin, Mode=TwoWay}">
+				<ToggleSwitch Grid.Column="1" IsOn="{Binding AutoLogin, Mode=TwoWay}" HorizontalAlignment="Right">
 				</ToggleSwitch>
-			</StackPanel>
+			</Grid>
 			<StackPanel x:Name="AuthenticatingContainer" Visibility="{Binding IsAuthenticating, Converter={StaticResource VisibilityConverter}}" Orientation="Horizontal" Margin="0,12" HorizontalAlignment="Center">
 				<TextBlock x:Uid="Login_LoggingIn" Text="6 Logging in..." Style="{StaticResource BodyTextBlockStyle}" />
 				<ProgressRing IsActive="True" />
