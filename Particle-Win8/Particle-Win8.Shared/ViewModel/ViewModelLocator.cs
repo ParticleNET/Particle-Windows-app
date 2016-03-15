@@ -59,7 +59,7 @@ namespace Particle.Common.ViewModel
 			Messenger.Register<LoggedOutMessage>(cloud, loggedOut);
 		}
 
-		private static StreamEventManager yourEvents;
+		private static ParticleEventManager yourEvents;
 
 		private static void loggedIn(LoggedInMessage mes)
 		{
@@ -72,7 +72,7 @@ namespace Particle.Common.ViewModel
 				var accessToken = cloud.AccessToken;
 				UriBuilder builder = new UriBuilder(cloud.YourEventUri);
 				builder.Path = $"{builder.Path}/spark";
-				yourEvents = new StreamEventManager(builder.Uri, accessToken);
+				yourEvents = new ParticleEventManager(builder.Uri, accessToken);
 				yourEvents.Events += YourEvents_Events;
 #if DEBUG
 				yourEvents.Error += (a) =>
