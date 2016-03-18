@@ -17,14 +17,9 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
-using Particle.Common.Interfaces;
-using Particle.Common.Messages;
-using Particle_Win8;
+using ParticleApp.Business.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Particle.Common.ViewModel

@@ -19,7 +19,7 @@ using System.Text;
 using System.Windows.Input;
 
 
-namespace Particle.Common.Interfaces
+namespace ParticleApp.Business.Interfaces
 {
 	public interface ICommandsViewModel
 	{

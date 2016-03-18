@@ -20,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Particle;
 
-namespace Particle.Common.Messages
+namespace ParticleApp.Business.Messages
 {
 	public class YourWebEventMessage
 	{

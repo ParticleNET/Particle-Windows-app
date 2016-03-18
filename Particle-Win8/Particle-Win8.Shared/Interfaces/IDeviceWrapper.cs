@@ -13,27 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using ParticleApp.Business.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ParticleApp.Business.Models
+namespace ParticleApp.Business.Interfaces
 {
-	public class PinValueModel : IPinValue
-	{
-		public PinMode Mode
-		{
-			get;
-			set;
-		}
-
-		public short Value
-		{
-			get;
-			set;
-		}
-	}
+    public interface IDeviceWrapper
+    {
+    }
 }

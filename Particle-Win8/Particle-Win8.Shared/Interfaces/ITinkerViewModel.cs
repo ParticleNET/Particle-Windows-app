@@ -21,7 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle.Common.Interfaces
+namespace ParticleApp.Business.Interfaces
 {
 	public interface ITinkerViewModel : INotifyPropertyChanged
 	{
@@ -31,7 +31,7 @@ namespace Particle.Common.Interfaces
 		/// <value>
 		/// The device.
 		/// </value>
-		ParticleDeviceWrapper Device { get; }
+		IDeviceWrapper Device { get; }
 		/// <summary>
 		/// Gets the pin rows.
 		/// </summary>

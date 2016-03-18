@@ -6,7 +6,7 @@
     <SharedGUID>4fcbc878-6fa3-40e6-8f54-206e28376570</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Particle_Win8</Import_RootNamespace>
+    <Import_RootNamespace>ParticleApp.Business</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
@@ -61,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extentions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDevicesListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDeviceWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILogoutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPinValue.cs" />

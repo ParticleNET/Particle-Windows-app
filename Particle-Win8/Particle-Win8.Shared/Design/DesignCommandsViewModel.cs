@@ -14,13 +14,10 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ParticleApp.Business.Interfaces;
 using System.Windows.Input;
 
-namespace Particle.Common.Design
+namespace ParticleApp.Business.Design
 {
 	public class DesignCommandsViewModel : ICommandsViewModel
 	{

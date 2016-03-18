@@ -18,7 +18,7 @@ using System;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace Particle.Common.Interfaces
+namespace ParticleApp.Business.Interfaces
 {
 	/// <summary>
 	/// Represents a pin on the device
@@ -31,7 +31,7 @@ namespace Particle.Common.Interfaces
 		/// <value>
 		/// The device.
 		/// </value>
-		ParticleDeviceWrapper Device { get; set; }
+		IDeviceWrapper Device { get; set; }
 
 		/// <summary>
 		/// Gets or sets the pin identifier.

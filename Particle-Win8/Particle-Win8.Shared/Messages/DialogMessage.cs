@@ -20,7 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle.Common.Messages
+namespace ParticleApp.Business.Messages
 {
 	public class DialogMessage
 	{

@@ -7,7 +7,7 @@
     <ProjectGuid>{9372D155-0BBC-4F62-8390-446281197D67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ParticleApp.UWP.Business</RootNamespace>
+    <RootNamespace>ParticleApp.Business</RootNamespace>
     <AssemblyName>ParticleApp.UWP.Business</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -107,6 +108,141 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignCommandsViewModel.cs">
+      <Link>Design\DesignCommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignDevicesListViewModel.cs">
+      <Link>Design\DesignDevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignLoginViewModel.cs">
+      <Link>Design\DesignLoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignLogoutViewModel.cs">
+      <Link>Design\DesignLogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignParticleDevice.cs">
+      <Link>Design\DesignParticleDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignPinViewModel.cs">
+      <Link>Design\DesignPinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignRegisterViewModel.cs">
+      <Link>Design\DesignRegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignTinkerRowViewModel.cs">
+      <Link>Design\DesignTinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignTinkerViewModel.cs">
+      <Link>Design\DesignTinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Extentions.cs">
+      <Link>Extentions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\ICommandsViewModel.cs">
+      <Link>Interfaces\ICommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\IDevicesListViewModel.cs">
+      <Link>Interfaces\IDevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\IDeviceWrapper.cs">
+      <Link>Interfaces\IDeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\ILoginViewModel.cs">
+      <Link>Interfaces\ILoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\ILogoutViewModel.cs">
+      <Link>Interfaces\ILogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\IPinValue.cs">
+      <Link>Interfaces\IPinValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\IPinViewModel.cs">
+      <Link>Interfaces\IPinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\IRegisterViewModel.cs">
+      <Link>Interfaces\IRegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\ITinkerRowViewModel.cs">
+      <Link>Interfaces\ITinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\ITinkerViewModel.cs">
+      <Link>Interfaces\ITinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\CopyToClipboardMessage.cs">
+      <Link>Messages\CopyToClipboardMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\DialogMessage.cs">
+      <Link>Messages\DialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\InputDialogMessage.cs">
+      <Link>Messages\InputDialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\LoggedInMessage.cs">
+      <Link>Messages\LoggedInMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\LoggedOutMessage.cs">
+      <Link>Messages\LoggedOutMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\ModeDialogMessage.cs">
+      <Link>Messages\ModeDialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\RefreshDevicesMessage.cs">
+      <Link>Messages\RefreshDevicesMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\SelectedDeviceMessage.cs">
+      <Link>Messages\SelectedDeviceMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\YourWebEventMessage.cs">
+      <Link>Messages\YourWebEventMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\MM.cs">
+      <Link>MM.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Models\BooleanToNumber.cs">
+      <Link>Models\BooleanToNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Models\DeviceWrapper.cs">
+      <Link>Models\DeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Models\MessageButtonModel.cs">
+      <Link>Models\MessageButtonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Models\PinValueModel.cs">
+      <Link>Models\PinValueModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\PinMode.cs">
+      <Link>PinMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\AppSettingsViewModel.cs">
+      <Link>ViewModel\AppSettingsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\CommandsViewModel.cs">
+      <Link>ViewModel\CommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\DevicesListViewModel.cs">
+      <Link>ViewModel\DevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\LoginViewModel.cs">
+      <Link>ViewModel\LoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\LogoutViewModel.cs">
+      <Link>ViewModel\LogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\PinViewModel.cs">
+      <Link>ViewModel\PinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\RegisterViewModel.cs">
+      <Link>ViewModel\RegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\TinkerRowViewModel.cs">
+      <Link>ViewModel\TinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\TinkerViewModel.cs">
+      <Link>ViewModel\TinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\ViewModel\ViewModelLocator.cs">
+      <Link>ViewModel\ViewModelLocator.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ParticleApp.UWP.Business.rd.xml" />
   </ItemGroup>

@@ -14,17 +14,13 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Messages;
-using Particle.Common.ViewModel;
+using Particle;
+using ParticleApp.Business.Messages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.UI.Xaml;
 
-namespace Particle.Common.Models
+namespace ParticleApp.Business.Models
 {
 	public enum DeviceStatus
 	{
@@ -34,11 +30,11 @@ namespace Particle.Common.Models
 		Flashing,
 		Failed
 	}
-	public class ParticleDeviceWrapper : Particle.ParticleBase
+	public class DeviceWrapper : Particle.ParticleBase
 	{
 		private ParticleDevice device;
 
-		public ParticleDeviceWrapper(ParticleDevice device)
+		public DeviceWrapper(ParticleDevice device)
 		{
 			Device = device;
 			device.PropertyChanged += Device_PropertyChanged;
@@ -59,7 +55,7 @@ namespace Particle.Common.Models
 			});
 		}
 
-		~ParticleDeviceWrapper()
+		~DeviceWrapper()
 		{
 			ViewModelLocator.Messenger.Unregister<YourWebEventMessage>(this);
 		}

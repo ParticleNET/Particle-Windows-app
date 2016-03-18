@@ -13,20 +13,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
+using Newtonsoft.Json.Linq;
+using ParticleApp.Business.Interfaces;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Newtonsoft.Json.Linq;
-using Particle.Common.Models;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
 
-namespace Particle.Common.Design
+namespace ParticleApp.Business.Design
 {
 	public class DesignDevicesListViewModel : IDevicesListViewModel
 	{
@@ -46,19 +40,19 @@ namespace Particle.Common.Design
 			}
 		}
 
-		public ObservableCollection<ParticleDeviceWrapper> Devices
+		public ObservableCollection<IDeviceWrapper> Devices
 		{
 			get;
-		} = new ObservableCollection<ParticleDeviceWrapper>()
+		} = new ObservableCollection<IDeviceWrapper>()
 		{
-			new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
+			new IDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test1',
 id: 'abc123',
 connected: false,
 product_id: 0
 }"))),
-			new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
+			new IDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test2',
 id: 'def456',

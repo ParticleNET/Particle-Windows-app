@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle.Common
+namespace ParticleApp.Business
 {
 	[Flags]
 	public enum PinMode

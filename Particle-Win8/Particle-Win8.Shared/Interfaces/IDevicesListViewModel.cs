@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Particle.Common.Interfaces
+namespace ParticleApp.Business.Interfaces
 {
 	public interface IDevicesListViewModel : INotifyPropertyChanged
 	{
@@ -47,14 +47,14 @@ namespace Particle.Common.Interfaces
 		/// <value>
 		/// The devices.
 		/// </value>
-		ObservableCollection<ParticleDeviceWrapper> Devices { get; }
+		ObservableCollection<IDeviceWrapper> Devices { get; }
 		/// <summary>
 		/// Gets or sets the selected device.
 		/// </summary>
 		/// <value>
 		/// The selected device.
 		/// </value>
-		ParticleDeviceWrapper SelectedDevice { get; set; }
+		IDeviceWrapper SelectedDevice { get; set; }
 		/// <summary>
 		/// The command to call to Refresh the devices
 		/// </summary>

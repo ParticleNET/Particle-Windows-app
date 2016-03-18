@@ -21,7 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Resources;
 
-namespace Particle.Common
+namespace ParticleApp.Business
 {
 	public class MM
 	{

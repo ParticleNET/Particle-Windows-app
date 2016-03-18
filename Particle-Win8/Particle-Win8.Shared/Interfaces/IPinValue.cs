@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle.Common.Interfaces
+namespace ParticleApp.Business.Interfaces
 {
 	/// <summary>
 	/// Used to pass both Value and Mode to the PinValueConverter

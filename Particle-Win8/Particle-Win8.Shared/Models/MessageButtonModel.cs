@@ -19,7 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Particle.Common.Models
+namespace ParticleApp.Business.Models
 {
 	public class MessageButtonModel
 	{
