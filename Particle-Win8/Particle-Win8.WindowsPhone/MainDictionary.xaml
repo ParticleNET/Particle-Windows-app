@@ -3,8 +3,8 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:converts="using:Particle.Common.Converters"
-	xmlns:ViewModel="using:Particle.Common.ViewModel"
+	xmlns:converts="using:ParticleApp.Business.Converters"
+	xmlns:ViewModel="using:ParticleApp.Business.ViewModel"
 	mc:Ignorable="d">
 	<ViewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
 	<converts:NotBooleanConverter x:Key="NotBooleanConverter" />

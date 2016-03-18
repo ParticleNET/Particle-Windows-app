@@ -14,21 +14,12 @@
    limitations under the License.
 */
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel;
 using Windows.Security.Credentials;
-using Windows.Security.Cryptography;
-using Windows.Security.Cryptography.Core;
 using Windows.Storage;
-using Windows.Storage.Streams;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class AppSettings : INotifyPropertyChanged
 	{
@@ -40,15 +31,6 @@ namespace Particle.Common.ViewModel
 		private AppSettings()
 		{
 			settings = ApplicationData.Current.LocalSettings;
-			var packageId = Windows.System.Profile.HardwareIdentification.GetPackageSpecificToken(null);
-			var hid = packageId.Id;
-			String id;
-			using (var reader = DataReader.FromBuffer(hid))
-			{
-				var b = new byte[hid.Length];
-				reader.ReadBytes(b);
-				id = Encoding.UTF8.GetString(b, 0, b.Length);
-			}
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

@@ -1,11 +1,13 @@
-﻿<Application x:Class="Particle_Win8.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="using:Particle_Win8">
+﻿<Application x:Class="Particle_Win8.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+			 xmlns:vm="using:ParticleApp.Business.ViewModel"
+			 xmlns:local="using:Particle_Win8">
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
 				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
 				<ResourceDictionary Source="ms-appx:///AppStyle.xaml" />
 				<ResourceDictionary>
-					<vm:ViewModelLocator x:Key="Locator" xmlns:vm="using:Particle.Common.ViewModel" />
+					<vm:ViewModelLocator x:Key="Locator" />
 				</ResourceDictionary>
 			</ResourceDictionary.MergedDictionaries>
 		</ResourceDictionary>

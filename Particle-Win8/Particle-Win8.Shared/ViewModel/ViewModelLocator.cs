@@ -17,12 +17,15 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Practices.ServiceLocation;
+using Particle;
 using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.Models;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class ViewModelLocator
 	{
@@ -30,24 +33,26 @@ namespace Particle.Common.ViewModel
 
 		static ViewModelLocator()
 		{
-			ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+			ServiceLocator.SetLocatorProvider(() => Ioc.Default);
 			if (ViewModelBase.IsInDesignModeStatic)
 			{
-				SimpleIoc.Default.Register<ILoginViewModel, Design.DesignLoginViewModel>();
-				SimpleIoc.Default.Register<IRegisterViewModel, Design.DesignRegisterViewModel>();
-				SimpleIoc.Default.Register<IDevicesListViewModel, Design.DesignDevicesListViewModel>();
-				SimpleIoc.Default.Register<ITinkerViewModel, Design.DesignTinkerViewModel>();
-				SimpleIoc.Default.Register<ILogoutViewModel, Design.DesignLogoutViewModel>();
-				SimpleIoc.Default.Register<ICommandsViewModel, Design.DesignCommandsViewModel>();
+				Ioc.Default.Register<ILoginViewModel, Design.DesignLoginViewModel>();
+				Ioc.Default.Register<IRegisterViewModel, Design.DesignRegisterViewModel>();
+				Ioc.Default.Register<IDevicesListViewModel, Design.DesignDevicesListViewModel>();
+				Ioc.Default.Register<ITinkerViewModel, Design.DesignTinkerViewModel>();
+				Ioc.Default.Register<ILogoutViewModel, Design.DesignLogoutViewModel>();
+				Ioc.Default.Register<ICommandsViewModel, Design.DesignCommandsViewModel>();
+				Ioc.Default.Register<IDeviceWrapper, Design.DesignDeviceWrapper>();
 			}
 			else
 			{
-				SimpleIoc.Default.Register<ILoginViewModel, LoginViewModel>();
-				SimpleIoc.Default.Register<IRegisterViewModel, RegisterViewModel>();
-				SimpleIoc.Default.Register<IDevicesListViewModel, DevicesListViewModel>();
-				SimpleIoc.Default.Register<ITinkerViewModel, TinkerViewModel>();
-				SimpleIoc.Default.Register<ILogoutViewModel, LogoutViewModel>();
-				SimpleIoc.Default.Register<ICommandsViewModel, CommandsViewModel>();
+				Ioc.Default.Register<ILoginViewModel, LoginViewModel>();
+				Ioc.Default.Register<IRegisterViewModel, RegisterViewModel>();
+				Ioc.Default.Register<IDevicesListViewModel, DevicesListViewModel>();
+				Ioc.Default.Register<ITinkerViewModel, TinkerViewModel>();
+				Ioc.Default.Register<ILogoutViewModel, LogoutViewModel>();
+				Ioc.Default.Register<ICommandsViewModel, CommandsViewModel>();
+				Ioc.Default.Register<IDeviceWrapper, DeviceWrapper>();
 			}
 			cloud = new ParticleCloud();
 			Messenger.Register<LoggedInMessage>(cloud, loggedIn);
@@ -102,11 +107,16 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
+		public static IDeviceWrapper CrateDeviceWrapper(ParticleDevice device)
+		{
+			return Ioc.Default.GetInstanceWithoutCaching<IDeviceWrapper>(device);
+		}
+
 		public static ICommandsViewModel CommandViewModel
 		{
 			get
 			{
-				return SimpleIoc.Default.GetInstance<ICommandsViewModel>();
+				return Ioc.Default.GetInstance<ICommandsViewModel>();
 			}
 		}
 		
@@ -115,7 +125,7 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return SimpleIoc.Default.GetInstance<ILoginViewModel>();
+				return Ioc.Default.GetInstance<ILoginViewModel>();
 			}
 		}
 
@@ -123,7 +133,7 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return SimpleIoc.Default.GetInstance<IRegisterViewModel>();
+				return Ioc.Default.GetInstance<IRegisterViewModel>();
 			}
 		}
 
@@ -131,7 +141,7 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return SimpleIoc.Default.GetInstance<IDevicesListViewModel>();
+				return Ioc.Default.GetInstance<IDevicesListViewModel>();
 			}
 		}
 
@@ -139,7 +149,7 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return SimpleIoc.Default.GetInstance<ILogoutViewModel>();
+				return Ioc.Default.GetInstance<ILogoutViewModel>();
 			}
 		}
 
@@ -147,7 +157,7 @@ namespace Particle.Common.ViewModel
 		{
 			get
 			{
-				return SimpleIoc.Default.GetInstance<ITinkerViewModel>();
+				return Ioc.Default.GetInstance<ITinkerViewModel>();
 			}
 		}
 

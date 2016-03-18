@@ -51,6 +51,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\VisibilityNotNullConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignCommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignDevicesListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Design\DesignDeviceWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignLoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignLogoutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Design\DesignParticleDevice.cs" />
@@ -80,8 +81,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Messages\YourWebEventMessage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BooleanToNumber.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DeviceWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\MessageButtonModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\ParticleDeviceWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PinValueModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -90,6 +91,7 @@
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PinMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ioc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AppSettingsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\CommandsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DevicesListViewModel.cs" />

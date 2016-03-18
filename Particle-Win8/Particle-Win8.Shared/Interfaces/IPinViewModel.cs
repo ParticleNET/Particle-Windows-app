@@ -13,7 +13,6 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Models;
 using System;
 using System.ComponentModel;
 using System.Windows.Input;

@@ -14,16 +14,11 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight;
-using Particle.Common.Interfaces;
-using System;
+using Particle;
+using ParticleApp.Business.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Particle.Common.Models;
-using Windows.UI.Popups;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class TinkerViewModel : ViewModelBase, ITinkerViewModel
 	{
@@ -39,8 +34,8 @@ namespace Particle.Common.ViewModel
 			});
 		}
 
-		private ParticleDeviceWrapper device;
-		public ParticleDeviceWrapper Device
+		private IDeviceWrapper device;
+		public IDeviceWrapper Device
 		{
 			get
 			{

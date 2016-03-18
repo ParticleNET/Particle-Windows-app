@@ -17,7 +17,7 @@ using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
-namespace Particle.Common.Converters
+namespace ParticleApp.Business.Converters
 {
 	public class VisibilityNotNullConverter : IValueConverter
 	{

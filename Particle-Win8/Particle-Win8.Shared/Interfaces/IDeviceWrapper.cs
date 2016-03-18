@@ -13,13 +13,31 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using Particle;
+using ParticleApp.Business.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 
 namespace ParticleApp.Business.Interfaces
 {
-    public interface IDeviceWrapper
-    {
-    }
+	public interface IDeviceWrapper : INotifyPropertyChanged
+	{
+		bool IsRefreshing { get; }
+
+		DeviceStatus Status { get; }
+
+		ParticleDevice Device { get; }
+
+		bool HasTinker { get; }
+
+		ICommand CopyDeviceIdCommand { get; }
+
+		ICommand FlashTinkerCommand { get; }
+
+		ICommand UnclaimDeviceCommand { get; }
+
+	}
 }

@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Interfaces;
+using ParticleApp.Business.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace Particle.Common.Converters
+namespace ParticleApp.Business.Converters
 {
 	public class PinValueConverter : IValueConverter
 	{

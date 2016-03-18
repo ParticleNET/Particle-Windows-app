@@ -13,17 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using GalaSoft.MvvmLight.Command;
-using Particle.Common.Interfaces;
-using Particle.Common.Messages;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class RegisterViewModel : LoginViewModel, IRegisterViewModel
 	{

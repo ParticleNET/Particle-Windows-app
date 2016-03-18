@@ -13,9 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common;
-using Particle.Common.Messages;
-using Particle.Common.ViewModel;
+
+using ParticleApp.Business;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.ViewModel;
 using System;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Networking.Connectivity;

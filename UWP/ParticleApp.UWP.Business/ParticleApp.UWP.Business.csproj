@@ -114,6 +114,9 @@
     <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignDevicesListViewModel.cs">
       <Link>Design\DesignDevicesListViewModel.cs</Link>
     </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignDeviceWrapper.cs">
+      <Link>Design\DesignDeviceWrapper.cs</Link>
+    </Compile>
     <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Design\DesignLoginViewModel.cs">
       <Link>Design\DesignLoginViewModel.cs</Link>
     </Compile>
@@ -167,6 +170,9 @@
     </Compile>
     <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Interfaces\ITinkerViewModel.cs">
       <Link>Interfaces\ITinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Ioc.cs">
+      <Link>Ioc.cs</Link>
     </Compile>
     <Compile Include="..\..\Particle-Win8\Particle-Win8.Shared\Messages\CopyToClipboardMessage.cs">
       <Link>Messages\CopyToClipboardMessage.cs</Link>

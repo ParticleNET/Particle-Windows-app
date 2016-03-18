@@ -1,23 +1,41 @@
-﻿using Particle.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Particle.Common.Models;
-using System.ComponentModel;
-using Newtonsoft.Json.Linq;
+﻿/*
+   Copyright 2016 ParticleNET
 
-namespace Particle.Common.Design
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+	   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+*/
+using Newtonsoft.Json.Linq;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.ViewModel;
+using System.Collections.Generic;
+using System.ComponentModel;
+
+namespace ParticleApp.Business.Design
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <seealso cref="ParticleApp.Business.Interfaces.ITinkerViewModel" />
 	public class DesignTinkerViewModel : ITinkerViewModel
 	{
-		private ParticleDeviceWrapper device;
-		public ParticleDeviceWrapper Device
+		/// <summary>
+		/// The device
+		/// </summary>
+		private IDeviceWrapper device;
+		public IDeviceWrapper Device
 		{
 			get
 			{
-				return device ?? (device = new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
+				return device ?? (device = ViewModelLocator.CrateDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test1',
 id: 'abc123',

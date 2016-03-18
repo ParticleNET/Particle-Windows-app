@@ -13,16 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using GalaSoft.MvvmLight;
+using ParticleApp.Business.Interfaces;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class TinkerRowViewModel : ViewModelBase, ITinkerRowViewModel
 	{

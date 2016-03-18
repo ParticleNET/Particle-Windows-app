@@ -6,7 +6,8 @@
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "MvvmLightLibs": "5.2.0",
     "Newtonsoft.Json": "8.0.3",
-    "ParticleNET.ParticleSDK": "0.8.17-beta-0040"
+    "ParticleNET.ParticleSDK": "0.8.17-beta-0040",
+    "WinRTXamlToolkit.Windows": "1.8.1"
   },
   "frameworks": {
     "uap10.0": {}

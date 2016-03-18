@@ -15,13 +15,11 @@
 */
 
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Interfaces;
-using Particle.Common.Messages;
-using System;
-using System.Threading.Tasks;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
 using System.Windows.Input;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class LogoutViewModel : ILogoutViewModel
 	{

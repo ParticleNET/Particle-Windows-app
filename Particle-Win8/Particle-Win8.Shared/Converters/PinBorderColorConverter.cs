@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Interfaces;
+using ParticleApp.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ using Windows.UI;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 
-namespace Particle.Common.Converters
+namespace ParticleApp.Business.Converters
 {
 	public class PinBorderColorConverter : IValueConverter
 	{

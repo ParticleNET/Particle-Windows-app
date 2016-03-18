@@ -15,7 +15,9 @@
 */
 using GalaSoft.MvvmLight.Command;
 using Particle;
+using ParticleApp.Business.Interfaces;
 using ParticleApp.Business.Messages;
+using ParticleApp.Business.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
@@ -30,7 +32,7 @@ namespace ParticleApp.Business.Models
 		Flashing,
 		Failed
 	}
-	public class DeviceWrapper : Particle.ParticleBase
+	public class DeviceWrapper : Particle.ParticleBase, IDeviceWrapper
 	{
 		private ParticleDevice device;
 

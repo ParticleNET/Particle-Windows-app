@@ -14,15 +14,14 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Interfaces;
-using Particle.Common.Messages;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.UI.Popups;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class LoginViewModel : GalaSoft.MvvmLight.ViewModelBase, ILoginViewModel
 	{

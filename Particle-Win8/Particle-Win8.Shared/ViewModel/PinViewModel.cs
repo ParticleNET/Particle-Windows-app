@@ -14,19 +14,14 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight;
-using Particle.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Particle.Common.Models;
-using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Messages;
-using Windows.UI.Xaml.Input;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.Models;
+using System;
+using System.Windows.Input;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class PinViewModel : ViewModelBase, IPinViewModel
 	{
@@ -84,8 +79,8 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
-		private ParticleDeviceWrapper device;
-		public ParticleDeviceWrapper Device
+		private IDeviceWrapper device;
+		public IDeviceWrapper Device
 		{
 			get
 			{

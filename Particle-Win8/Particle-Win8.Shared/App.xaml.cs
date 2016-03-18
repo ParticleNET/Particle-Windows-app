@@ -15,8 +15,6 @@
 */
 using Particle;
 using Particle.Common;
-using Particle.Common.Messages;
-using Particle.Common.ViewModel;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -25,6 +23,10 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 using Windows.Networking.Connectivity;
+using ParticleApp.Business.ViewModel;
+using ParticleApp.Business;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.Models;
 #if WINDOWS_PHONE_APP
 using Windows.Phone.UI.Input;
 #else
@@ -196,13 +198,13 @@ namespace Particle_Win8
 				DialogMessage message = new DialogMessage();
 				message.Title = MM.M.GetString("RAB_Dialog_Title");
 				message.Description = MM.M.GetString("RAB_Dialog_Description");
-				message.Buttons = new System.Collections.Generic.List<Particle.Common.Models.MessageButtonModel>() {
-					new Particle.Common.Models.MessageButtonModel()
+				message.Buttons = new System.Collections.Generic.List<MessageButtonModel>() {
+					new MessageButtonModel()
 					{
 						Id = 1,
 						Text = MM.M.GetString("RAB_Dialog_GoToGithub")
 					},
-					new Particle.Common.Models.MessageButtonModel()
+					new MessageButtonModel()
 					{
 						Id = 2,
 						Text = MM.M.GetString("Cancel_Button")

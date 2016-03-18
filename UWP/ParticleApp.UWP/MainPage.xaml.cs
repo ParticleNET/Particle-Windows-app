@@ -33,6 +33,7 @@ namespace ParticleApp.UWP
 			using(var cloud = new Particle.ParticleCloud())
 			{
 				var result = await cloud.LoginWithUserAsync("test", "test");
+				AccessToken.Text = cloud.AccessToken;
 			}
 		}
 	}

@@ -14,12 +14,13 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Interfaces;
-using Particle.Common.Messages;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.Models;
 using System;
 using System.Windows.Input;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class CommandsViewModel : ICommandsViewModel
 	{
@@ -59,13 +60,13 @@ namespace Particle.Common.ViewModel
 					DialogMessage message = new DialogMessage();
 					message.Title = MM.M.GetString("RAB_Dialog_Title");
 					message.Description = MM.M.GetString("RAB_Dialog_Description");
-					message.Buttons = new System.Collections.Generic.List<Particle.Common.Models.MessageButtonModel>() {
-					new Particle.Common.Models.MessageButtonModel()
+					message.Buttons = new System.Collections.Generic.List<MessageButtonModel>() {
+					new MessageButtonModel()
 					{
 						Id = 1,
 						Text = MM.M.GetString("RAB_Dialog_GoToGithub")
 					},
-					new Particle.Common.Models.MessageButtonModel()
+					new MessageButtonModel()
 					{
 						Id = 2,
 						Text = MM.M.GetString("Cancel_Button")

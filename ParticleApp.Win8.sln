@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleApp.UI", "ParticleApp.UI\ParticleApp.UI.csproj", "{E4D382E7-6C8B-4874-8E57-A91B63C3029C}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Particle-Win8\Particle-Win8.Shared\Particle-Win8.Shared.projitems*{31f2313c-f90c-4ba1-af22-28ff5efd5c5e}*SharedItemsImports = 4
@@ -56,6 +58,22 @@ Global
 		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x86.ActiveCfg = Release|x86
 		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x86.Build.0 = Release|x86
 		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E}.Release|x86.Deploy.0 = Release|x86
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|ARM.Build.0 = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|x64.Build.0 = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Debug|x86.Build.0 = Debug|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|ARM.Build.0 = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|x64.ActiveCfg = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|x64.Build.0 = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|x86.ActiveCfg = Release|Any CPU
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,5 +81,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4FCBC878-6FA3-40E6-8F54-206E28376570} = {229832C4-A063-4CD6-B3DA-34251C905E0B}
 		{31F2313C-F90C-4BA1-AF22-28FF5EFD5C5E} = {229832C4-A063-4CD6-B3DA-34251C905E0B}
+		{E4D382E7-6C8B-4874-8E57-A91B63C3029C} = {229832C4-A063-4CD6-B3DA-34251C905E0B}
 	EndGlobalSection
 EndGlobal

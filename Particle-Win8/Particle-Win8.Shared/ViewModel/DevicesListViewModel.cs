@@ -14,29 +14,28 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight;
-using Particle.Common.Interfaces;
+using GalaSoft.MvvmLight.Command;
+using Particle;
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
-using Particle;
-using Particle.Common.Models;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Command;
-using Particle.Common.Messages;
 using WinRTXamlToolkit.Async;
 
-namespace Particle.Common.ViewModel
+namespace ParticleApp.Business.ViewModel
 {
 	public class DevicesListViewModel : ViewModelBase, IDevicesListViewModel
 	{
-		private ObservableCollection<ParticleDeviceWrapper> devices;
+		private ObservableCollection<IDeviceWrapper> devices;
 		private bool isRefreshing;
 		public DevicesListViewModel()
 		{
-			devices = new ObservableCollection<ParticleDeviceWrapper>();
+			devices = new ObservableCollection<IDeviceWrapper>();
 			ViewModelLocator.Messenger.Register<Messages.RefreshDevicesMessage>(this, refreshDevices);
 			ViewModelLocator.Messenger.Register<Messages.LoggedInMessage>(this, (e)=>
 			{
@@ -86,7 +85,7 @@ namespace Particle.Common.ViewModel
 						{
 							ParticleCloud.SyncContext.InvokeIfRequired(() =>
 							{
-								devices.Add(new ParticleDeviceWrapper(d));
+								devices.Add(ViewModelLocator.CrateDeviceWrapper(d));
 							});
 							if (d.Connected)
 							{
@@ -137,7 +136,7 @@ namespace Particle.Common.ViewModel
 		/// <value>
 		/// The devices.
 		/// </value>
-		public ObservableCollection<ParticleDeviceWrapper> Devices
+		public ObservableCollection<IDeviceWrapper> Devices
 		{
 			get
 			{
@@ -162,7 +161,7 @@ namespace Particle.Common.ViewModel
 			}
 		}
 
-		private void setSelectedDevice(ParticleDeviceWrapper value)
+		private void setSelectedDevice(IDeviceWrapper value)
 		{
 			selectedDevice = value;
 			RaisePropertyChanged(nameof(SelectedDevice));
@@ -172,8 +171,8 @@ namespace Particle.Common.ViewModel
 			});
 		}
 
-		private ParticleDeviceWrapper selectedDevice;
-		public ParticleDeviceWrapper SelectedDevice
+		private IDeviceWrapper selectedDevice;
+		public IDeviceWrapper SelectedDevice
 		{
 			get
 			{

@@ -19,6 +19,7 @@ using ParticleApp.Business.Interfaces;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
+using ParticleApp.Business.ViewModel;
 
 namespace ParticleApp.Business.Design
 {
@@ -45,21 +46,21 @@ namespace ParticleApp.Business.Design
 			get;
 		} = new ObservableCollection<IDeviceWrapper>()
 		{
-			new IDeviceWrapper(new DesignParticleDevice(JObject.Parse(
+			ViewModelLocator.CrateDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test1',
 id: 'abc123',
 connected: false,
 product_id: 0
 }"))),
-			new IDeviceWrapper(new DesignParticleDevice(JObject.Parse(
+			ViewModelLocator.CrateDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test2',
 id: 'def456',
 connected: true,
 product_id: 6
 }"))),
-			new ParticleDeviceWrapper(new DesignParticleDevice(JObject.Parse(
+			ViewModelLocator.CrateDeviceWrapper(new DesignParticleDevice(JObject.Parse(
 @"{
 name: 'Test3',
 id: 'ghi789',
@@ -91,7 +92,7 @@ product_id: 0
 			set;
 		}
 
-		public ParticleDeviceWrapper SelectedDevice
+		public IDeviceWrapper SelectedDevice
 		{
 			get;
 			set;

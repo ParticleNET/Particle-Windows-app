@@ -19,10 +19,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using Particle.Common.ViewModel;
 using Particle;
+using ParticleApp.Business.ViewModel;
 
-namespace Particle.Common.Design
+namespace ParticleApp.Business.Design
 {
 	public class DesignParticleDevice : ParticleDevice
 	{

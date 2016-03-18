@@ -20,7 +20,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace Particle.Common.Converters
+namespace ParticleApp.Business.Converters
 {
 	public class MaximumConverter : IValueConverter
 	{

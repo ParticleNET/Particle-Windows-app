@@ -14,10 +14,10 @@
    limitations under the License.
 */
 using GalaSoft.MvvmLight.Command;
-using Particle.Common.Interfaces;
+using ParticleApp.Business.Interfaces;
 using System.Windows.Input;
 
-namespace Particle.Common.Design
+namespace ParticleApp.Business.Design
 {
 	/// <summary>
 	/// The Design Version of the logout Model
