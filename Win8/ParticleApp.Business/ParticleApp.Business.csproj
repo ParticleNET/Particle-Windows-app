@@ -4,21 +4,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8A086598-51AE-4BAA-AADB-DC8502C67680}</ProjectGuid>
-    <OutputType>AppContainerExe</OutputType>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9FEA9A4B-F930-44E5-9352-6029E89F8773}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App1</RootNamespace>
-    <AssemblyName>App1</AssemblyName>
+    <RootNamespace>ParticleApp.Business</RootNamespace>
+    <AssemblyName>ParticleApp.Business</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Particle-Win8.Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>226F7A83099290CE523AA89D67677CD2F085F123</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -28,7 +27,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -103,58 +101,148 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <PRIResource Include="Resources\en-US\Resources.resw" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignCommandsViewModel.cs">
+      <Link>Design\DesignCommandsViewModel.cs</Link>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignDevicesListViewModel.cs">
+      <Link>Design\DesignDevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignDeviceWrapper.cs">
+      <Link>Design\DesignDeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignLoginViewModel.cs">
+      <Link>Design\DesignLoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignLogoutViewModel.cs">
+      <Link>Design\DesignLogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignParticleDevice.cs">
+      <Link>Design\DesignParticleDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignPinViewModel.cs">
+      <Link>Design\DesignPinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignRegisterViewModel.cs">
+      <Link>Design\DesignRegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignTinkerRowViewModel.cs">
+      <Link>Design\DesignTinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignTinkerViewModel.cs">
+      <Link>Design\DesignTinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Extentions.cs">
+      <Link>Extentions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ICommandsViewModel.cs">
+      <Link>Interfaces\ICommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IDevicesListViewModel.cs">
+      <Link>Interfaces\IDevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IDeviceWrapper.cs">
+      <Link>Interfaces\IDeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ILoginViewModel.cs">
+      <Link>Interfaces\ILoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ILogoutViewModel.cs">
+      <Link>Interfaces\ILogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IPinValue.cs">
+      <Link>Interfaces\IPinValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IPinViewModel.cs">
+      <Link>Interfaces\IPinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IRegisterViewModel.cs">
+      <Link>Interfaces\IRegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ITinkerRowViewModel.cs">
+      <Link>Interfaces\ITinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ITinkerViewModel.cs">
+      <Link>Interfaces\ITinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Ioc.cs">
+      <Link>Ioc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\CopyToClipboardMessage.cs">
+      <Link>Messages\CopyToClipboardMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\DialogMessage.cs">
+      <Link>Messages\DialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\InputDialogMessage.cs">
+      <Link>Messages\InputDialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\LoggedInMessage.cs">
+      <Link>Messages\LoggedInMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\LoggedOutMessage.cs">
+      <Link>Messages\LoggedOutMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\ModeDialogMessage.cs">
+      <Link>Messages\ModeDialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\RefreshDevicesMessage.cs">
+      <Link>Messages\RefreshDevicesMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\SelectedDeviceMessage.cs">
+      <Link>Messages\SelectedDeviceMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\YourWebEventMessage.cs">
+      <Link>Messages\YourWebEventMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\MM.cs">
+      <Link>MM.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\BooleanToNumber.cs">
+      <Link>Models\BooleanToNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\DeviceWrapper.cs">
+      <Link>Models\DeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\MessageButtonModel.cs">
+      <Link>Models\MessageButtonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\PinValueModel.cs">
+      <Link>Models\PinValueModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\PinMode.cs">
+      <Link>PinMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\AppSettingsViewModel.cs">
+      <Link>ViewModel\AppSettingsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\CommandsViewModel.cs">
+      <Link>ViewModel\CommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\DevicesListViewModel.cs">
+      <Link>ViewModel\DevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\LoginViewModel.cs">
+      <Link>ViewModel\LoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\LogoutViewModel.cs">
+      <Link>ViewModel\LogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\PinViewModel.cs">
+      <Link>ViewModel\PinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\RegisterViewModel.cs">
+      <Link>ViewModel\RegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\TinkerRowViewModel.cs">
+      <Link>ViewModel\TinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\TinkerViewModel.cs">
+      <Link>ViewModel\TinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\ViewModelLocator.cs">
+      <Link>ViewModel\ViewModelLocator.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppxManifest Include="Package.appxmanifest">
-      <SubType>Designer</SubType>
-    </AppxManifest>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="Assets\Logo.scale-140.png" />
-    <Content Include="Assets\Logo.scale-180.png" />
-    <Content Include="Assets\Logo.scale-80.png" />
-    <Content Include="Assets\ScreenLogo.scale-100.png" />
-    <Content Include="Assets\ScreenLogo.scale-140.png" />
-    <Content Include="Assets\ScreenLogo.scale-180.png" />
-    <Content Include="Assets\SmallLogo.scale-100.png" />
-    <Content Include="Assets\SplashScreen.scale-100.png" />
-    <Content Include="Assets\StoreLogo.scale-100.png" />
-    <Content Include="Assets\StoreLogo.scale-140.png" />
-    <Content Include="Assets\StoreLogo.scale-180.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Page Include="AppStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Particle-Win8.Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
@@ -187,15 +275,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ParticleApp.Business\ParticleApp.Business.csproj">
-      <Project>{9fea9a4b-f930-44e5-9352-6029e89f8773}</Project>
-      <Name>ParticleApp.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ParticleApp.UI\ParticleApp.UI.csproj">
-      <Project>{3d91bcaa-0167-4689-acdb-bc2e5e9c79ca}</Project>
-      <Name>ParticleApp.UI</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>

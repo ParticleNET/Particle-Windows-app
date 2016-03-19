@@ -14,7 +14,6 @@
    limitations under the License.
 */
 using Particle;
-using Particle.Common;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;

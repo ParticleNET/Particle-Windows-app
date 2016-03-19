@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Login_AutoLogin.Text" xml:space="preserve">
+    <value>Auto Login</value>
+    <comment>Login-&gt;Form-&gt;Auto Login text</comment>
+  </data>
+  <data name="Login_DontHaveAccount.Content" xml:space="preserve">
+    <value>I don't have an account</value>
+    <comment>Login-&gt;Form-&gt;Dont Have Account Link text</comment>
+  </data>
+  <data name="Login_ForgotPassword.Content" xml:space="preserve">
+    <value>I forgot my password</value>
+    <comment>Login-&gt;Form-&gt;Forgot Password Link text</comment>
+  </data>
+  <data name="Login_Header.Text" xml:space="preserve">
+    <value>Particle Login</value>
+    <comment>Login-&gt;Header</comment>
+  </data>
+  <data name="Login_LoggingIn.Text" xml:space="preserve">
+    <value>Logging in...</value>
+    <comment>Login-&gt;Form-&gt;Logging In text</comment>
+  </data>
+  <data name="Login_LoginAction.Content" xml:space="preserve">
+    <value>Login</value>
+    <comment>Login-&gt;Form-&gt;Loggin Button text</comment>
+  </data>
+  <data name="Login_Password.Watermark" xml:space="preserve">
+    <value>password</value>
+    <comment>Login-&gt;Form-&gt;Password</comment>
+  </data>
+  <data name="Login_RemeberPassword.Text" xml:space="preserve">
+    <value>Remember Password</value>
+    <comment>Login-&gt;Form-&gt;Remember Pasword text</comment>
+  </data>
+  <data name="Login_Username.WatermarkText" xml:space="preserve">
+    <value>email</value>
+    <comment>Login-&gt;Form-&gt;Username</comment>
+  </data>
+  <data name="Logout_LogoutAction.Content" xml:space="preserve">
+    <value>Logout</value>
+    <comment>Logout-&gt;Logout text</comment>
+  </data>
+  <data name="Menu_AnalogRead.Text" xml:space="preserve">
+    <value>analogRead</value>
+    <comment>Menu-&gt;Analog Read text</comment>
+  </data>
+  <data name="Menu_AnalogWrite.Text" xml:space="preserve">
+    <value>analogWrite</value>
+    <comment>Menu-&gt;Analog Write text</comment>
+  </data>
+  <data name="Menu_CopyDeviceId.Text" xml:space="preserve">
+    <value>Copy Device Id to clipboard</value>
+    <comment>Menu copy device id to clipboard text</comment>
+  </data>
+  <data name="Menu_DigitalRead.Text" xml:space="preserve">
+    <value>digitalRead</value>
+    <comment>Menu-&gt;Digital Read text</comment>
+  </data>
+  <data name="Menu_DigitalWrite.Text" xml:space="preserve">
+    <value>digitalWrite</value>
+    <comment>Menu-&gt;Digital Write text</comment>
+  </data>
+  <data name="Menu_ReflashTinker.Text" xml:space="preserve">
+    <value>Re-flash Tinker</value>
+    <comment>Menu Re-Flash Tinker text</comment>
+  </data>
+  <data name="Menu_Rename.Text" xml:space="preserve">
+    <value>Rename...</value>
+    <comment>Menu rename text</comment>
+  </data>
+  <data name="Menu_Unclaim.Text" xml:space="preserve">
+    <value>Unclaim</value>
+    <comment>Menu Unclaim text</comment>
+  </data>
+  <data name="Register_Agreement_Part1.Text" xml:space="preserve">
+    <value>By clicking Register you are indicating that you have read and agreed to the</value>
+    <comment>Register-&gt;Form-&gt;Agreement Part 1</comment>
+  </data>
+  <data name="Register_Agreement_Part2.Text" xml:space="preserve">
+    <value>and</value>
+    <comment>Register-&gt;Form-&gt;Agreement Part 2</comment>
+  </data>
+  <data name="Register_Agreement_PP_a.NavigateUri" xml:space="preserve">
+    <value>https://www.particle.io/privacy</value>
+    <comment>Register-&gt;Form-&gt;Agreement PP a</comment>
+  </data>
+  <data name="Register_Agreement_PP_b.Text" xml:space="preserve">
+    <value>Privacy Policy.</value>
+    <comment>Register-&gt;Form-&gt;Agreement PP b</comment>
+  </data>
+  <data name="Register_Agreement_TOS_a.NavigateUri" xml:space="preserve">
+    <value>https://www.particle.io/tos</value>
+    <comment>Register-&gt;Form-&gt;Agreement TOC a</comment>
+  </data>
+  <data name="Register_Agreement_TOS_b.Text" xml:space="preserve">
+    <value>Terms of Service</value>
+    <comment>Register-&gt;Form-&gt;Argreement TOC b</comment>
+  </data>
+  <data name="Register_AlreadyHaveAccount.Content" xml:space="preserve">
+    <value>I already have an account</value>
+    <comment>Register-&gt;Form-&gt;I Already Have an Account link</comment>
+  </data>
+  <data name="Register_AutoLogin.Text" xml:space="preserve">
+    <value>Auto Login</value>
+    <comment>Register-&gt;Form-&gt;Auto Login text</comment>
+  </data>
+  <data name="Register_CreateParticleAccount.Text" xml:space="preserve">
+    <value>Create Particle Account</value>
+    <comment>Register-&gt;Header-&gt;Create account text</comment>
+  </data>
+  <data name="Register_CreatingAccount.Text" xml:space="preserve">
+    <value>Creating account...</value>
+    <comment>Register-&gt;Form-&gt;Creating Account text</comment>
+  </data>
+  <data name="Register_Email.WatermarkText" xml:space="preserve">
+    <value>email</value>
+    <comment>Register-&gt;Form-&gt;Email watermark</comment>
+  </data>
+  <data name="Register_Password.Watermark" xml:space="preserve">
+    <value>password</value>
+    <comment>Register-&gt;Form-&gt;Password watermark</comment>
+  </data>
+  <data name="Register_Register.Content" xml:space="preserve">
+    <value>Register</value>
+    <comment>Register-&gt;Form-&gt;Register button</comment>
+  </data>
+  <data name="Register_RememberPassword.Text" xml:space="preserve">
+    <value>Remember Password</value>
+    <comment>Register-&gt;Form-&gt;Remember Password text</comment>
+  </data>
+  <data name="Register_VerifyPassword.Watermark" xml:space="preserve">
+    <value>verify password</value>
+    <comment>Register-&gt;Form-&gt;Verify Password watermark</comment>
+  </data>
+</root>
