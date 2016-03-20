@@ -31,7 +31,6 @@ namespace ParticleApp.Business
 
 		public MM()
 		{
-			
 			loader = loader ?? ResourceLoader.GetForCurrentView("Resources"); // if this has already been loaded use that one
 		}
 

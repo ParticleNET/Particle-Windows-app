@@ -13,8 +13,8 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common.Messages;
-using Particle.Common.ViewModel;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.ViewModel;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

@@ -45,7 +45,7 @@ namespace ParticleApp.Business.Design
 		{
 			get
 			{
-				return new RelayCommand(() => { });
+				return new RelayCommand(() => { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CopyDeviceIdCommand))); });
 			}
 		}
 

@@ -79,13 +79,165 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Controls\" />
-    <Folder Include="Converters\" />
-    <Folder Include="Pages\" />
+    <Compile Include="..\..\src\ParticleApp.UI\Controls\ComboBoxItemTemplateSelector.cs">
+      <Link>Controls\ComboBoxItemTemplateSelector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Controls\DevicesComboControl.xaml.cs">
+      <Link>Controls\DevicesComboControl.xaml.cs</Link>
+      <DependentUpon>DevicesComboControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Controls\DevicesListControl.xaml.cs">
+      <Link>Controls\DevicesListControl.xaml.cs</Link>
+      <DependentUpon>DevicesListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Controls\LoginControl.xaml.cs">
+      <Link>Controls\LoginControl.xaml.cs</Link>
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Controls\PinControl.xaml.cs">
+      <Link>Controls\PinControl.xaml.cs</Link>
+      <DependentUpon>PinControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Controls\TinkerControl.xaml.cs">
+      <Link>Controls\TinkerControl.xaml.cs</Link>
+      <DependentUpon>TinkerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\AlignmentConverter.cs">
+      <Link>Converters\AlignmentConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\BooleanNumberConverter.cs">
+      <Link>Converters\BooleanNumberConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\MaximumConverter.cs">
+      <Link>Converters\MaximumConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\NotBooleanConverter.cs">
+      <Link>Converters\NotBooleanConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\NotNullConverter.cs">
+      <Link>Converters\NotNullConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\ParticleDeviceTypeConverter.cs">
+      <Link>Converters\ParticleDeviceTypeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\PinBorderColorConverter.cs">
+      <Link>Converters\PinBorderColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\PinModeConverter.cs">
+      <Link>Converters\PinModeConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\PinValueConverter.cs">
+      <Link>Converters\PinValueConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\ProgresBarVisibilityConverter.cs">
+      <Link>Converters\ProgresBarVisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\StatusColorConverter.cs">
+      <Link>Converters\StatusColorConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\StatusTextConverter.cs">
+      <Link>Converters\StatusTextConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\VisibilityConverter.cs">
+      <Link>Converters\VisibilityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\VisibilityNotConverter.cs">
+      <Link>Converters\VisibilityNotConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Converters\VisibilityNotNullConverter.cs">
+      <Link>Converters\VisibilityNotNullConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Pages\LoginPage.xaml.cs">
+      <Link>Pages\LoginPage.xaml.cs</Link>
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.UI\Pages\RegisterPage.xaml.cs">
+      <Link>Pages\RegisterPage.xaml.cs</Link>
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <PRIResource Include="..\..\src\ParticleApp.UI\Resources\en-US\Resources.resw">
+      <Link>Resources\en-US\Resources.resw</Link>
+    </PRIResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\..\src\ParticleApp.UI\Controls\DevicesComboControl.xaml">
+      <Link>Controls\DevicesComboControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\src\ParticleApp.UI\Controls\DevicesListControl.xaml">
+      <Link>Controls\DevicesListControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\src\ParticleApp.UI\Controls\LoginControl.xaml">
+      <Link>Controls\LoginControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\src\ParticleApp.UI\Controls\PinControl.xaml">
+      <Link>Controls\PinControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\src\ParticleApp.UI\Controls\TinkerControl.xaml">
+      <Link>Controls\TinkerControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\src\ParticleApp.UI\Pages\LoginPage.xaml">
+      <Link>Pages\LoginPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\..\src\ParticleApp.UI\Pages\RegisterPage.xaml">
+      <Link>Pages\RegisterPage.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.2.0.37222, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.2.0.37227, Culture=neutral, PublicKeyToken=2d6752c4fdf70b88, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.2.0.0\lib\wpa81\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Particle.Win8, Version=0.8.17.40, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ParticleNET.ParticleSDK.0.8.17-beta-0040\lib\wpa81\Particle.Win8.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WinRTXamlToolkit, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinRTXamlToolkit.WindowsPhone.1.8.1.0\lib\wpa\WinRTXamlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ParticleApp.Business\ParticleApp.Business.csproj">
+      <Project>{fb7d2338-277f-4a09-b385-80d6302c766c}</Project>
+      <Name>ParticleApp.Business</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>

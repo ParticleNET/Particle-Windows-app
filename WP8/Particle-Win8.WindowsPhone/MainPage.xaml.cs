@@ -13,30 +13,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-using Particle.Common;
-using Particle.Common.Messages;
-using Particle.Common.ViewModel;
-using Particle_Win8.Controls;
+using ParticleApp.Business;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Networking.Connectivity;
-using Windows.UI.Popups;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using WinRTXamlToolkit.Async;
-using WinRTXamlToolkit.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
