@@ -1,5 +1,5 @@
 ﻿<UserControl
-	x:Class="Particle.Common.Controls.LogoutControl"
+	x:Class="ParticleApp.UI.Controls.LogoutControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:Particle.Common.Controls"
@@ -9,12 +9,5 @@
 	DataContext="{Binding LogoutViewModel, Source={StaticResource Locator}}"
 	d:DesignHeight="300"
 	d:DesignWidth="400">
-	<UserControl.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</UserControl.Resources>
 	<Button x:Uid="Logout_LogoutAction" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Command="{Binding Logout}">Logout</Button>
 </UserControl>

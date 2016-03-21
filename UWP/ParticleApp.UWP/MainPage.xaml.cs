@@ -30,11 +30,12 @@ namespace ParticleApp.UWP
 		protected override async void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
-			using(var cloud = new Particle.ParticleCloud())
-			{
-				var result = await cloud.LoginWithUserAsync("test", "test");
-				AccessToken.Text = cloud.AccessToken;
-			}
+			//await LoginDialog.ShowAsync();
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			Splitter.IsPaneOpen = !Splitter.IsPaneOpen;
 		}
 	}
 }

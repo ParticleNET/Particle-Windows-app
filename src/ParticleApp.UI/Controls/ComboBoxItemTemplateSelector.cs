@@ -22,7 +22,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
-namespace Particle.Common.Controls
+namespace ParticleApp.UI.Controls
 {
 	public class ComboBoxItemTemplateSelector : DataTemplateSelector
 	{

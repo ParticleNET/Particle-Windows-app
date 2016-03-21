@@ -108,6 +108,147 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignCommandsViewModel.cs">
+      <Link>Design\DesignCommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignDevicesListViewModel.cs">
+      <Link>Design\DesignDevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignDeviceWrapper.cs">
+      <Link>Design\DesignDeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignLoginViewModel.cs">
+      <Link>Design\DesignLoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignLogoutViewModel.cs">
+      <Link>Design\DesignLogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignParticleDevice.cs">
+      <Link>Design\DesignParticleDevice.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignPinViewModel.cs">
+      <Link>Design\DesignPinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignRegisterViewModel.cs">
+      <Link>Design\DesignRegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignTinkerRowViewModel.cs">
+      <Link>Design\DesignTinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Design\DesignTinkerViewModel.cs">
+      <Link>Design\DesignTinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Extentions.cs">
+      <Link>Extentions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ICommandsViewModel.cs">
+      <Link>Interfaces\ICommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IDevicesListViewModel.cs">
+      <Link>Interfaces\IDevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IDeviceWrapper.cs">
+      <Link>Interfaces\IDeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ILoginViewModel.cs">
+      <Link>Interfaces\ILoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ILogoutViewModel.cs">
+      <Link>Interfaces\ILogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IPinValue.cs">
+      <Link>Interfaces\IPinValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IPinViewModel.cs">
+      <Link>Interfaces\IPinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IRegisterViewModel.cs">
+      <Link>Interfaces\IRegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ITinkerRowViewModel.cs">
+      <Link>Interfaces\ITinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ITinkerViewModel.cs">
+      <Link>Interfaces\ITinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Ioc.cs">
+      <Link>Ioc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\CopyToClipboardMessage.cs">
+      <Link>Messages\CopyToClipboardMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\DialogMessage.cs">
+      <Link>Messages\DialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\InputDialogMessage.cs">
+      <Link>Messages\InputDialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\LoggedInMessage.cs">
+      <Link>Messages\LoggedInMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\LoggedOutMessage.cs">
+      <Link>Messages\LoggedOutMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\ModeDialogMessage.cs">
+      <Link>Messages\ModeDialogMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\RefreshDevicesMessage.cs">
+      <Link>Messages\RefreshDevicesMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\SelectedDeviceMessage.cs">
+      <Link>Messages\SelectedDeviceMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\YourWebEventMessage.cs">
+      <Link>Messages\YourWebEventMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\MM.cs">
+      <Link>MM.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\BooleanToNumber.cs">
+      <Link>Models\BooleanToNumber.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\DeviceWrapper.cs">
+      <Link>Models\DeviceWrapper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\MessageButtonModel.cs">
+      <Link>Models\MessageButtonModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Models\PinValueModel.cs">
+      <Link>Models\PinValueModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\PinMode.cs">
+      <Link>PinMode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\AppSettingsViewModel.cs">
+      <Link>ViewModel\AppSettingsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\CommandsViewModel.cs">
+      <Link>ViewModel\CommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\DevicesListViewModel.cs">
+      <Link>ViewModel\DevicesListViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\LoginViewModel.cs">
+      <Link>ViewModel\LoginViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\LogoutViewModel.cs">
+      <Link>ViewModel\LogoutViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\PinViewModel.cs">
+      <Link>ViewModel\PinViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\RegisterViewModel.cs">
+      <Link>ViewModel\RegisterViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\TinkerRowViewModel.cs">
+      <Link>ViewModel\TinkerRowViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\TinkerViewModel.cs">
+      <Link>ViewModel\TinkerViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\ViewModel\ViewModelLocator.cs">
+      <Link>ViewModel\ViewModelLocator.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ParticleApp.UWP.Business.rd.xml" />
   </ItemGroup>

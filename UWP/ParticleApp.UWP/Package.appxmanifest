@@ -3,26 +3,31 @@
   <Identity Name="831154f9-20a8-497e-a8ee-2d0e2a094656" Publisher="CN=539A265D-985D-46F5-A37E-8B75F1D4381D" Version="0.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="831154f9-20a8-497e-a8ee-2d0e2a094656" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>ParticleApp.UWP</DisplayName>
-    <PublisherDisplayName>AdamHolt</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+	<DisplayName>ParticleApp.UWP</DisplayName>
+	<PublisherDisplayName>AdamHolt</PublisherDisplayName>
+	<Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
-    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+	<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
   </Dependencies>
   <Resources>
-    <Resource Language="x-generate" />
+	<Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ParticleApp.UWP.App">
-      <uap:VisualElements DisplayName="ParticleApp.UWP" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="ParticleApp.UWP" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
-        </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
-      </uap:VisualElements>
-    </Application>
+	<Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ParticleApp.UWP.App">
+	  <uap:VisualElements DisplayName="Particle Tinker" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Get connected and start building your Internet of Things project right away with Particle Tinker(by ParticleNET), the companion app to the Core, Photon, and Electron. The tiny but powerful Wi-Fi development boards from the team at Particle (Particle was formerly known as Spark)" BackgroundColor="transparent">
+		<uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+		</uap:DefaultTile>
+		<uap:SplashScreen Image="Assets\SplashScreen.png" />
+	  </uap:VisualElements>
+	</Application>
   </Applications>
   <Capabilities>
-    <Capability Name="internetClient" />
+	<Capability Name="internetClient" />
+	  <!--<DeviceCapability Name="serialcommunication">
+		  <Device Id="vidpid:2B04 C006">
+			  <Function Type="name:serialPort" />
+		  </Device>
+	  </DeviceCapability>-->
   </Capabilities>
 </Package>

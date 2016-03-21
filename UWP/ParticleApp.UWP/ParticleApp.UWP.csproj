@@ -127,10 +127,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="..\..\Win8\Particle-Win8.Windows\MainDictionary.xaml">
+      <Link>MainDictionary.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AppStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ParticleApp.UWP.Business\ParticleApp.UWP.Business.csproj">
+      <Project>{9372d155-0bbc-4f62-8390-446281197d67}</Project>
+      <Name>ParticleApp.UWP.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParticleApp.UWP.UI\ParticleApp.UWP.UI.csproj">
+      <Project>{7abfdbe8-bf85-4b9b-a9f8-ee66b0fcf6ca}</Project>
+      <Name>ParticleApp.UWP.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

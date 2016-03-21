@@ -1,5 +1,5 @@
 ﻿<UserControl
-	x:Class="Particle.Common.Controls.PinControl"
+	x:Class="ParticleApp.UI.Controls.PinControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:Particle.Common.Controls"
@@ -13,7 +13,6 @@
 	<UserControl.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
 				<ResourceDictionary>
 					<model:BooleanToNumber x:Key="ButtonLeftRight" TrueValue="2" FalseValue="0" />
 					<model:BooleanToNumber x:Key="TextRightLeft" TrueValue="0" FalseValue="2" />
