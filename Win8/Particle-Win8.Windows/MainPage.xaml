@@ -4,8 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:Particle_Win8"
 	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
-	xmlns:controls="using:Particle.Common.Controls"
-	xmlns:localControls="using:Particle_Win8.Controls"
+	xmlns:controls="using:ParticleApp.UI.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	DataContext="{Binding Source={StaticResource Locator}}"
@@ -36,7 +35,7 @@
 			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" VerticalAlignment="Center" Margin="0,24,24,24" />
 		</Grid>
 		<Popup x:Name="LoginPopup" Grid.RowSpan="3" HorizontalAlignment="Center" Width="450" IsOpen="False">
-			<localControls:LoginControl HorizontalAlignment="Center" Width="450" />
+			<controls:LoginControl HorizontalAlignment="Center" Width="450" />
 		</Popup>
 		<Grid x:Name="TinkerContainer" Grid.Row="1" Visibility="Visible">
 			<Grid.RowDefinitions>

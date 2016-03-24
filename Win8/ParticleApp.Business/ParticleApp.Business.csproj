@@ -265,8 +265,8 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Particle.Win8, Version=0.8.17.40, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ParticleNET.ParticleSDK.0.8.17-beta-0040\lib\netcore451\Particle.Win8.dll</HintPath>
+    <Reference Include="Particle.Win8, Version=0.8.17.42, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ParticleNET.ParticleSDK.0.8.17-beta-0042\lib\netcore451\Particle.Win8.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WinRTXamlToolkit, Version=1.8.1.0, Culture=neutral, processorArchitecture=MSIL">

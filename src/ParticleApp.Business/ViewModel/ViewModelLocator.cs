@@ -80,7 +80,7 @@ namespace ParticleApp.Business.ViewModel
 					Debug.WriteLine($"Error: {a}");
 				};
 #endif
-				Task.Run(() => yourEvents.Start()); // With out the Task.Run the app freezes up not sure why
+				yourEvents.Start();
 			}
 		}
 
