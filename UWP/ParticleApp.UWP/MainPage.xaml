@@ -32,8 +32,9 @@
 			</SplitView.Pane>
 		</SplitView>
 
-		<StackPanel Grid.RowSpan="2">
+		<Popup IsOpen="True" Grid.ColumnSpan="2">
 			<controls:LoginControl />
-		</StackPanel>
+		</Popup>
+
 	</Grid>
 </Page>

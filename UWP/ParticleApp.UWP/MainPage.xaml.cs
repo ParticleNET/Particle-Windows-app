@@ -30,7 +30,6 @@ namespace ParticleApp.UWP
 		protected override async void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
-			//await LoginDialog.ShowAsync();
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
