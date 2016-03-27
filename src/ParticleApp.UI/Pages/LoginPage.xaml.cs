@@ -14,6 +14,10 @@
    limitations under the License.
 */
 using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.Models;
+using ParticleApp.Business.ViewModel;
+using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -46,15 +50,25 @@ namespace ParticleApp.Business.Pages
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
 			base.OnNavigatedTo(e);
-			if(((bool?)e.Parameter) == true)
+#if WINDOWS_UWP
+			ViewModelLocator.Messenger.Send(new AuthSwitchMessage(LoginAction.Content.ToString(), doAuth));
+			LoginAction.Visibility = Visibility.Collapsed;
+#endif
+			if (((bool?)e.Parameter) == true)
 			{
 				if (viewModel.ShouldAutoLogin)
 				{
-					if (viewModel.Command.CanExecute(true))
-					{
-						viewModel.Command.Execute(true);
-					}
+					doAuth(new BasicCancelable());
 				}
+			}
+		}
+
+		private void doAuth(ICancelable cancel)
+		{
+			var t = new Tuple<bool, ICancelable>(false, cancel);
+			if(viewModel.Command.CanExecute(t))
+			{
+				viewModel.Command.Execute(t);
 			}
 		}
 

@@ -13,8 +13,14 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using ParticleApp.Business.Interfaces;
+using ParticleApp.Business.Messages;
+using ParticleApp.Business.ViewModel;
+using System;
+using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,11 +31,42 @@ namespace ParticleApp.Business.Pages
 	/// </summary>
 	public sealed partial class RegisterPage : Page
 	{
+		private IRegisterViewModel _viewModel;
+
+		private IRegisterViewModel viewModel
+		{
+			get
+			{
+				return _viewModel ?? (_viewModel = (IRegisterViewModel)DataContext);
+			}
+		}
+
 		public RegisterPage()
 		{
 			this.InitializeComponent();
 		}
-		
+
+#if WINDOWS_UWP
+		protected override async void OnNavigatedTo(NavigationEventArgs e)
+		{
+			base.OnNavigatedTo(e);
+			await Task.Delay(200);
+			ViewModelLocator.Messenger.Send(new AuthSwitchMessage(MM.M.GetString("Register_Register"), doAuth));
+			RegisterAction.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
+		}
+#endif
+
+#if WINDOWS_UWP
+		private void doAuth(ICancelable cancel)
+		{
+			var t = new Tuple<bool, ICancelable>(false, cancel);
+			if (viewModel.Command.CanExecute(t))
+			{
+				viewModel.Command.Execute(t);
+			}
+		}
+#endif
+
 		private void HyperlinkButton_Tapped(object sender, TappedRoutedEventArgs e)
 		{
 			this.Frame.Navigate(typeof(LoginPage));

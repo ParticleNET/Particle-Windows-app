@@ -13,42 +13,26 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
+using ParticleApp.Business.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
-namespace ParticleApp.Business
+namespace ParticleApp.Business.Models
 {
-	public class MM
+	public class BasicCancelable : ICancelable
 	{
-		public static MM M { get; } = new MM();
-
-		protected static ResourceLoader loader;
-
-		public MM()
+		public bool Cancel
 		{
-#if WINDOWS_UWP
-			loader = loader ?? ResourceLoader.GetForViewIndependentUse("Resources");
-#else
-			loader = loader ?? ResourceLoader.GetForCurrentView("Resources"); // if this has already been loaded use that one
-#endif
+			get;
+			set;
 		}
 
-		public String this[String key]
+		public IDeferral GetDeferal()
 		{
-			get
-			{
-				return GetString(key);
-			}
-		}
-
-		public String GetString(String key)
-		{
-			return loader.GetString(key);
+			return new BasicDeferral();
 		}
 	}
 }

@@ -2,19 +2,12 @@
 	x:Class="ParticleApp.Business.Pages.LoginPage"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="using:Particle_Win8.Pages"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:toolkit="using:WinRTXamlToolkit.Controls"
 	DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}"
+	Background="Transparent"
 	mc:Ignorable="d">
-	<Page.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="ms-appx:///MainDictionary.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</Page.Resources>
 	<Grid Margin="0" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<StackPanel Margin="12">
 			<TextBlock x:Uid="Login_Header" Text="1 Particle Login" Style="{StaticResource SubheaderTextBlockStyle}" HorizontalAlignment="Center" />

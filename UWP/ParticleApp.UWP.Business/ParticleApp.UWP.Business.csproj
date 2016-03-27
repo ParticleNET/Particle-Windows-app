@@ -141,8 +141,14 @@
     <Compile Include="..\..\src\ParticleApp.Business\Extentions.cs">
       <Link>Extentions.cs</Link>
     </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ICancelable.cs">
+      <Link>Interfaces\ICancelable.cs</Link>
+    </Compile>
     <Compile Include="..\..\src\ParticleApp.Business\Interfaces\ICommandsViewModel.cs">
       <Link>Interfaces\ICommandsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IDeferral.cs">
+      <Link>Interfaces\IDeferral.cs</Link>
     </Compile>
     <Compile Include="..\..\src\ParticleApp.Business\Interfaces\IDevicesListViewModel.cs">
       <Link>Interfaces\IDevicesListViewModel.cs</Link>
@@ -173,6 +179,9 @@
     </Compile>
     <Compile Include="..\..\src\ParticleApp.Business\Ioc.cs">
       <Link>Ioc.cs</Link>
+    </Compile>
+    <Compile Include="..\..\src\ParticleApp.Business\Messages\AuthSwitchMessage.cs">
+      <Link>Messages\AuthSwitchMessage.cs</Link>
     </Compile>
     <Compile Include="..\..\src\ParticleApp.Business\Messages\CopyToClipboardMessage.cs">
       <Link>Messages\CopyToClipboardMessage.cs</Link>
@@ -249,6 +258,8 @@
     <Compile Include="..\..\src\ParticleApp.Business\ViewModel\ViewModelLocator.cs">
       <Link>ViewModel\ViewModelLocator.cs</Link>
     </Compile>
+    <Compile Include="Models\BasicCancelable.cs" />
+    <Compile Include="Models\BasicDeferral.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ParticleApp.UWP.Business.rd.xml" />
   </ItemGroup>

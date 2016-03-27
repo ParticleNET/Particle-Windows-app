@@ -336,4 +336,12 @@ Id: {1}</value>
     <value>Logout</value>
     <comment>AppBar-&gt;Logout-&gt;Label</comment>
   </data>
+  <data name="Login_LoginAction" xml:space="preserve">
+    <value>Login</value>
+    <comment>Login-&gt;Form-&gt;Loggin Button text</comment>
+  </data>
+  <data name="Register_Register" xml:space="preserve">
+    <value>Register</value>
+    <comment>Register-&gt;Form-&gt;Register button</comment>
+  </data>
 </root>

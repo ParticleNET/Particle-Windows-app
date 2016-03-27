@@ -3,6 +3,7 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:ParticleApp.UWP"
+	xmlns:dialogs="using:ParticleApp.UWP.Dialogs"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:controls="using:ParticleApp.UI.Controls"
@@ -13,28 +14,33 @@
 			<RowDefinition Height="Auto" />
 			<RowDefinition />
 		</Grid.RowDefinitions>
-		<StackPanel x:Name="HeaderPanel" Orientation="Horizontal">
-			<Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Grid.Row="0">
-				<ToggleButton Style="{StaticResource SymbolButton}" Click="Button_Click" VerticalAlignment="Top" Foreground="{ThemeResource ApplicationForegroundThemeBrush}">
-					<ToggleButton.Content>
-						<FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,10,0,0"/>
-					</ToggleButton.Content>
-				</ToggleButton>
-			</Border>
-			<Image x:Name="WindowsLogo" Stretch="None" Source="Assets/windows-sdk.png" Margin="0,15,0,0" />
-			<TextBlock x:Name="Header" Text="Universal Windows Platform sample" Style="{StaticResource TagLineTextStyle}" Margin="0,15,0,0" />
-		</StackPanel>
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="auto" />
+			</Grid.ColumnDefinitions>
+			<StackPanel x:Name="HeaderPanel" Orientation="Horizontal" Grid.Column="0">
+				<Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Grid.Row="0">
+					<ToggleButton Style="{StaticResource SymbolButton}" Click="Button_Click" VerticalAlignment="Top" Foreground="{ThemeResource ApplicationForegroundThemeBrush}">
+						<ToggleButton.Content>
+							<FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,10,0,0"/>
+						</ToggleButton.Content>
+					</ToggleButton>
+				</Border>
+				<TextBlock x:Name="Header" Text="Particle Tinker" Style="{StaticResource TagLineTextStyle}" Margin="0,15,0,0" />
+			</StackPanel>
+			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" />
+		</Grid>
 		<SplitView x:Name="Splitter" IsPaneOpen="True" Grid.Row="1">
 			<SplitView.Pane>
-				<StackPanel>
-					
-				</StackPanel>
+				<controls:DevicesListControl />
 			</SplitView.Pane>
+			<SplitView.Content>
+				<controls:TinkerControl />
+			</SplitView.Content>
 		</SplitView>
 
-		<Popup IsOpen="True" Grid.ColumnSpan="2">
-			<controls:LoginControl />
-		</Popup>
-
+		<dialogs:AuthDialog x:Name="AuthDialog" Grid.RowSpan="2" />
+		<dialogs:InputDialog x:Name="InputDialog" Grid.RowSpan="2" />
 	</Grid>
 </Page>

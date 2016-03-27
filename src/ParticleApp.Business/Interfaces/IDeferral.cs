@@ -16,39 +16,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
-namespace ParticleApp.Business
+namespace ParticleApp.Business.Interfaces
 {
-	public class MM
+	public interface IDeferral
 	{
-		public static MM M { get; } = new MM();
-
-		protected static ResourceLoader loader;
-
-		public MM()
-		{
-#if WINDOWS_UWP
-			loader = loader ?? ResourceLoader.GetForViewIndependentUse("Resources");
-#else
-			loader = loader ?? ResourceLoader.GetForCurrentView("Resources"); // if this has already been loaded use that one
-#endif
-		}
-
-		public String this[String key]
-		{
-			get
-			{
-				return GetString(key);
-			}
-		}
-
-		public String GetString(String key)
-		{
-			return loader.GetString(key);
-		}
+		void Complete();
 	}
 }

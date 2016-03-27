@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Particle;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using WinRTXamlToolkit.Async;
 
 namespace ParticleApp.UWP
 {
@@ -22,6 +24,7 @@ namespace ParticleApp.UWP
 	/// </summary>
 	sealed partial class App : Application
 	{
+		public static AsyncLock locker = new AsyncLock();
 		/// <summary>
 		/// Initializes the singleton application object.  This is the first line of authored code
 		/// executed, and as such is the logical equivalent of main() or WinMain().
@@ -51,6 +54,8 @@ namespace ParticleApp.UWP
 #endif
 
 			Frame rootFrame = Window.Current.Content as Frame;
+
+			ParticleCloud.SyncContext = System.Threading.SynchronizationContext.Current;
 
 			// Do not repeat app initialization when the Window already has content,
 			// just ensure that the window is active

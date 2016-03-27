@@ -78,20 +78,26 @@ namespace ParticleApp.Business.ViewModel
 			set { Set(nameof(IsAuthenticating),ref isAuthenticating, value); }
 		}
 
-		protected RelayCommand<bool> command;
+		protected RelayCommand<Tuple<bool, ICancelable>> command;
 		public virtual ICommand Command
 		{
 			get
 			{
 				return command ?? (command =
-					new RelayCommand<bool>(async (isAuto) =>
+					new RelayCommand<Tuple<bool, ICancelable>>(async (t) =>
 				{
 					IsAuthenticating = true;
-					if (await loginAsync(isAuto) && ViewModelLocator.Cloud.IsAuthenticated)
+					var def = t.Item2.GetDeferal();
+					if (await loginAsync(t.Item1) && ViewModelLocator.Cloud.IsAuthenticated)
 					{
 						ViewModelLocator.Messenger.Send<LoggedInMessage>(new LoggedInMessage());
 					}
+					else
+					{
+						t.Item2.Cancel = true;
+					}
 					IsAuthenticating = false;
+					def.Complete();
 				})
 				);
 			}
