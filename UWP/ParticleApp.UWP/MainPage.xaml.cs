@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Popups;
@@ -34,10 +35,23 @@ namespace ParticleApp.UWP
 			ViewModelLocator.Messenger.Register<InputDialogMessage>(this, (mes) => { InputDialog.ShowInputDialog(mes); });
 			ViewModelLocator.Messenger.Register<LoggedInMessage>(this, (a) => { checkLoggedIn(); });
 			ViewModelLocator.Messenger.Register<LoggedOutMessage>(this, (a) => { checkLoggedIn(); });
+			ViewModelLocator.Messenger.Register<CopyToClipboardMessage>(this, copyToClipboardReceiver);
 		}
 
 
-		
+		private void copyToClipboardReceiver(CopyToClipboardMessage message)
+		{
+			DataPackage package = new DataPackage();
+			package.SetText(message.Content);
+			Clipboard.SetContent(package);
+			if (!String.IsNullOrWhiteSpace(message.SuccessMessage))
+			{
+				dialogMessage(new DialogMessage
+				{
+					Description = message.SuccessMessage
+				});
+			}
+		}
 
 		private async void dialogMessage(DialogMessage dm)
 		{

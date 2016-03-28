@@ -2,7 +2,6 @@
 	x:Class="ParticleApp.UI.Controls.DevicesListControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	xmlns:local="using:Particle.Common.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	DataContext="{Binding DevicesListViewModel, Source={StaticResource Locator}}"
@@ -51,7 +50,7 @@
 										</MenuFlyout>
 									</Button.Flyout>
 									<StackPanel>
-										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
+										<Ellipse Style="{StaticResource Elips}" Margin="0,0,0,3" />
 										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
 										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0" />
 									</StackPanel>

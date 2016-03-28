@@ -23,7 +23,7 @@
 				<Border Background="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Grid.Row="0">
 					<ToggleButton Style="{StaticResource SymbolButton}" Click="Button_Click" VerticalAlignment="Top" Foreground="{ThemeResource ApplicationForegroundThemeBrush}">
 						<ToggleButton.Content>
-							<FontIcon x:Name="Hamburger" FontFamily="Segoe MDL2 Assets" Glyph="&#xE700;" Margin="0,10,0,0"/>
+							<FontIcon FontFamily="{ThemeResource ContentControlThemeFontFamily}" Glyph="&#x2261;" FontSize="32" Margin="0,-8,0,0"/>
 						</ToggleButton.Content>
 					</ToggleButton>
 				</Border>
@@ -31,9 +31,13 @@
 			</StackPanel>
 			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" />
 		</Grid>
-		<SplitView x:Name="Splitter" IsPaneOpen="True" Grid.Row="1">
+		<SplitView x:Name="Splitter" IsPaneOpen="True" DisplayMode="Inline" Grid.Row="1">
 			<SplitView.Pane>
-				<controls:DevicesListControl />
+				<RelativePanel>
+					<AppBarButton x:Name="AddButton" Icon="Add" IsCompact="True" />
+					<TextBlock RelativePanel.RightOf="AddButton" RelativePanel.AlignVerticalCenterWith="AddButton" Text="Add Device" />
+					<controls:DevicesListControl RelativePanel.Below="AddButton" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" />
+				</RelativePanel>
 			</SplitView.Pane>
 			<SplitView.Content>
 				<controls:TinkerControl />
@@ -42,5 +46,34 @@
 
 		<dialogs:AuthDialog x:Name="AuthDialog" Grid.RowSpan="2" />
 		<dialogs:InputDialog x:Name="InputDialog" Grid.RowSpan="2" />
+	<VisualStateManager.VisualStateGroups>
+		<VisualStateGroup>
+				<VisualState>
+					<!-- VisualState to be triggered when window width is >=720 effective pixels -->
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="720" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<!-- Widest possible layout moves some elements around to optimize for more available width 
+						and keeps SplitView pane always showing inline -->
+						<Setter Target="Splitter.DisplayMode" Value="Inline" />
+						<Setter Target="Splitter.IsPaneOpen" Value="True" />
+					</VisualState.Setters>
+				</VisualState>
+				<VisualState>
+				<!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
+				<VisualState.StateTriggers>
+					<AdaptiveTrigger MinWindowWidth="0" />
+				</VisualState.StateTriggers>
+				<VisualState.Setters>
+					<!-- For the most narrow windows and phones in portrait orientation, this state collapses the SplitView pane into overlay mode
+						and adds dynamic RelativePanel constraints that puts all elements stacked below each other -->
+					<Setter Target="Splitter.DisplayMode" Value="Overlay" />
+					<Setter Target="Splitter.IsPaneOpen" Value="False" />
+				</VisualState.Setters>
+			</VisualState>
+		</VisualStateGroup>
+	</VisualStateManager.VisualStateGroups>
 	</Grid>
+
 </Page>

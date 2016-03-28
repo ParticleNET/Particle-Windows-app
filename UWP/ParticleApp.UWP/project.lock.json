@@ -284,7 +284,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -1964,7 +1964,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -3677,7 +3677,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -5395,7 +5395,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -7108,7 +7108,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -8826,7 +8826,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -10539,7 +10539,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
+      "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
         "dependencies": {
           "Newtonsoft.Json": "[7.0.1, )"
         },
@@ -12809,8 +12809,8 @@
         "tools/install.ps1"
       ]
     },
-    "ParticleNET.ParticleSDK/0.8.17-beta-0040": {
-      "sha512": "MZwr7J6RPVVi8KkgqyDRV9xKWoK5GfYN6KxlrRQxoV9X3ADzzZKx4jjej2FQxdjFk+nvazMVfqrTWVj9Ev4+Zw==",
+    "ParticleNET.ParticleSDK/0.8.17-beta-0042": {
+      "sha512": "F3eRafWr8h3MFcK45pg+D2io+AwfqP8g1FvQitfPBM6QadnwaDwYfFf3zBKu0P3qhm9UUFE7rbOut5j4zNq0UQ==",
       "type": "Package",
       "files": [
         "[Content_Types].xml",
@@ -12828,7 +12828,7 @@
         "lib/wpa81/Particle.Win8.dll",
         "lib/wpa81/Particle.Win8.pri",
         "lib/wpa81/Particle.Win8.XML",
-        "package/services/metadata/core-properties/f79d559a72534906b087a40d28d45229.psmdcp",
+        "package/services/metadata/core-properties/1a4f7795206e471092919710ba5694ba.psmdcp",
         "ParticleNET.ParticleSDK.nuspec"
       ]
     },
@@ -15577,7 +15577,7 @@
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "MvvmLightLibs >= 5.2.0",
       "Newtonsoft.Json >= 8.0.3",
-      "ParticleNET.ParticleSDK >= 0.8.17-beta-0040",
+      "ParticleNET.ParticleSDK >= 0.8.17-beta-0042",
       "WinRTXamlToolkit.Windows >= 1.8.1"
     ],
     "UAP,Version=v10.0": []

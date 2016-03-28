@@ -1,4 +1,5 @@
 ﻿using Particle;
+using ParticleApp.Business.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -36,6 +37,7 @@ namespace ParticleApp.UWP
 				Microsoft.ApplicationInsights.WindowsCollectors.Session);
 			this.InitializeComponent();
 			this.Suspending += OnSuspending;
+			ViewModelLocator.SupportsClipboard = true;
 		}
 
 		/// <summary>

@@ -80,7 +80,7 @@ namespace ParticleApp.Business.ViewModel
 					Debug.WriteLine($"Error: {a}");
 				};
 #endif
-				Task.Run(() => yourEvents.Start());
+				yourEvents.Start();
 			}
 		}
 
