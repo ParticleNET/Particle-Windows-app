@@ -106,6 +106,10 @@
     </Compile>
     <Compile Include="Common\ContentDialogDeferral.cs" />
     <Compile Include="Common\ContentDialogCancelable.cs" />
+    <Compile Include="Controls\WrapPanel.cs" />
+    <Compile Include="Dialogs\AltMessageDialog.xaml.cs">
+      <DependentUpon>AltMessageDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\AuthDialog.xaml.cs">
       <DependentUpon>AuthDialog.xaml</DependentUpon>
     </Compile>
@@ -147,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Dialogs\AltMessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\AuthDialog.xaml">
       <SubType>Designer</SubType>

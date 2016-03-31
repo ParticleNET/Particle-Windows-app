@@ -112,6 +112,9 @@
 	<Style x:Key="MenuButon" TargetType="Button">
 		<Setter Property="Background" Value="Transparent" />
 	</Style>
+	<Style x:Key="PinControl" TargetType="Button">
+		<Setter Property="Background" Value="Transparent" />
+	</Style>
 	<Style x:Key="Elips" TargetType="Ellipse">
 		<Setter Property="Fill" Value="{StaticResource TextBoxForegroundThemeBrush}" />
 		<Setter Property="Width" Value="6" />

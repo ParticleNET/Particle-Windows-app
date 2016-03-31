@@ -51,8 +51,8 @@
 									</Button.Flyout>
 									<StackPanel>
 										<Ellipse Style="{StaticResource Elips}" Margin="0,0,0,3" />
-										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0,0,0,3" />
-										<Ellipse Fill="{ThemeResource ButtonBorderThemeBrush}" Width="6" Height="6" Margin="0" />
+										<Ellipse Style="{StaticResource Elips}" Margin="0,0,0,3" />
+										<Ellipse Style="{StaticResource Elips}" Margin="0,0,0,3" />
 									</StackPanel>
 								</Button>
 							</StackPanel>

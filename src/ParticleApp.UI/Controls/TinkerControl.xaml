@@ -30,14 +30,14 @@
 			<RowDefinition Height="auto" />
 		</Grid.RowDefinitions>
 		<ScrollViewer>
-			<Border Padding="0,12">
+			<Border Padding="12">
 				<Grid VerticalAlignment="Top">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="auto" />
 						<RowDefinition Height="auto" />
 						<RowDefinition Height="auto" />
 					</Grid.RowDefinitions>
-					<Border Background="#440a81be" Width="320">
+					<Border Background="#440a81be" Width="300">
 						<ListView ItemsSource="{Binding PinRows}" SelectionMode="None" ItemContainerStyle="{StaticResource TinkerItemContainer}" Margin="0">
 							<ListView.ItemTemplate>
 								<DataTemplate>
@@ -54,7 +54,7 @@
 							</ListView.ItemTemplate>
 						</ListView>
 					</Border>
-					<Path Grid.Row="1" Width="320" Fill="#440a81be" Data="M 0,0 L 320,0 L 305,20 L 15,20 L 0,0">
+					<Path Grid.Row="1" Fill="#440a81be" Data="M 0,0 L 300,0 L 285,20 L 15,20 L 0,0">
 
 					</Path>
 				</Grid>

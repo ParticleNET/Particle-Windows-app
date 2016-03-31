@@ -9,7 +9,7 @@
 	xmlns:controls="using:ParticleApp.UI.Controls"
 	mc:Ignorable="d">
 
-	<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	<Grid x:Name="GridContainer" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
 			<RowDefinition />
@@ -40,7 +40,7 @@
 				</RelativePanel>
 			</SplitView.Pane>
 			<SplitView.Content>
-				<controls:TinkerControl />
+				<controls:TinkerControl/>
 			</SplitView.Content>
 		</SplitView>
 

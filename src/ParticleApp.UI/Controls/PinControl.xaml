@@ -25,7 +25,7 @@
 		</ResourceDictionary>
 	</UserControl.Resources>
 	<Grid>
-		<Button x:Name="PinAction" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding Refresh}" Visibility="{Binding ShowAnalogSelect, Converter={StaticResource VisibilityNotConverter}}" Holding="Button_Holding" RightTapped="Button_RightTapped" DoubleTapped="Button_DoubleTapped" Padding="4" >
+		<Button x:Name="PinAction" BorderThickness="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding Refresh}" Visibility="{Binding ShowAnalogSelect, Converter={StaticResource VisibilityNotConverter}}" Holding="Button_Holding" RightTapped="Button_RightTapped" DoubleTapped="Button_DoubleTapped" Padding="4" Background="Transparent">
 			<Grid >
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="auto" />
