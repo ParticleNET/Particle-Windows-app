@@ -190,10 +190,12 @@
       <Link>Pages\RegisterPage.xaml.cs</Link>
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TinkerMoreButton.xaml.cs">
+      <DependentUpon>TinkerMoreButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ParticleApp.UWP.UI.rd.xml" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ParticleApp.UWP.Business\ParticleApp.UWP.Business.csproj">
       <Project>{9372d155-0bbc-4f62-8390-446281197d67}</Project>
@@ -240,6 +242,10 @@
       <Link>Pages\RegisterPage.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TinkerMoreButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

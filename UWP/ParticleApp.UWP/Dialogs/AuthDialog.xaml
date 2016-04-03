@@ -7,7 +7,8 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 	PrimaryButtonText=""
+	Opened="ContentDialog_Opened"
 	PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
 	SecondaryButtonText="">
-	<controls:LoginControl />
+	<controls:LoginControl x:Name="LoginControl"/>
 </ContentDialog>

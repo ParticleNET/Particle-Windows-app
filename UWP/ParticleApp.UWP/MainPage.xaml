@@ -7,6 +7,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:controls="using:ParticleApp.UI.Controls"
+	DataContext="{Binding Source={StaticResource Locator}}"
 	mc:Ignorable="d">
 
 	<Grid x:Name="GridContainer" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -29,14 +30,32 @@
 				</Border>
 				<TextBlock x:Name="Header" Text="Particle Tinker" Style="{StaticResource TagLineTextStyle}" Margin="0,15,0,0" />
 			</StackPanel>
-			<controls:LogoutControl x:Name="LogoutControl" Grid.Column="1" />
 		</Grid>
 		<SplitView x:Name="Splitter" IsPaneOpen="True" DisplayMode="Inline" Grid.Row="1">
 			<SplitView.Pane>
-				<RelativePanel>
-					<AppBarButton x:Name="AddButton" Icon="Add" IsCompact="True" />
-					<TextBlock RelativePanel.RightOf="AddButton" RelativePanel.AlignVerticalCenterWith="AddButton" Text="Add Device" />
-					<controls:DevicesListControl RelativePanel.Below="AddButton" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" />
+				<RelativePanel  DataContext="{Binding DevicesListViewModel}">
+					<controls:DevicesListControl x:Name="DeviceList" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.Above="AddButton" />
+					<AppBarButton x:Name="AddButton" Icon="Add" IsCompact="True" RelativePanel.Above="RefreshButton">
+						<AppBarButton.Flyout>
+							<MenuFlyout>
+								<MenuFlyoutItem x:Uid="AppBar_AddDevice_AddWithId" Command="{Binding AddDeviceCommand}">5 Add with Device Id</MenuFlyoutItem>
+								<MenuFlyoutItem x:Uid="AppBar_AddDevice_AddElectron" Command="{Binding AddElectronCommand}">5 Add Electron</MenuFlyoutItem>
+							</MenuFlyout>
+						</AppBarButton.Flyout>
+					</AppBarButton>
+					<TextBlock RelativePanel.RightOf="AddButton" RelativePanel.AlignVerticalCenterWith="AddButton" Text="1 Add Device" />
+					<AppBarButton x:Name="RefreshButton" Icon="Refresh" Command="{Binding RefreshCommand}" IsCompact="True" RelativePanel.Above="MoreButton"/>
+					<TextBlock RelativePanel.RightOf="RefreshButton" RelativePanel.AlignVerticalCenterWith="RefreshButton" Text="2 Refresh" />
+					<AppBarButton x:Name="MoreButton" Icon="More" RelativePanel.AlignBottomWithPanel="True" IsCompact="True">
+						<AppBarButton.Flyout>
+							<MenuFlyout>
+								<MenuFlyoutItem Text="6 Report a Bug" Command="{Binding CommandViewModel.ReportBugCommand, Source={StaticResource Locator}}" />
+								<MenuFlyoutItem Text="5 License" Command="{Binding CommandViewModel.LicenseCommand, Source={StaticResource Locator}}" />
+								<MenuFlyoutItem Text="4 Particle Store" Command="{Binding CommandViewModel.ParticleStoreCommand, Source={StaticResource Locator}}" />
+								<MenuFlyoutItem x:Name="LogoutButton" Command="{Binding LogoutCommand}" Text="3 Logout" />
+							</MenuFlyout>
+						</AppBarButton.Flyout>
+					</AppBarButton>
 				</RelativePanel>
 			</SplitView.Pane>
 			<SplitView.Content>
@@ -46,8 +65,8 @@
 
 		<dialogs:AuthDialog x:Name="AuthDialog" Grid.RowSpan="2" />
 		<dialogs:InputDialog x:Name="InputDialog" Grid.RowSpan="2" />
-	<VisualStateManager.VisualStateGroups>
-		<VisualStateGroup>
+		<VisualStateManager.VisualStateGroups>
+			<VisualStateGroup>
 				<VisualState>
 					<!-- VisualState to be triggered when window width is >=720 effective pixels -->
 					<VisualState.StateTriggers>
@@ -61,19 +80,19 @@
 					</VisualState.Setters>
 				</VisualState>
 				<VisualState>
-				<!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
-				<VisualState.StateTriggers>
-					<AdaptiveTrigger MinWindowWidth="0" />
-				</VisualState.StateTriggers>
-				<VisualState.Setters>
-					<!-- For the most narrow windows and phones in portrait orientation, this state collapses the SplitView pane into overlay mode
+					<!-- VisualState to be triggered when window width is >=0 and <548 effective pixels -->
+					<VisualState.StateTriggers>
+						<AdaptiveTrigger MinWindowWidth="0" />
+					</VisualState.StateTriggers>
+					<VisualState.Setters>
+						<!-- For the most narrow windows and phones in portrait orientation, this state collapses the SplitView pane into overlay mode
 						and adds dynamic RelativePanel constraints that puts all elements stacked below each other -->
-					<Setter Target="Splitter.DisplayMode" Value="Overlay" />
-					<Setter Target="Splitter.IsPaneOpen" Value="False" />
-				</VisualState.Setters>
-			</VisualState>
-		</VisualStateGroup>
-	</VisualStateManager.VisualStateGroups>
+						<Setter Target="Splitter.DisplayMode" Value="Overlay" />
+						<Setter Target="Splitter.IsPaneOpen" Value="False" />
+					</VisualState.Setters>
+				</VisualState>
+			</VisualStateGroup>
+		</VisualStateManager.VisualStateGroups>
 	</Grid>
 
 </Page>

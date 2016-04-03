@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -78,6 +79,13 @@ namespace ParticleApp.UWP.Dialogs
 					}
 				}
 			}
+		}
+
+		private async void PasteButton_Click(object sender, RoutedEventArgs e)
+		{
+			var packate = Clipboard.GetContent();
+			var s = await packate.GetTextAsync();
+			InputBox.Text = s;
 		}
 	}
 }

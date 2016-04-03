@@ -41,6 +41,14 @@ namespace ParticleApp.Business.Design
 			}
 		}
 
+		public ICommand LogoutCommand
+		{
+			get
+			{
+				return AddElectronCommand;
+			}
+		}
+
 		public ObservableCollection<IDeviceWrapper> Devices
 		{
 			get;

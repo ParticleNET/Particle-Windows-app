@@ -1,0 +1,22 @@
+﻿<UserControl
+	x:Class="ParticleApp.UI.Controls.TinkerMoreButton"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:ParticleApp.UI.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	d:DesignHeight="300"
+	d:DesignWidth="400">
+
+	<AppBarButton Icon="More">
+		<AppBarButton.Flyout>
+			<MenuFlyout>
+				<MenuFlyoutItem x:Uid="Menu_Rename" Text="1 Rename..." Command="{Binding RenameCommand}" />
+				<MenuFlyoutItem x:Uid="Menu_CopyDeviceId" Text="2 Copy Device Id to clipboard" Command="{Binding CopyDeviceIdCommand}" Visibility="{Binding SupportsClipboard, Converter={StaticResource VisibilityConverter}, Source={StaticResource Locator}}" />
+				<MenuFlyoutItem x:Uid="Menu_ReflashTinker" Text="3 Re-flash Tinker" Command="{Binding FlashTinkerCommand}" />
+				<MenuFlyoutItem x:Uid="Menu_Unclaim" Text="4 Unclaim" Command="{Binding UnclaimDeviceCommand}" />
+			</MenuFlyout>
+		</AppBarButton.Flyout>
+	</AppBarButton>
+</UserControl>

@@ -97,7 +97,8 @@ namespace ParticleApp.UWP
 			{
 				this.dialog.ShowMessageDialog(dm);
 			}
-			else {
+			else
+			{
 				MessageDialog dialog = null;
 				if (dm.Description != null && dm.Title != null)
 				{
@@ -138,13 +139,14 @@ namespace ParticleApp.UWP
 		{
 			if (!ViewModelLocator.Cloud.IsAuthenticated)
 			{
-				LogoutControl.Visibility = Visibility.Collapsed;
+				LogoutButton.Visibility = Visibility.Collapsed;
 				await Task.Delay(200);
 				await AuthDialog.ShowAsync();
 			}
 			else
 			{
-				LogoutControl.Visibility = Visibility.Visible;
+				LogoutButton.Visibility = Visibility.Visible;
+				AuthDialog.Hide();
 			}
 		}
 

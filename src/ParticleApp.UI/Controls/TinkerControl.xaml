@@ -24,12 +24,12 @@
 			</Style>
 		</ResourceDictionary>
 	</UserControl.Resources>
-	<Grid Visibility="{Binding Device, Converter={StaticResource VisibilityNotNullConverter}}">
+	<Grid x:Name="GridContainer" Visibility="{Binding Device, Converter={StaticResource VisibilityNotNullConverter}}">
 		<Grid.RowDefinitions>
-			<RowDefinition />
 			<RowDefinition Height="auto" />
+			<RowDefinition />
 		</Grid.RowDefinitions>
-		<ScrollViewer>
+		<ScrollViewer Grid.Row="1">
 			<Border Padding="12">
 				<Grid VerticalAlignment="Top">
 					<Grid.RowDefinitions>
@@ -54,7 +54,7 @@
 							</ListView.ItemTemplate>
 						</ListView>
 					</Border>
-					<Path Grid.Row="1" Fill="#440a81be" Data="M 0,0 L 300,0 L 285,20 L 15,20 L 0,0">
+					<Path Grid.Row="1" Fill="#440a81be" Width="300" Data="M 0,0 L 300,0 L 285,20 L 15,20 L 0,0">
 
 					</Path>
 				</Grid>

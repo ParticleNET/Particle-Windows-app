@@ -37,6 +37,12 @@ namespace ParticleApp.UI.Controls
 		public TinkerControl()
 		{
 			this.InitializeComponent();
+#if WINDOWS_UWP
+			TinkerMoreButton button = new TinkerMoreButton();
+			button.SetValue(Grid.RowProperty, 0);
+			button.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Right);
+			GridContainer.Children.Add(button);
+#endif
 		}
 	}
 }

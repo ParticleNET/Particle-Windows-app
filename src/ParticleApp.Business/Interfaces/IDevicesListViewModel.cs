@@ -72,5 +72,12 @@ namespace ParticleApp.Business.Interfaces
 		/// The add electron command.
 		/// </value>
 		ICommand AddElectronCommand { get; }
+		/// <summary>
+		/// Gets the logout command.
+		/// </summary>
+		/// <value>
+		/// The logout command.
+		/// </value>
+		ICommand LogoutCommand { get; }
 	}
 }

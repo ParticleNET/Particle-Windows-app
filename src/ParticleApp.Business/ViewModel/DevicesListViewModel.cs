@@ -41,6 +41,13 @@ namespace ParticleApp.Business.ViewModel
 			{
 				RefreshCommand.Execute(null);
 			});
+			ViewModelLocator.Messenger.Register<Messages.LoggedOutMessage>(this, (e) =>
+			{
+				ParticleCloud.SyncContext.InvokeIfRequired(() =>
+				{
+					Devices.Clear();
+				});
+			});
 		}
 
 		private String resumeDeviceId;
@@ -271,6 +278,13 @@ namespace ParticleApp.Business.ViewModel
 				{
 					ViewModelLocator.Messenger.Send(new Messages.RefreshDevicesMessage());
 				}));
+			}
+		}
+		public ICommand LogoutCommand
+		{
+			get
+			{
+				return ViewModelLocator.LogoutViewModel.Logout;
 			}
 		}
 

@@ -43,5 +43,10 @@ namespace ParticleApp.UWP.Dialogs
 		private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
 		{
 		}
+
+		private void ContentDialog_Opened(ContentDialog sender, ContentDialogOpenedEventArgs args)
+		{
+			LoginControl.DialogOpened();
+		}
 	}
 }

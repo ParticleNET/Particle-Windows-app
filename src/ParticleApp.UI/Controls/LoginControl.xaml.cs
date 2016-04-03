@@ -27,6 +27,13 @@ namespace ParticleApp.UI.Controls
 		public LoginControl()
 		{
 			this.InitializeComponent();
+#if !WINDOWS_UWP
+			DialogOpened();
+#endif
+		}
+
+		public void DialogOpened()
+		{
 			if (!String.IsNullOrWhiteSpace(AppSettings.Current.Username))
 			{
 				LoginFrame.Navigate(typeof(LoginPage), true);
